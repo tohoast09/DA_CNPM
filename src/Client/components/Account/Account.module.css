@@ -1,0 +1,162 @@
+/* .Info {
+    position: relative;
+}
+
+.InfoNav{
+    background-color: lightgreen;
+} */
+
+.InfoNav .btn{
+    width: 50px;
+}
+
+.Content {
+    top: 0%;
+    left: 30%;
+    right: 5%;
+    position: absolute;
+}
+
+div.InfoNav {
+    width: 20%;
+    display: inline-block;
+    background-color: #eeeeee;
+    position: absolute;
+    left: 5%;
+    top: 10px;
+}
+
+.btn {
+    text-decoration: none;
+}
+
+.InfoNav .btn {
+    display: block;
+    width: 240px;
+    height: 60px;
+    text-decoration: none;
+    background-color: #ffffff00;
+    text-align: left;
+    border: none;
+    margin: 10px auto;
+}
+
+.InfoNav .btn span {
+    text-decoration: none;
+}
+
+.InfoNav .btn:hover {
+    background-color: #dddddd;
+}
+.InfoNav .Avatar {
+    width: 240px;
+    position: relative;
+    margin: auto;
+}
+.InfoNav .Avatar .img {
+    width: 240px;
+    height: 240px;
+    border-radius: 40px;
+    background-image: url("https://d.newsweek.com/en/full/1868100/what-if-watcher.png?w=790&f=423b1a1360f928cdad7773df817e1f50");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: auto;
+}
+
+.InfoNav .Avatar .btn {
+    width: 200px;
+    height: 40px;
+    margin: 20px;
+    border: solid black 2px;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.InfoNav img {
+    width: 240px;
+    height: 240px;
+}
+.UserInfo {
+    display: inline-block;
+}
+
+.UserInfo .MainContent {
+    box-align: center;
+    position: absolute;
+    width: 90%;
+    height: 720px;
+    font-size: 20px;
+    display: inline-block;
+    background-color: white;
+}
+
+.background {
+    background-color: rgb(211, 0, 0);
+    width: 100%;
+}
+
+.UserInfo .MainContent .infoInsideContent {
+    margin: auto;
+    padding: 20px 0px; 
+    width: 80%;
+    /* background-color: #ffffff; */
+}
+
+.UserInfo .update {
+    display: block;
+    width: 240px;
+    height: 60px;
+    font-size: 24px;
+    color: white;
+    margin: 20px auto;
+    border-radius: 5px;
+}
+
+.changeInfo {
+    background-color: #cc101c;
+}
+.changePassword {
+    background-color: #1b10cc;
+}
+.UserInfo label {
+    display: inline-block;
+    width: 150px;
+    /* height: 40px; */
+    /* line-height: 10px; */
+    /* border-width: 10px 0px; 
+    border: solid white; */
+    padding: 10px 0px;
+    /* display: block; */
+
+    box-sizing: content-box;
+    /* height: 50px; */
+}
+.UserInfo label span {
+    display: inline-block;
+    height: 50px;
+    margin: 5px;
+    box-sizing: border-box;
+}
+
+.UserInfo input {
+    display: inline-block;
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+    background: #efefef;
+    border: 1px solid #8f8f8f;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
+.UserInfo input.gender {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    font-size: 24px;
+    background: #efefef;
+    border: 1px solid #8f8f8f;
+    box-sizing: border-box;
+    border-radius: 6px;
+}

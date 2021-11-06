@@ -1,0 +1,17 @@
+.submitform{
+    text-align: center;
+}
+
+.submitform textarea{
+    font-size: 18;
+    box-sizing: border-box;
+    width: 700px;
+    height: 300px;
+}
+
+.submitform button{
+    background: black;
+    font-size: 18;
+    color: white;
+
+}

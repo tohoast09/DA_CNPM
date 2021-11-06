@@ -1,0 +1,43 @@
+.orderList {
+    width: 100%;
+}
+.OrderCard div {
+    display: inline-block;
+    border: solid black 1px;
+    font-size: 16px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: aliceblue;
+}
+
+.orderId {
+    width: 15%;
+}
+.orderDate {
+    width: 15%;
+}
+.orderDescription {
+    width: 50%;
+    text-align: left;
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+
+.orderDescription a{
+    margin-left: 10px;
+}
+
+.orderCard .orderDescription.bar {
+    text-align: center;
+}
+
+.orderCard .orderDescription{
+    width: 50%;
+    text-align: left;
+}
+.orderPrice {
+    width: 10%;
+}
+.orderStatus {
+    width: 10%;
+}

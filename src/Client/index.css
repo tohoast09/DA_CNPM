@@ -1,0 +1,157 @@
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+*{
+  box-sizing: border-box;
+}
+body{
+  padding: 0;
+  margin: 0;
+  font-family: 'Cabin';
+}
+.flex-column{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.ml5{
+  margin-left: 5px;
+}
+button{
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.header button:hover{
+  text-decoration: underline;
+}
+.top{
+  position: sticky;
+  top: 0;
+}
+.header{
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: space-between; */
+  padding: 25px;
+  padding-left: 100px;
+  padding-right: 100px;
+  z-index: 3;
+  background: #fff;
+}
+.header div:nth-child(2){
+  margin-left: auto;
+}
+.logo{
+  font-size: 35px;
+  margin-right: auto;
+}
+.input *{
+  font-size: 20px;
+  border-radius: 0;
+  outline: none;
+}
+.input button{
+  border: 3px solid #aaa;
+  border-style: solid solid solid none;
+  background: none;
+}
+.input input{
+  border: 3px solid #aaa;
+  border-style: solid none solid solid;
+  width: 560px;
+}
+.user{
+  /* display: flex; */
+  font-size: 19px;
+  width: 42px;
+  justify-content: flex-end;
+  margin-left: auto;
+}
+.user img{
+  width: 55px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.user button{
+  background: none;
+  width: 100%;
+  height: 100%;
+}
+.user i{
+font-size: 33px;
+}
+#stt{
+  width: max-content;
+  font-size: 16px;
+  background: none;
+}
+.cart {
+  font-size: 19px;
+}
+.cart button{
+  font-size: 30px;
+  background: none;
+  text-decoration: none;
+}
+.cart button:hover{
+  text-decoration: none;
+}
+
+.cart button *{
+  color: black;
+}
+
+.content{
+  padding: 35px 35px 35px 35px;
+  background: #eee;
+}
+.section{
+  width: 100%;
+  height: 100vh;
+}
+
+
+.badge {
+  padding-left: 9px;
+  padding-right: 9px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+}
+
+/* .label-warning[href],
+.badge-warning[href] {
+  background-color: #c67605;
+} */
+#lblCartCount {
+    font-size: 15px;
+    background: #ff0000;
+    color: #fff;
+    padding: 0 5px;
+    vertical-align: top;
+    margin-left: -10px; 
+}
+
+.cart *{
+  text-decoration: none;
+}
+
+.backdrop {
+  position: fixed;
+  z-index: 3;
+  background-color: rgba(0, 0, 0, 0.75);
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}

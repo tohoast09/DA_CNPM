@@ -1,0 +1,40 @@
+
+.ctn{
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: 100%;
+}
+.filtercol{
+    box-sizing: border-box;
+    width: 200px;
+    height: 400px;
+    padding-right:30px;
+    background: white;
+}
+.maincol{
+    margin-left: 10px;
+    box-sizing: border-box;
+    width: 100%;
+}
+.searchresult{
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+    padding: 20px;
+    
+    background: white;
+}
+.textinput {    
+    text-align: right;
+}
+
+.textinput *{
+    font-size: 20px;
+    border-radius: 0;
+    outline: none;
+    margin-bottom: 20px;
+}
