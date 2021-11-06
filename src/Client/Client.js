@@ -54,40 +54,90 @@ function Client() {
   return (<div>
             <SearchParamProvider>
             <CartContextProvider>
-
-        <section className="top">
+        <Switch>
+          <Route path='/' exact>
+          <section className="top">
         <Header/>
         <NavBar/>
         </section>
         <section className="content section">
-        <Switch>
-          <Route path='/' exact>
             <Home loadedBookList={booklist} />
+            </section>
+
           </Route>
           <Route path="/search">
+          <section className="top">
+        <Header/>
+        <NavBar/>
+        </section>
+        <section className="content section">
             <Search  loadedBookList={booklist}/>
+            </section>
+
           </Route>
           <Route path="/about-us">
+          <section className="top">
+        <Header/>
+        <NavBar/>
+        </section>
+        <section className="content section">
             <AboutUs />
+            </section>
+
           </Route>
           {
             booklist.map((book)=>{
-              return <Route path={"/detail="+book.id}>
+              return (
+                
+              <Route path={"/detail="+book.id}>
+                        <section className="top">
+        <Header/>
+        <NavBar/>
+        </section>
+        <section className="content section">
                     <Detail data={book} />
-              </Route>;
+                    </section>
+              </Route>);
             })
           }
           <Route path="/submit">
+          <section className="top">
+        <Header/>
+        <NavBar/>
+        </section>
+        <section className="content section">
             <SubmitDummy />
+            </section>
+
           </Route>
           <Route path="/cart">
+          <section className="top">
+        <Header/>
+        <NavBar/>
+        </section>
+        <section className="content section">
             <Cart />
+            </section>
+
           </Route>
           <Route path="/account">
+          <section className="top">
+        <Header/>
+        <NavBar/>
+        </section>
+        <section className="content section">
             <Account />
+            </section>
+
           </Route>
           <Route path="/login">
+          <section className="top">
+        <Header/>
+        <NavBar/>
+        </section>
+        <section className="content section">
             <Login />
+            </section>
           </Route>
           <Route path="/signup">
             <SignUp />
@@ -99,7 +149,6 @@ function Client() {
             <ForgetChangePass />
           </Route>
         </Switch>
-        </section>
         </CartContextProvider>
 
         </SearchParamProvider>
