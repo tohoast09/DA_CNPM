@@ -27,7 +27,7 @@ function InfoCart(props){
                     <div>{CrtCtx.totalPay}<u>đ</u></div>
                 </div>
                 <div className={classes.text_center}>
-                    <Link to='/pay'><button className={classes.text_center}><b>Thanh toán</b></button></Link>
+                    <Link to='/payment'><button className={classes.text_center}><b>Thanh toán</b></button></Link>
                 </div>
         </div>
     )

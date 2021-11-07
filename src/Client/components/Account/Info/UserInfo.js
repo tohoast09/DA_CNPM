@@ -17,7 +17,7 @@ function UserInfo() {
                         <Input
                             name="Name"
                             type="text"
-                            defaultValue="Nguyễn Trường Hải Đăng"
+                            defaultValue="yoloo"
                             required
                         />
                     </div>
@@ -26,7 +26,7 @@ function UserInfo() {
                         <Input
                             name="Phone"
                             type="text"
-                            defaultValue="0768803077"
+                            defaultValue="0002121"
                             required
                         />
                     </div>
@@ -36,7 +36,7 @@ function UserInfo() {
                         <Input
                             name="email"
                             type="email"
-                            defaultValue="dang@gmail.com"
+                            defaultValue="d@gmail.com"
                         />
                     </div>
                     <div className={account.field}>
@@ -45,7 +45,7 @@ function UserInfo() {
                         <Input
                             name="bdate"
                             type="date"
-                            defaultValue="2001-04-16"
+                            defaultValue="2001-00-00"
                         />
                     </div>
                     <div className={account.field}>

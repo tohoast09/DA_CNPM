@@ -16,7 +16,7 @@ import ForgetChangePass from './components/Sign/Forget/ForgetChangePass';
 import SignUp from './components/Sign/Signup/SignUp';
 import Forget from './components/Sign/Forget/Forget';
 import { CartContextProvider } from './stores/cart-context';
-
+import Payment from './components/payment/Payment';
 function Client() {
     const [isLoading, setIsLoading]=useState(true);
     const [loadedBookList, setLoadedBookList] = useState([]);
@@ -115,6 +115,16 @@ function Client() {
         </section>
         <section className="content section">
             <Cart />
+            </section>
+
+          </Route>
+          <Route path="/payment">
+          <section className="top">
+        <Header/>
+        <NavBar/>
+        </section>
+        <section className="content section">
+          <Payment/>
             </section>
 
           </Route>

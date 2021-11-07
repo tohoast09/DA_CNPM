@@ -15,7 +15,7 @@ function AddAddress(props) {
                         <Input
                             name="Name"
                             type="text"
-                            defaultValue="Nguyễn Trường Hải Đăng"
+                            defaultValue="Yolooo"
                             required
                         />
                     </div>
