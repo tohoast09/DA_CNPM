@@ -43,8 +43,7 @@ function ForgetPass(props) {
 
                     <div className={`${sign.field} ${sign.change}`}>
                         <Row>
-                            {/* <label><Link to="/login">Đăng nhập</Link></label> */}
-                            <Button onClick={props.onLogin}>Đăng nhập</Button>
+                            <Button className={sign.linkbutton} onClick={props.onLogin}>Đăng nhập</Button>
                         </Row>
                     </div>
                 </div>

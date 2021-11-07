@@ -1,58 +1,48 @@
-.orderList
-{
-    width: 100%;
-}
-.orderCard span{
-    display: inline-block;
-    border: solid black 1px;
-    font-size: 20px;
-    box-sizing: border-box;
-    text-align: center;
-    background-color: aliceblue;
+* {
+    font-family: Roboto;
 }
 
+.orderList {
+    width: 100%;
+}
 .notiInsideContent {
     margin: auto;
-    padding: 20px 0px; 
-    /* margin-left: 10%; */
-    background-color: #ffffff;
 }
+
 .notiCard {
     /* display: inline-block; */
     border: 1px solid black;
     height: 120px;
-    margin: 10px 0px;
+    margin-bottom: 10px;
     border-radius: 20px;
     font-size: 16px;
     /* background-color: red; */
     background-color: white;
-    /* width: 100%; */
-    /* margin-right: 10%; */
-    /* position: relative; */
     align-items: center;
     display: flex;
 }
 
-.notiDate{
-width: 10%;
-margin: 0px 10px;
-}
-.notiDescription{
-width: 65%;
-margin: 0px 10px;
+.notiDate {
+    width: 10%;
+    margin: 0px 20px;
 }
 
-.btn{
+.notiDescription {
+    width: 65%;
+    margin: 0px 20px;
+}
+
+.btn {
     background-color: #ffffff00;
     border: none;
 }
 
-.UserNoti .readNoti{
+.UserNoti .readNoti {
     width: 15%;
-    color: blue
+    color: #0069e6;
 }
 
-.UserNoti .delNoti{
+.UserNoti .delNoti {
     width: 10%;
     color: red;
 }

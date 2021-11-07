@@ -1,6 +1,6 @@
 import { Button, Input } from "reactstrap";
 import { React } from "react";
-import account from '../Account.module.css'
+import account from "../Account.module.css";
 
 function UserInfo() {
     // render();
@@ -10,61 +10,84 @@ function UserInfo() {
     return (
         <div className={account.UserInfo}>
             <h1>Thông tin tài khoản</h1>
-            <div className={account.MainContent}>
+            <div className={`${account.MainContent} ${account.info}`}>
                 <div className={account.infoInsideContent}>
-                    <label>Họ tên</label>
-                    <Input
-                        name="Name"
-                        type="text"
-                        defaultValue="Nguyễn Trường Hải Đăng"
-                        required
-                    />
-                    <br />
-
-                    <label>Số điện thoại</label>
-                    <Input
-                        name="Phone"
-                        type="text"
-                        defaultValue="0768803077"
-                        required
-                    />
-                    <br />
-
-                    <label>Email</label>
-
-                    <Input
-                        name="email"
-                        type="email"
-                        defaultValue="dang@gmail.com"
-                    />
-                    <br />
-
-                    <label>Ngày sinh</label>
-
-                    <Input name="bdate" type="date" defaultValue="2001-04-16" />
-                    <select type=""></select>
-                    <br />
-                    <label>Giới tính</label>
-                    <label>
+                    <div className={account.field}>
+                        <label>Họ tên</label>
                         <Input
-                            className={account.gender}
-                            name="gender"
-                            type="radio"
-                            checked
+                            name="Name"
+                            type="text"
+                            defaultValue="Nguyễn Trường Hải Đăng"
+                            required
                         />
-                        <span>Nam</span>
-                    </label>
-                    <label>
-                        <Input className={account.gender} name="gender" type="radio" />
-                        <span>Nữ</span>
-                    </label>
-                    <label>
-                        <Input className={account.gender} name="gender" type="radio" />
-                        <span>Khác</span>
-                    </label>
-                    <br />
-                    <Button className={`${account.changeInfo} ${account.update}`}>Cập nhật thông tin</Button>
-                    <Button className={`${account.changePassword} ${account.update}`}>Sửa mật khẩu</Button>
+                    </div>
+                    <div className={account.field}>
+                        <label>Số điện thoại</label>
+                        <Input
+                            name="Phone"
+                            type="text"
+                            defaultValue="0768803077"
+                            required
+                        />
+                    </div>
+                    <div className={account.field}>
+                        <label>Email</label>
+
+                        <Input
+                            name="email"
+                            type="email"
+                            defaultValue="dang@gmail.com"
+                        />
+                    </div>
+                    <div className={account.field}>
+                        <label>Ngày sinh</label>
+
+                        <Input
+                            name="bdate"
+                            type="date"
+                            defaultValue="2001-04-16"
+                        />
+                    </div>
+                    <div className={account.field}>
+                        <label>Giới tính</label>
+                        <div className={account.inputGender}>
+                            <div className={account.selectGender}>
+                                <Input
+                                    className={account.gender}
+                                    name="gender"
+                                    type="radio"
+                                    checked
+                                />
+                                <span>Nam</span>
+                            </div>
+                            <div className={account.selectGender}>
+                                <Input
+                                    className={account.gender}
+                                    name="gender"
+                                    type="radio"
+                                />
+                                <span>Nữ</span>
+                            </div>
+                            <div className={account.selectGender}>
+                                <Input
+                                    className={account.gender}
+                                    name="gender"
+                                    type="radio"
+                                />
+                                <span>Khác</span>
+                            </div>
+                        </div>
+                    </div>
+                    <Button
+                        className={`${account.changeInfo} ${account.update}`}
+                    >
+                        Cập nhật thông tin
+                    </Button>
+                    <Button
+                        className={`${account.changePassword} ${account.update}`}
+                    >
+                        Sửa mật khẩu
+                    </Button>
                 </div>
             </div>
         </div>

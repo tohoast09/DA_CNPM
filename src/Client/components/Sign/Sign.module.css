@@ -1,40 +1,29 @@
-
-
-
 .Login {
     background-color: red;
     height: 100%;
 }
 
 .LoginForm {
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-    border-radius: 6px;
+    background-color: rgb(255, 255, 255);
+    width: 400px;
+    padding: 10px 30px;
+    border-radius: 20px;
+    position: absolute;
+    top: 0%;
+    left: 0%;
     background-color: white;
     padding: 1rem;
-    /* text-align: center; */
-    width: 30rem;
+    width: 26rem;
     z-index: 10;
     position: fixed;
-    top: 20vh;
-    left: calc(50% - 15rem);
-}
-
-.alt{
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-    border-radius: 6px;
-    background-color: white;
-    padding: 1rem;
-    text-align: center;
-    width: 30rem;
-    z-index: 10;
-    position: fixed;
-    top: 20vh;
-    left: calc(50% - 15rem);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .LoginForm h1 {
     width: 100%;
-
+    margin: auto;
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
@@ -47,22 +36,28 @@
     color: #000000;
 }
 
-.LoginForm > * {
-    background-color: rgba(255, 77, 77, 0.788);
+.LoginForm .field {
+    /* background-color: rgba(255, 77, 77, 0.788); */
     margin: auto;
-    width: 400px;
+    width: 100%;
     display: block;
     position: relative;
 }
 
-.LoginForm .field > * {
-    width: 100%;
-    box-sizing: border-box;
-    background-color: #4538ff83;
+.col {
+    width: auto;
+    display: inline-block;
 }
 
-.LoginForm .field .btn {
-    width: 400px;
+.switchForget {
+    position: absolute;
+    width: auto;
+    right: 0%;
+    top: 0%;
+}
+
+.field button {
+    width: 100%;
     height: 60px;
     background: #cc101b;
     border-radius: 5px;
@@ -73,31 +68,45 @@
     line-height: 23px;
     align-items: center;
     text-align: center;
+    margin: 20px 0px;
 
     color: #ffffff;
 }
 
+.logContent {
+    width: 100%;
+}
+
 .LoginForm .field Input {
-    width: 400px;
-    height: 40px;
+    width: 100%;
+    height: 50px;
 
     background: #ebebeb;
     border-radius: 5px;
 }
-
-.LoginForm .field.change .row{
+.row {
     margin: auto;
     width: auto;
 }
 
-.backdrop {
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.767);
-    position: absolute;
+.ask {
+    margin: auto;
+    width: auto;
 }
-#signin {
+.ask * {
     text-align: center;
+    margin: auto;
+}
+
+button.linkbutton{
+    display: inline;
+    background-color: #ffffff00;
+    color: blue;
+    height: fit-content;
+    width: fit-content;
+    vertical-align:top;
+    margin: 0px 5px;
+    font-size: 17px;
 }
 
 .LoginForm label {
@@ -110,33 +119,18 @@
     color: #000000;
 }
 
-/* div .LoginForm .field .row {
-    position: relative;
-} */
-
 div .LoginForm .field .col {
     right: 0%;
     display: inline-block;
     width: 40%;
 }
 
-.LoginForm .field
-{
-    margin: 20px 0px;
+.LoginForm .field {
+    margin: 10px auto;
     align-items: center;
 }
 
-div .LoginForm .field a {
-    /* position: absolute; */
-    right: 0px;
-    height: 24px;
-    top: calc(50% - 24px / 2);
-}
-
-div .LoginForm .field.change{
-    /* position: absolute; */
-    background-color: green;
-    width: 60%;
+div .LoginForm .field.change {
+    width: fit-content;
     align-items: center;
-    align-self: center;
 }

@@ -1,7 +1,8 @@
 import OrderCard from "./OrderCard";
 // import "./Order.css";
-import classes from './Order.module.css';
+import order from './Order.module.css';
 import style from '../Account.module.css';
+import OrderDetail from "./OrderDetail/OrderDetail";
 
 const DUMMY_DATA = [
     {
@@ -31,18 +32,22 @@ const DUMMY_DATA = [
 ];
 
 function Order() {
+    // const [popupOrder, setpopupOrder] = useState(false);
+    // function openDetail{
+    //     set{}
+    // }
     return (
-        <div className={style.UserInfo}>
+        <div className={order.UserOrder}>
             <h1>Đơn hàng của tôi</h1>
-            <div className={style.MainContent}>
-                <div className={style.InsideContent}>
-                    <div className={classes.OrderList}>
-                        <div className={classes.OrderCard}>
-                            <div className={classes.orderId}>Mã đơn</div>
-                            <div className={classes.orderDate}>Ngày đặt</div>
-                            <div className={`${classes.orderDescription} ${classes.bar}`}>Mô tả</div>
-                            <div className={classes.orderPrice}>Giá</div>
-                            <div className={classes.orderStatus}>Trạng thái</div>
+            <div className={`${style.MainContent} ${order.order}`}>
+                <div className={style.orderInsideContent}>
+                    <div className={order.OrderList}>
+                        <div className={`${order.orderCard} ${order.bar}`}>
+                            <div className={order.orderId}><span>Mã đơn</span></div>
+                            <div className={order.orderDate}><span>Ngày đặt</span></div>
+                            <div className={`${order.orderDescription} ${order.bar}`}><span>Mô tả</span></div>
+                            <div className={order.orderPrice}><span>Giá</span></div>
+                            <div className={order.orderStatus}><span>Trạng thái</span></div>
                         </div>
 
                         {DUMMY_DATA.map((order) => {
@@ -59,6 +64,7 @@ function Order() {
                     </div>
                 </div>
             </div>
+            <OrderDetail/>
         </div>
     );
 }

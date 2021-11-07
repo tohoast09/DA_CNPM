@@ -4,12 +4,12 @@ import classes from './Order.module.css'
 
 function OrderCard(props) {
     return (
-        <div className={classes.OrderCard}>
-            <div className={classes.orderId}>{props.id}</div>
-            <div className={classes.orderDate}>{props.date}</div>
-            <div className={classes.orderDescription}>{props.description}<Link>Chi tiết</Link></div>
-            <div className={classes.orderPrice}>{props.price}</div>
-            <div className={classes.orderStatus}>{props.status}</div>
+        <div className={classes.orderCard}>
+            <div className={classes.orderId}><span>{props.id}</span></div>
+            <div className={classes.orderDate}><span>{props.date}</span></div>
+            <div className={classes.orderDescription}><span>{props.description}</span><Link to='/orderdetail'>Chi tiết</Link></div>
+            <div className={classes.orderPrice}><span>{props.price}</span></div>
+            <div className={classes.orderStatus}><span>{props.status}</span></div>
         </div>
         
     )

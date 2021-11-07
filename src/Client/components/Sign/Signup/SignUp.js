@@ -48,8 +48,7 @@ function SignUp(props) {
                     <div className={`${sign.field} ${sign.change}`}>
                         <Row>
                             <label>Đã có tài khoản?</label>
-                            {/* <Link to="/login">Đăng nhập</Link> */}
-                            <Button onClick={props.onLogin}>Đăng nhập</Button>
+                            <Button className={sign.linkbutton} onClick={props.onLogin}>Đăng nhập</Button>
                         </Row>
                     </div>
                 </div>

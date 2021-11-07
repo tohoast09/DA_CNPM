@@ -1,6 +1,9 @@
 import AddressCard from "./AddressCard";
-import "./Address.css";
+// import "./Address.css";
 import { Button } from "reactstrap";
+import address from './Address.module.css'
+import { useState } from 'react'
+import AddAddress from "./AddAddress";
 
 const DUMMY_DATA = [
     {
@@ -14,47 +17,64 @@ const DUMMY_DATA = [
     },
     {
         name: 'Hai Dang',
-        location_detail: '',
+        location_detail: 'KTX Khu A',
         location_1: 'số ABC, ấp ABC',
-        location_2: 'Xã',
-        location_3: 'Huyện',
-        number: 'Tỉnh',
+        location_2: 'Đông Hòa',
+        location_3: 'Dĩ An',
+        number: '0987654321',
         state: true
     },
     {
         name: 'Hai Dang',
-        location_detail: '',
+        location_detail: 'KTX Khu A',
         location_1: 'số ABC, ấp ABC',
-        location_2: 'Xã',
-        location_3: 'Huyện',
-        number: 'Tỉnh',
+        location_2: 'Đông Hòa',
+        location_3: 'Dĩ An',
+        number: '0987654321',
         state: true
     },
 ];
 
 function Address() {
+    const [addPopup, setaddPopup] = useState(false);
+    function popupHandler()
+    {
+        setaddPopup(true);
+    }
+
+    function onAddHandler(){
+        setaddPopup(false);
+    }
+
+    function onCancelHandler(){
+        setaddPopup(false);
+    }
+
     return (
-        <div className="UserAddress">
+        <div className={address.UserAddress}>
+            
             <h1>Địa chỉ</h1>
-            <div className="MainContent">
-                <div className="addressInsideContent">
-                    <div className='buttonBar'>
-                        <Button>
+            <div className={address.MainContent}>
+                <div className={address.addressInsideContent}>
+                    <div className={address.buttonBar}>
+                        <Button 
+                        onClick={popupHandler} 
+                        className={address.btn}>
                             Thêm địa chỉ mới
                         </Button>
                     </div>
-                    <div className="addressList">
+                    <div className={address.addressList}>
 
-                        {DUMMY_DATA.map((address) => {
+                        {DUMMY_DATA.map((addressItem) => {
                             return (
                                 <AddressCard
                                     // id={order.id}
-                                    name={address.name}
-                                    number={address.number}
-                                    location_detail={address.location_detail}
-                                    location_1={address.location_1}
-                                    location_2={address.location_2}
-                                    location_3={address.location_3}
+                                    name={addressItem.name}
+                                    number={addressItem.number}
+                                    location_detail={addressItem.location_detail}
+                                    location_1={addressItem.location_1}
+                                    location_2={addressItem.location_2}
+                                    location_3={addressItem.location_3}
                                     // price={order.price}
                                     // status={order.status}
                                 />
@@ -63,6 +83,7 @@ function Address() {
                     </div>
                 </div>
             </div>
+            {addPopup && <AddAddress onAdd={onAddHandler} onCancel={onCancelHandler}/>}
         </div>
     );
 }

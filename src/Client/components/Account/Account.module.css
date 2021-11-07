@@ -1,14 +1,11 @@
-/* .Info {
+* {
+    font-family: Roboto;
+}
+
+.Info{
     position: relative;
 }
 
-.InfoNav{
-    background-color: lightgreen;
-} */
-
-.InfoNav .btn{
-    width: 50px;
-}
 
 .Content {
     top: 0%;
@@ -17,10 +14,9 @@
     position: absolute;
 }
 
-div.InfoNav {
+.InfoNav {
     width: 20%;
     display: inline-block;
-    background-color: #eeeeee;
     position: absolute;
     left: 5%;
     top: 10px;
@@ -32,7 +28,7 @@ div.InfoNav {
 
 .InfoNav .btn {
     display: block;
-    width: 240px;
+    width: 100%;
     height: 60px;
     text-decoration: none;
     background-color: #ffffff00;
@@ -49,14 +45,15 @@ div.InfoNav {
     background-color: #dddddd;
 }
 .InfoNav .Avatar {
-    width: 240px;
+    width: 100%;
     position: relative;
     margin: auto;
 }
 .InfoNav .Avatar .img {
-    width: 240px;
-    height: 240px;
+    width: 25vh;
+    height: 25vh;
     border-radius: 40px;
+    border-color: rgba(0, 0, 0, 0);
     background-image: url("https://d.newsweek.com/en/full/1868100/what-if-watcher.png?w=790&f=423b1a1360f928cdad7773df817e1f50");
     background-position: center;
     background-repeat: no-repeat;
@@ -65,7 +62,7 @@ div.InfoNav {
 }
 
 .InfoNav .Avatar .btn {
-    width: 200px;
+    width: 60%;
     height: 40px;
     margin: 20px;
     border: solid black 2px;
@@ -84,10 +81,14 @@ div.InfoNav {
 .UserInfo .MainContent {
     box-align: center;
     position: absolute;
-    width: 90%;
+    width: 100%;
     height: 720px;
-    font-size: 20px;
+    /* font-size: 20px; */
     display: inline-block;
+    /* background-color: white; */
+}
+
+.MainContent.info{
     background-color: white;
 }
 
@@ -99,15 +100,41 @@ div.InfoNav {
 .UserInfo .MainContent .infoInsideContent {
     margin: auto;
     padding: 20px 0px; 
-    width: 80%;
+    width: 70%;
     /* background-color: #ffffff; */
+}
+
+.field{
+    /* background-color: #796fff; */
+    margin: 20px;
+    position: relative;
+}
+
+.field label{
+    display: inline-block;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.field input{
+    position: absolute;
+    display: inline-block;
+    width: 80%;
+    height: 40px;
+    right: 0px;
+    font-size: 20px;
+    background: #efefef;
+    border: 1px solid #868686;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 6px;
 }
 
 .UserInfo .update {
     display: block;
-    width: 240px;
-    height: 60px;
-    font-size: 24px;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
     color: white;
     margin: 20px auto;
     border-radius: 5px;
@@ -132,31 +159,39 @@ div.InfoNav {
     box-sizing: content-box;
     /* height: 50px; */
 }
-.UserInfo label span {
+
+.inputGender{
+    position: absolute;
     display: inline-block;
-    height: 50px;
-    margin: 5px;
-    box-sizing: border-box;
+    right: 0%;
+    width: 80%;
+    height: 100%;
+    /* align-items: center; */
+    /* background-color: red; */
 }
 
-.UserInfo input {
+.selectGender{
+    width: 15%;
     display: inline-block;
-    width: 100%;
-    height: 50px;
-    font-size: 20px;
-    background: #efefef;
-    border: 1px solid #8f8f8f;
-    padding: 10px;
-    box-sizing: border-box;
-    border-radius: 6px;
+    position: relative;
+    /* position: absolute; */
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0px;
+    margin: 0px 40px;
 }
-.UserInfo input.gender {
+
+.selectGender label{
+    width: fit-content
+}
+
+.selectGender input{
     display: inline-block;
     width: 20px;
     height: 20px;
-    font-size: 24px;
-    background: #efefef;
-    border: 1px solid #8f8f8f;
-    box-sizing: border-box;
-    border-radius: 6px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0px;
+    margin: 0px;
 }

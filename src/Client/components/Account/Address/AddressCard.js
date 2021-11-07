@@ -1,19 +1,29 @@
-import React from 'react'
+import React from "react";
+import address from "./Address.module.css";
 // import { Link } from 'react-router-dom'
 // import { Button } from 'reactstrap'
 
 function AddressCard(props) {
     return (
-        <div className='addressCard'>
-            <div className='addressName'>{props.name}</div>
-            <div className='addressLocation'>{props.location_detail}<p>, xã </p></div>
-            <div className='addressLocation'>{props.location_1}<p>, huyện </p></div>
-            <div className='addressLocation'>{props.location_2}<p>, tỉnh </p></div>
-            <div className='addressLocation'>{props.location_3}<p>, SĐT </p></div>
-            <div className='addressNumber'>{props.number}</div>
+        <div className={address.addressCard}>
+            <div className={address.info}>
+                <div className={address.addressName}>
+                    <span>{`Tên: ${props.name}`}</span>
+                </div>
+                <div className={address.addressLocation}>
+                    <span>{`${props.location_detail}, ${props.location_1}, ${props.location_2}, ${props.location_3}`}</span>
+                </div>
+                <div className={address.addressNumber}>
+                    <span>{`Số điện thoại: ${props.number}`}</span>
+                </div>
+            </div>
+            <div className={address.addressButton}>
+                <button>
+                    Đặt làm mặc định
+                </button>
+            </div>
         </div>
-        
-    )
+    );
 }
- 
-export default AddressCard
+
+export default AddressCard;

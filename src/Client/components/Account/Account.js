@@ -4,6 +4,7 @@ import Address from "./Address/Address";
 import Order from "./Order/Order";
 import UserInfo from "./Info/UserInfo";
 import Noti from "./Noti/Noti";
+import OrderDetail from './Order/OrderDetail/OrderDetail'
 import { Container, Row} from "reactstrap";
 import classes from './Account.module.css'
 // import classes from './InfoMng.module.css'
@@ -25,6 +26,9 @@ function Account() {
                         </Route>
                         <Route path="/account/noti">
                             <Noti />
+                        </Route>
+                        <Route path='/orderdetail'>
+                            <OrderDetail/>
                         </Route>
                     </Switch>
                 </Container>
