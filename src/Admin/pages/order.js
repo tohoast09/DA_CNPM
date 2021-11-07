@@ -7,7 +7,6 @@ import Form from './components/Form';
 import Mockdata from './mockdata/Mockdata';
 import Item from './components/Item'; 
 import ItemEdit from './components/ItemEdit';
-import 'sweetalert/dist/sweetalert.css';
 
 
 let arrayLevel = [];

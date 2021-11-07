@@ -7,7 +7,6 @@ import Form from './cus-components/cus-form';
 import CusDatabase from './mockdata/CusData';
 import Customer from './cus-components/customer';
 import CusEdit from './cus-components/cus-edit';
-import 'sweetalert/dist/sweetalert.css';
 
 
 
