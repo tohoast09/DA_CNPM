@@ -20,8 +20,6 @@ import { CartContextProvider } from './stores/cart-context';
 function Client() {
     const [isLoading, setIsLoading]=useState(true);
     const [loadedBookList, setLoadedBookList] = useState([]);
-    const isAdmin=true;
-    const isUser=false;
     useEffect(() =>{
         fetch(
             'https://bkbookstore-1e885-default-rtdb.asia-southeast1.firebasedatabase.app/books.json'

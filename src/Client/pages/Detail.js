@@ -19,9 +19,10 @@ function Detail(props){
     }
 
     function onClicktoCart(){
+        console.log(data);
         let newBook={...data};
         if('promotion' in data){
-            newBook.promotion=0;
+            newBook.promotion=data.promotion;
         }
         else{
             newBook.promotion=0;

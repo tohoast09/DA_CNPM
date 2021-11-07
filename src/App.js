@@ -2,11 +2,11 @@ import Admin from "./Admin/Admin";
 import Client from "./Client/Client";
 
 function App(){
-    const isUser=false;
+    const isUser=true;
     const isAdmin=true;
     return(
         <div>
-            {isUser&&<Client/>}
+            <Client/>
             {isAdmin&&<Admin/>}
         </div>
     )

@@ -40,7 +40,7 @@ function SubmitDummy(){
         console.log(obj);
         pushBook(obj);
     }
-    const init="author: \nname: \nprice: \nimg: \ncategory: \n"
+    const init="author: \nname: \nprice: \nimg: \ncategory: \npromotion: \n"
     return (
         <div className={classes.submitform}>
         <form onSubmit={submitHandler}>

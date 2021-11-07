@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
+import './bootstrap/css/bootstrapcustom.css'
 import Navbar from './components/NavbarAdmin';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from './pages/HomeAdmin';
 import Customers from './pages/Customer';
 import Order from './pages/order';
 import Support from './pages/support';
@@ -18,8 +18,8 @@ function App() {
 /*/
 function Admin() {
   return (
-    <>
-
+    <div className='bootstrapiso'>
+        <Switch>
           <Route path='/admin' exact>
             <Navbar/>
             <HomeAdmin/>
@@ -40,8 +40,9 @@ function Admin() {
             <Navbar/>
             <Support/>
             </Route>
+            </Switch>
 
-    </>
+    </div>
   );
 }
 

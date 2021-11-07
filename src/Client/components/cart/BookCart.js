@@ -4,6 +4,7 @@ import Modal from "../modal/Modal";
 import CartContext from "../../stores/cart-context";
 import classes from './BookforCart.module.css'
 import { Link } from "react-router-dom";
+import { IconButton } from "@mui/material";
 function BookforCart(props){
 
     const CrtCtx=useContext(CartContext);
@@ -44,7 +45,8 @@ function BookforCart(props){
     }
 
     function show_promotion(){
-        if (props.data.promotion!==0){
+        console.log(props.data.promotion);
+        if (Number(props.data.promotion)!==0){
             return(
             <div>
             <p id={classes.promotion}>
