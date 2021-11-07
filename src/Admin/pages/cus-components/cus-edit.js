@@ -7,7 +7,7 @@ class CusEdit extends Component {
           switch (sex) {
         case 0:
           return <option key={index} value={sex}>Nam</option>
-        default:
+        case 1:
           return <option key={index} value={sex}>Nữ</option>
           }
         });
