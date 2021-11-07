@@ -7,7 +7,7 @@ class Form extends Component {
       switch (sex) {
 	case 0:
 	  return <option key={index} value={sex}>Nam</option>
-	default:
+	case 1:
 	  return <option key={index} value={sex}>Nữ</option>
       }
     });
@@ -22,14 +22,14 @@ class Form extends Component {
 	    className="form-control" 
 	    placeholder="ID" 
 	    value={this.props.valueItem} 
-	    onChange={(event)=>this.props.handleFormInputChange(event.target.value)}
+	    onChange={(event)=>this.props.handleIDFormInputChange(event.target.value)}
 	  />
 	  <input 
 	    type="text" 
 	    className="form-control" 
 	    placeholder="Họ và tên" 
 	    value={this.props.valueItem} 
-	    onChange={(event)=>this.props.handleFormInputChange(event.target.value)}
+	    onChange={(event)=>this.props.handleNameFormInputChange(event.target.value)}
 	  />
 	  <select 
 	    className="form-control"
@@ -43,21 +43,21 @@ class Form extends Component {
 	    className="form-control" 
 	    placeholder="Ngày sinh: dd/mm/yyyy" 
 	    value={this.props.valueItem} 
-	    onChange={(event)=>this.props.handleFormInputChange(event.target.value)}
+	    onChange={(event)=>this.props.handleBDayFormInputChange(event.target.value)}
 	  />
 	  <input 
 	    type="text" 
 	    className="form-control" 
 	    placeholder="Số điện thoại" 
 	    value={this.props.valueItem} 
-	    onChange={(event)=>this.props.handleFormInputChange(event.target.value)}
+	    onChange={(event)=>this.props.handlePhoneFormInputChange(event.target.value)}
 	  />
 	  <input 
 	    type="text" 
 	    className="form-control" 
 	    placeholder="Email" 
 	    value={this.props.valueItem} 
-	    onChange={(event)=>this.props.handleFormInputChange(event.target.value)}
+	    onChange={(event)=>this.props.handleEmailFormInputChange(event.target.value)}
 	  />
 	</div>
 	<button 
