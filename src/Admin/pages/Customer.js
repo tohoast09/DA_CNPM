@@ -44,8 +44,14 @@ class Customers extends Component {
       
       arrayLevel: arrayLevel,
       showForm: false,
-      valueCus: '',
-      levelCus: 0,
+      
+      idCus: '',
+      nameCus: '',
+      phoneCus: '',
+      sexCus: -1,
+      bdayCus: '',
+      emailCus: '',
+
       sortType: '',
       sortOrder: '',
       valueSearch: '',
@@ -151,35 +157,71 @@ class Customers extends Component {
       showForm: !this.state.showForm
     });
   }
-  handleFormInputChange = (value) => {
+
+  handleIDFormInputChange = (value) => {
     this.setState({
-      valueCus: value
+      idCus: value
+    });
+  }
+  handleNameFormInputChange = (value) => {
+    this.setState({
+      nameCus: value
+    });
+  }
+  handleBDayFormInputChange = (value) => {
+    this.setState({
+      bdayCus: value
+    });
+  }
+  handlePhoneFormInputChange = (value) => {
+    this.setState({
+      phoneCus: value
+    });
+  }
+  handleEmailFormInputChange = (value) => {
+    this.setState({
+      emailCus: value
     });
   }
   handleFormSelectChange = (value) => {
     this.setState({
-      levelCus: value
+      sexCus: value
     });
   }
+
   handleFormClickCancel = () => {
     this.setState({
-      valueCus: '',
-      levelCus: 0
+      idCus: '',
+      nameCus: '',
+      sexCus: 0,
+      bdayCus: '',
+      phoneCus: '',
+      emailCus: '',
+      showForm: false
     });
   }
   handleFormClickSubmit = () => {
-    let {valueCus, levelCus, customers} = this.state;
-    if(valueCus.trim() === 0) return false;
+    let {idCus, nameCus, sexCus, bdayCus, phoneCus, emailCus, customers} = this.state;
+    if(nameCus.trim() === 0) return false;
     let newItem = {
       stt: uuidv4(),
-      name: valueCus,
-      sex: +levelCus
+      id: idCus,
+      name: nameCus,
+      sex: +sexCus,
+      bdate: bdayCus,
+      phone: phoneCus,
+      email: emailCus,
+      total: 0
     }; 
     customers.push(newItem);
     this.setState({
       customers,
-      valueCus: '',
-      levelCus: 0,
+      idCus: '',
+      nameCus: '',
+      sexCus: 0,
+      bdayCus: '',
+      phoneCus: '',
+      emailCus: '',
       showForm: false,
       isSearch: false,
       valueSearch: ''
@@ -239,7 +281,10 @@ class Customers extends Component {
       this.setState({isSearch: false})
     } else {
       for(let cus of customersSearch) {
-        if(cus.name.toLowerCase().indexOf(search.toLowerCase()) > -1) {
+        if( cus.name.toLowerCase().indexOf(search.toLowerCase()) > -1 || 
+            cus.id.toLowerCase().indexOf(search.toLowerCase()) > -1   ||
+            cus.phone.toLowerCase().indexOf(search.toLowerCase()) > -1) 
+        {
           newArray.push(cus);
         }
       }
@@ -343,9 +388,13 @@ class Customers extends Component {
             <Form 
               showForm={this.state.showForm}
               arrayLevel={this.state.arrayLevel}
-              valueCus={this.state.valueCus}
-              handleFormInputChange={this.handleFormInputChange}
-              levelCus={this.state.levelCus}
+              nameCus={this.state.nameCus}
+              handleIDFormInputChange={this.handleIDFormInputChange}
+              handleNameFormInputChange={this.handleNameFormInputChange}
+              handleBDayFormInputChange={this.handleBDayFormInputChange}
+              handlePhoneFormInputChange={this.handlePhoneFormInputChange}
+              handleEmailFormInputChange={this.handleEmailFormInputChange}
+              sexCus={this.state.sexCus}
               handleFormSelectChange={this.handleFormSelectChange}
               handleFormClickCancel={this.handleFormClickCancel}
               handleFormClickSubmit={this.handleFormClickSubmit}
