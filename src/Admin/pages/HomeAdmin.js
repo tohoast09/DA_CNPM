@@ -16,7 +16,7 @@ class HomeAdmin extends Component {
 					<td style={{width: '10%'}} className="text-center">{index+1}</td>
 					<td style={{width: '50%'}} className="text-left">{report.title}</td>
 					<td style={{width: '20%'}} className="text-center">{report.update}</td>
-                	<th style={{width: '20%'}} className="text-center"><button>Tải về</button></th>
+                	<th style={{width: '20%'}} className="text-center"><button className="btn btn-success btn-sm">Tải về</button></th>
 				</tr>
 			);
 		});
