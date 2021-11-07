@@ -1,47 +1,43 @@
 import React from 'react';
 import './App.css';
-import './bootstrap/css/bootstrapcustom.css'
-import Navbar from './components/NavbarAdmin';
+import './bootstrap/css/bootstrapcustom.css';
+import NavbarAdmin from './components/NavbarAdmin';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Customers from './pages/Customer';
 import Order from './pages/order';
 import Support from './pages/support';
 import Warehouse from './pages/warehouse';
 import HomeAdmin from './pages/HomeAdmin';
-/*
 import CustomerDetail from './pages/Customer-detail';
-function App() { 
-  return (
-    <CustomerDetail/>
-  );
-}
-/*/
+
 function Admin() {
-  return (
+  return ( 
     <div className='bootstrapiso'>
         <Switch>
           <Route path='/admin' exact>
-            <Navbar/>
+            <NavbarAdmin/>
             <HomeAdmin/>
-            </Route>
-            <Route path='/admin/customer' >
-            <Navbar/>
+          </Route>
+          <Route path='/admin/customer' exact>
+            <NavbarAdmin/>
             <Customers/>
-            </Route>
-            <Route path='/admin/order' >
-            <Navbar/>
+          </Route>
+          <Route path='/admin/customer/detail'>
+            <CustomerDetail/>
+          </Route>
+          <Route path='/admin/order' >
+            <NavbarAdmin/>
             <Order/>
-            </Route>
-            <Route path='/admin/team' >
-            <Navbar/>
+          </Route>
+          <Route path='/admin/team' >
+            <NavbarAdmin/>
             <Warehouse/>
-            </Route>
-            <Route path='/admin/support' exact>
-            <Navbar/>
+          </Route>
+          <Route path='/admin/support' exact>
+            <NavbarAdmin/>
             <Support/>
-            </Route>
-            </Switch>
-
+          </Route>
+        </Switch>
     </div>
   );
 }
