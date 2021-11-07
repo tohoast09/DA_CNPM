@@ -1,34 +1,13 @@
 import React, {Component} from 'react';
-//import Customers from './Customer';
-//import CusDatabase from './mockdata/CusData';
+import {Link} from 'react-router-dom';
 
 class CustomerDetail extends Component {
-  	callback = () => {
-		window.location.assign('./customer');
-  	}
-
-    renderCustomer() { 
-		let {CusDatabase, index} = this.props;
-      	return (
-        	<div className='container'>
-            	<tr>
-              		<th style={{width: '10%'}}>{CusDatabase[index].id}</th>
-	              	<th style={{width: '15%'}}>Họ và tên</th>
-              		<th style={{width: '10%'}}>Giới tính</th>
-              		<th style={{width: '15%'}}>Ngày sinh</th>
-              		<th>Số điện thoại</th>
-              		<th style={{width: '15%'}}>Email</th>
-              		<th style={{width: '20%'}} className="text-right">Tổng số tiền</th>
-            	</tr> 
-        	</div>
-      	);
-    }
     render() { 
       return (
           <div className='container'>
             <div className='page-header'>
               <h1>Thông tin khách hàng</h1>
-              <button type='button' onClick={() => this.callback()}>Trở về</button>
+              <Link to="/admin/customer"><button type='button' className="btn btn-primary marginR5">Trở về</button></Link>
             </div>
             <div className="panel panel-success">
               <table className="table table-hover">
@@ -43,7 +22,7 @@ class CustomerDetail extends Component {
                   <th style={{width: '20%'}} className="text-center">Tổng số tiền</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody> 
 			  		<td style={{width: '10%'}}>123456</td>
                   	<td style={{width: '15%'}}>AAAAAA</td>
                   	<td style={{width: '10%'}}>Nam</td>
@@ -51,7 +30,7 @@ class CustomerDetail extends Component {
                   	<td>0101010101</td>
                   	<td style={{width: '15%'}}>010101@gmail.com</td>
                   	<td style={{width: '20%'}} className="text-center">100000 VND</td>
-                	<br></br>
+					<br></br>
               </tbody>
               </table>
 			  <table className="table table-hover">
@@ -80,4 +59,3 @@ class CustomerDetail extends Component {
 }
 
 export default CustomerDetail;
-
