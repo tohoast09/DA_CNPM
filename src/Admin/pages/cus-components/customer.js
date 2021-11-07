@@ -19,7 +19,12 @@ class Customer extends Component {
         <td style={{width: '10%'}}>{cus.id}</td>
         <td style={{width: '20%'}}>{cus.name}</td>
         <td>{cus.phone}</td>
-        <Link to="/customer"><td style={{width: '15%'}} className="text-center" onClick="redirect()">Xem</td></Link>
+        <Link to={{
+          pathname: "/admin/customer/detail", 
+          state: {cus}
+        }}>
+          <td style={{width: '15%'}} className="text-center">Xem</td>
+        </Link>
         <td style={{width: '20%'}} className="text-right">{cus.total} VND</td>
         <td>
           <button 
@@ -37,7 +42,7 @@ class Customer extends Component {
             Delete
           </button>
         </td>
-      </tr>
+      </tr> 
     )
   }
 }
