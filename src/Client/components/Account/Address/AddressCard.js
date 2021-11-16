@@ -1,9 +1,9 @@
 import React from "react";
 import address from "./Address.module.css";
-// import { Link } from 'react-router-dom'
-// import { Button } from 'reactstrap'
+import Button  from '@mui/material/Button';
 
 function AddressCard(props) {
+    var defaultAddress = (props.defaultAddr) ? address.defaultAddress : address.notDeafault;
     return (
         <div className={address.addressCard}>
             <div className={address.info}>
@@ -17,10 +17,10 @@ function AddressCard(props) {
                     <span>{`Số điện thoại: ${props.number}`}</span>
                 </div>
             </div>
-            <div className={address.addressButton}>
-                <button>
+            <div className={`${address.addressButton} ${defaultAddress}`}>
+                <Button variant="text">
                     Đặt làm mặc định
-                </button>
+                </Button>
             </div>
         </div>
     );

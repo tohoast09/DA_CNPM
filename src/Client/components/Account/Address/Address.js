@@ -1,6 +1,7 @@
 import AddressCard from "./AddressCard";
 // import "./Address.css";
-import { Button } from "reactstrap";
+import Button  from '@mui/material/Button';
+
 import address from './Address.module.css'
 import { useState } from 'react'
 import AddAddress from "./AddAddress";
@@ -13,7 +14,7 @@ const DUMMY_DATA = [
         location_2: 'Huyện',
         location_3: 'Tỉnh',
         number: '0123456789',
-        state: true
+        defaultAddr: true
     },
     {
         name: 'Hai Dang',
@@ -22,7 +23,7 @@ const DUMMY_DATA = [
         location_2: 'Đông Hòa',
         location_3: 'Dĩ An',
         number: '0987654321',
-        state: true
+        defaultAddr: false
     },
     {
         name: 'Hai Dang',
@@ -31,7 +32,7 @@ const DUMMY_DATA = [
         location_2: 'Đông Hòa',
         location_3: 'Dĩ An',
         number: '0987654321',
-        state: true
+        defaultAddr: false
     },
 ];
 
@@ -52,14 +53,13 @@ function Address() {
 
     return (
         <div className={address.UserAddress}>
-            
             <h1>Địa chỉ</h1>
             <div className={address.MainContent}>
                 <div className={address.addressInsideContent}>
                     <div className={address.buttonBar}>
-                        <Button 
+                        <Button variant="contained"
                         onClick={popupHandler} 
-                        className={address.btn}>
+                        className={address.addButton}>
                             Thêm địa chỉ mới
                         </Button>
                     </div>
@@ -75,6 +75,7 @@ function Address() {
                                     location_1={addressItem.location_1}
                                     location_2={addressItem.location_2}
                                     location_3={addressItem.location_3}
+                                    defaultAddr={addressItem.defaultAddr}
                                     // price={order.price}
                                     // status={order.status}
                                 />

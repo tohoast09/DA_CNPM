@@ -1,5 +1,6 @@
 import React from "react";
 import order from "../Order.module.css";
+import Button from "@mui/material/Button";
 
 function OrderDetailCard() {
     return (
@@ -8,12 +9,12 @@ function OrderDetailCard() {
                 <div className={order.productImg}></div>
                 <div className={order.productProp}>
                     <div className={order.productName}>Nhà Giả Kim</div>
-                    <button className={order.productDetail}>
+                    <Button variant="outlined" className={order.productDetail}>
                         Xem chi tiết
-                    </button>
-                    <button className={order.productAdd}>
+                    </Button>
+                    <Button variant="contained" className={order.productAdd}>
                         Thêm vào giỏ hàng
-                    </button>
+                    </Button>
                 </div>
             </div>
             <div className={order.unitPrice}>

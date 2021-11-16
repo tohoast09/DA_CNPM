@@ -1,12 +1,12 @@
 import * as React from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
+// import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
-import Paper from "@mui/material/Paper";
+// import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -34,7 +34,7 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function ForgetPass(props) {
+export default function MUILogin(props) {
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -66,7 +66,7 @@ export default function ForgetPass(props) {
                         <LockOutlinedIcon />
                     </Avatar>
                     <Typography component="h1" variant="h5">
-                        Quên mật khẩu
+                        Đăng nhập
                     </Typography>
                     <Box
                         component="form"
@@ -78,39 +78,55 @@ export default function ForgetPass(props) {
                             margin="normal"
                             required
                             fullWidth
-                            name="password"
-                            label="Nhập mật khẩu mới"
-                            type="password"
-                            id="password"
-                            autoComplete="current-password"
+                            id="email"
+                            label="Email"
+                            name="email"
+                            autoComplete="email"
+                            autoFocus
                         />
                         <TextField
                             margin="normal"
                             required
                             fullWidth
                             name="password"
-                            label="Xác nhận mật khẩu"
+                            label="Mật khẩu"
                             type="password"
                             id="password"
                             autoComplete="current-password"
+                        />
+                        <FormControlLabel
+                            control={
+                                <Checkbox value="remember" color="primary" />
+                            }
+                            label="Nhớ tài khoản"
                         />
                         <Button
                             type="submit"
                             fullWidth
                             size="large"
                             variant="contained"
+                            href="/"
                             sx={{ mt: 2, mb: 2 }}
                         >
-                            Sửa mật khẩu
+                            Đăng nhập
                         </Button>
-                        <Grid container justifyContent="center">
-                            <Grid item>
+                        <Grid container>
+                            <Grid item xs>
                                 <Link
-                                    onClick={props.onLogin}
+                                    onClick={props.onForget}
                                     href="#"
                                     variant="body2"
                                 >
-                                    {"Đăng nhập"}
+                                    Quên mật khẩu
+                                </Link>
+                            </Grid>
+                            <Grid item>
+                                <Link
+                                    onClick={props.onSignup}
+                                    href="#"
+                                    variant="body2"
+                                >
+                                    {"Chưa có tài khoản? Đăng ký"}
                                 </Link>
                             </Grid>
                         </Grid>

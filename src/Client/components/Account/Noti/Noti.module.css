@@ -1,5 +1,6 @@
 * {
     font-family: Roboto;
+    /* font-size: 14px; */
 }
 
 .orderList {
@@ -10,39 +11,56 @@
 }
 
 .notiCard {
-    /* display: inline-block; */
     border: 1px solid black;
     height: 120px;
+    padding: 10px 20px;
     margin-bottom: 10px;
     border-radius: 20px;
     font-size: 16px;
-    /* background-color: red; */
     background-color: white;
-    align-items: center;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
-
+.notiCarđ > * {
+    margin: 0px;
+    box-sizing: border-box;
+    padding: 0px 10px;
+}
+.left{
+    width: 70%;
+    display: flex;
+    justify-content: flex-start;
+}
+.right{
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+}
 .notiDate {
-    width: 10%;
-    margin: 0px 20px;
+    width: 20%;
+    display: inline-block;
+    display: flex;
+    justify-content: center
 }
 
 .notiDescription {
-    width: 65%;
-    margin: 0px 20px;
+    padding-left: 10px;
+    width: 55%;
+    display: inline-block;
 }
-
-.btn {
-    background-color: #ffffff00;
-    border: none;
-}
-
 .UserNoti .readNoti {
-    width: 15%;
+    /* width: 20%; */
     color: #0069e6;
+    text-transform: none;
+}
+
+.readNoti.read{
+    display: none;
 }
 
 .UserNoti .delNoti {
-    width: 10%;
+    width: 5%;
     color: red;
+    text-transform: none;
 }

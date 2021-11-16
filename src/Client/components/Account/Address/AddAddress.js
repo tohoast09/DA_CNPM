@@ -1,5 +1,9 @@
 import React from "react";
-import { Button } from "reactstrap";
+import Button  from '@mui/material/Button';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
 import { Input } from "reactstrap";
 import address from "./Address.module.css";
 // import account from '../address.module.css'
@@ -12,10 +16,10 @@ function AddAddress(props) {
                 <div className={address.infoInsideContent}>
                     <div className={address.field}>
                         <label>Họ tên</label>
-                        <Input
+                        <Input className={address.fieldInput}
                             name="Name"
                             type="text"
-                            defaultValue="Yolooo"
+                            defaultValue="Nguyễn Trường Hải Đăng"
                             required
                         />
                     </div>
@@ -23,7 +27,7 @@ function AddAddress(props) {
                     <div className={address.field}>
                         <label>Công ty</label>
 
-                        <Input name="text" type="text" />
+                        <Input className={address.fieldInput} name="text" type="text" />
                     </div>
 
                     <div className={address.field}>
@@ -49,11 +53,11 @@ function AddAddress(props) {
                     <div className={address.field}>
                         <label>Địa chỉ chi tiết</label>
 
-                        <Input name="text" type="text" />
+                        <Input className={address.fieldInput} name="text" type="text" />
                     </div>
                     <div className={address.field}>
                         <label>Số điện thoại</label>
-                        <Input
+                        <Input className={address.fieldInput} 
                             name="Phone"
                             type="text"
                             defaultValue="0768803077"
@@ -65,34 +69,21 @@ function AddAddress(props) {
                     <div className={address.field}>
                         <label>Loại địa chỉ</label>
                         <div className={address.inputAddressType}>
-
-                            <div className={address.selectAddressType}>
-                                <Input
-                                    className={address.AddressType}
-                                    name="AddressType"
-                                    type="radio"
-                                    checked
-                                />
-                                <span>Chung cư/nhà riêng</span>
-                            </div>
-                            
-                            <div className={address.selectAddressType}>
-                                <Input
-                                    className={address.AddressType}
-                                    name="AddressType"
-                                    type="radio"
-                                />
-                                <span>Công ty</span>
-                            </div>
+                        <FormControl className={address.selectAddressType} component="fieldset">
+                            <RadioGroup row aria-label="gender" name="row-radio-buttons-group" defaultValue='male'>
+                                <FormControlLabel className={address.typeSelection} value="male" control={<Radio />} label="Chung cư/Nhà riêng" />
+                                <FormControlLabel className={address.typeSelection} value="female" control={<Radio />} label="Công ty" />
+                            </RadioGroup>
+                            </FormControl>
                         </div>
                     </div>
-                    <Button
-                        className={`${address.changeInfo} ${address.update}`}
+                    <Button variant="contained"
+                        className={`${address.confirmAdd} ${address.update}`}
                     >
                         Cập nhật
                     </Button>
-                    <Button onClick={props.onCancel}
-                        className={`${address.changePassword} ${address.update}`}
+                    <Button variant="contained" onClick={props.onCancel}
+                        className={`${address.cancelAdd} ${address.update}`}
                     >
                         Hủy
                     </Button>

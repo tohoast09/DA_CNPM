@@ -1,59 +1,154 @@
-// import React, { Component } from "react";
-// import { Switch, Route, Redirect } from "react-router-dom";
-// import styled from "styled-components";
-import { Input, Row, Button } from "reactstrap";
-import { Link } from "react-router-dom";
-import sign from '../Sign.module.css'
+import * as React from "react";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import sign from "../Sign.module.css";
 
-function SignUp(props) {
+function Copyright(props) {
     return (
-        <div className={sign.Login}>
-            <div className={sign.LoginForm}>
-                <div>
-                    <h1>Đăng ký</h1>
-                    <div className={sign.field}>
-                        <Row>
-                            <label>Họ</label>
-                        </Row>
-                        <Input name="Phone" type="email" required />
-                    </div>
-                    <div className={sign.field}>
-                        <Row>
-                            <label>Tên</label>
-                        </Row>
-                        <Input name="Phone" type="email" required />
-                    </div>
-                    <div className={sign.field}>
-                        <Row>
-                            <label>Email</label>
-                        </Row>
-                        <Input name="Phone" type="email" required />
-                    </div>
-                    <div className={sign.field}>
-                        <Row>
-                            <label>Nhập mật khẩu</label>
-                        </Row>
-                        <Input name="Phone" type="email" required />
-                    </div>
-                    <div className={sign.field}>
-                        <Row>
-                            <label>Xác nhận mật khẩu</label>
-                        </Row>
-
-                        <Input name="pwd" type="password" required />
-                    </div>
-                    <div className={sign.field}>
-                        <Button>Đăng ký</Button>
-                    </div>
-                    <div className={`${sign.field} ${sign.change}`}>
-                        <Row>
-                            <label>Đã có tài khoản?</label>
-                            <Button className={sign.linkbutton} onClick={props.onLogin}>Đăng nhập</Button>
-                        </Row>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <Typography
+            variant="body2"
+            color="text.secondary"
+            align="center"
+            {...props}
+        >
+            {"Copyright © "}
+            <Link color="inherit" href="https://mui.com/">
+                Your Website
+            </Link>{" "}
+            {new Date().getFullYear()}
+            {"."}
+        </Typography>
     );
 }
-export default SignUp;
+
+const theme = createTheme();
+
+export default function SignUp(props) {
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        // eslint-disable-next-line no-console
+        console.log({
+            email: data.get("email"),
+            password: data.get("password"),
+        });
+    };
+
+    return (
+        <ThemeProvider theme={theme}>
+            <Grid
+                container
+                component="main"
+                maxWidth="420px"
+                className={sign.muiLoginForm}
+            >
+                <Box
+                    sx={{
+                        my: 4,
+                        mx: 4,
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                    }}
+                >
+                    <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+                        <LockOutlinedIcon />
+                    </Avatar>
+                    <Typography component="h1" variant="h5">
+                        Đăng ký tài khoản
+                    </Typography>
+                    <Box
+                        component="form"
+                        noValidate
+                        onSubmit={handleSubmit}
+                        sx={{ mt: 3 }}
+                    >
+                        <Grid container spacing={2}>
+                            <Grid item xs={12} sm={6}>
+                                <TextField
+                                    required
+                                    fullWidth
+                                    id="lastName"
+                                    label="Họ"
+                                    name="lastName"
+                                    autoComplete="family-name"
+                                />
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <TextField
+                                    autoComplete="given-name"
+                                    name="firstName"
+                                    required
+                                    fullWidth
+                                    id="firstName"
+                                    label="Tên"
+                                    autoFocus
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    required
+                                    fullWidth
+                                    id="email"
+                                    label="Email"
+                                    name="email"
+                                    autoComplete="email"
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    required
+                                    fullWidth
+                                    name="password"
+                                    label="Mật khẩu"
+                                    type="password"
+                                    id="password"
+                                    autoComplete="new-password"
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <FormControlLabel
+                                    control={
+                                        <Checkbox
+                                            value="allowExtraEmails"
+                                            color="primary"
+                                        />
+                                    }
+                                    label="I want to receive inspiration, marketing promotions and updates via email."
+                                />
+                            </Grid>
+                        </Grid>
+                        <Button
+                            type="submit"
+                            fullWidth
+                            size="large"
+                            variant="contained"
+                            sx={{ mt: 2, mb: 2 }}
+                        >
+                            Đăng ký
+                        </Button>
+                        <Grid container justifyContent="center">
+                            <Grid item>
+                                <Link onClick={props.onLogin} href="#" variant="body2">
+                                    {"Đã có tài khoản? Đăng nhập"}
+                                </Link>
+                            </Grid>
+                        </Grid>
+                        <Copyright sx={{ mt: 5 }} />
+                    </Box>
+                </Box>
+            </Grid>
+        </ThemeProvider>
+    );
+}

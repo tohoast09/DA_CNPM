@@ -2,6 +2,7 @@ import React from "react";
 import order from "../Order.module.css";
 import OrderDetailCard from "./OrderDetailCard";
 
+
 function OrderDetail() {
     return (
         <div className={order.OrderDetail}>

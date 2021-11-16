@@ -32,10 +32,6 @@ const DUMMY_DATA = [
 ];
 
 function Order() {
-    // const [popupOrder, setpopupOrder] = useState(false);
-    // function openDetail{
-    //     set{}
-    // }
     return (
         <div className={order.UserOrder}>
             <h1>Đơn hàng của tôi</h1>
@@ -64,7 +60,7 @@ function Order() {
                     </div>
                 </div>
             </div>
-            <OrderDetail/>
+            {/* <OrderDetail/> */}
         </div>
     );
 }

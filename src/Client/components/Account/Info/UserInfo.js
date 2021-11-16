@@ -1,94 +1,158 @@
-import { Button, Input } from "reactstrap";
+import { Input } from "reactstrap";
+import { useRef } from "react";
+import Button from "@mui/material/Button";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
 import { React } from "react";
 import account from "../Account.module.css";
+import ChangePass from "./ChangePass";
+import { useState } from "react";
 
-function UserInfo() {
-    // render();
-    // {
-    // const { phone, pwd } = this.props;
+function UserInfo(props) {
+    const nameInputRef = useRef();
+    const phoneInputRef = useRef();
+    const bdateInputRef = useRef();
+    const genderInputRef = useRef();
+
+    const [pwdPopup, setpwdPopup] = useState(false);
+
+    function onChangeHandler() {
+        setpwdPopup(true);
+    }
+
+    function onCancelHandler() {
+        setpwdPopup(false);
+    }
+
+    function handleChange() {}
+
+    function submitHandler(event) {
+        event.preventDefault();
+
+        const enteredName = nameInputRef.current.value;
+        const enteredPhone = phoneInputRef.current.value;
+        const enteredBdate = bdateInputRef.current.value;
+        const enteredGender = genderInputRef.current.value;
+
+        let userData = {
+            name: enteredName,
+            phone: enteredPhone,
+            bdate: enteredBdate,
+            gender: enteredGender,
+        };
+
+        console.log(userData);
+    }
 
     return (
         <div className={account.UserInfo}>
             <h1>Thông tin tài khoản</h1>
             <div className={`${account.MainContent} ${account.info}`}>
-                <div className={account.infoInsideContent}>
+                <form
+                    className={account.infoInsideContent}
+                    onSubmit={submitHandler}
+                >
                     <div className={account.field}>
-                        <label>Họ tên</label>
+                        <label htmlFor="name">Họ tên</label>
                         <Input
                             name="Name"
                             type="text"
-                            defaultValue="yoloo"
-                            required
+                            id="name"
+                            // defaultValue="Hải Đăng"
+                            onChange={handleChange}
+                            ref={nameInputRef}
                         />
                     </div>
                     <div className={account.field}>
-                        <label>Số điện thoại</label>
+                        <label htmlFor="phone">Số điện thoại</label>
                         <Input
                             name="Phone"
                             type="text"
-                            defaultValue="0002121"
-                            required
+                            id="phone"
+                            // defaultValue="0987654321"
+                            onChange={handleChange}
+                            ref={phoneInputRef}
                         />
                     </div>
                     <div className={account.field}>
-                        <label>Email</label>
-
+                        <label htmlFor="email">Email</label>
                         <Input
                             name="email"
                             type="email"
-                            defaultValue="d@gmail.com"
+                            id="email"
+                            // defaultValue="d@gmail.com"
                         />
                     </div>
                     <div className={account.field}>
-                        <label>Ngày sinh</label>
-
+                        <label htmlFor="bdate">Ngày sinh</label>
                         <Input
                             name="bdate"
                             type="date"
-                            defaultValue="2001-00-00"
+                            id="bdate"
+                            // defaultValue="2001-01-01"
+                            onChange={handleChange}
+                            ref={bdateInputRef}
                         />
                     </div>
                     <div className={account.field}>
-                        <label>Giới tính</label>
-                        <div className={account.inputGender}>
-                            <div className={account.selectGender}>
-                                <Input
-                                    className={account.gender}
-                                    name="gender"
-                                    type="radio"
-                                    checked
-                                />
-                                <span>Nam</span>
-                            </div>
-                            <div className={account.selectGender}>
-                                <Input
-                                    className={account.gender}
-                                    name="gender"
-                                    type="radio"
-                                />
-                                <span>Nữ</span>
-                            </div>
-                            <div className={account.selectGender}>
-                                <Input
-                                    className={account.gender}
-                                    name="gender"
-                                    type="radio"
-                                />
-                                <span>Khác</span>
-                            </div>
+                        <label htmlFor="gender">Giới tính</label>
+                        <div className={account.gender}>
+                            <FormControl
+                                className={account.selectGender}
+                                component="fieldset"
+                            >
+                                <RadioGroup
+                                    row
+                                    aria-label="gender"
+                                    name="row-radio-buttons-group"
+                                    id="gender"
+                                    defaultValue="male"
+                                    onChange={handleChange}
+                                    ref={genderInputRef}
+                                >
+                                    <FormControlLabel
+                                        className={account.genderSelection}
+                                        value="male"
+                                        control={<Radio />}
+                                        label="Nam"
+                                    />
+                                    <FormControlLabel
+                                        className={account.genderSelection}
+                                        value="female"
+                                        control={<Radio />}
+                                        label="Nữ"
+                                    />
+                                    <FormControlLabel
+                                        className={account.genderSelection}
+                                        value="other"
+                                        control={<Radio />}
+                                        label="Khác"
+                                    />
+                                </RadioGroup>
+                            </FormControl>
                         </div>
                     </div>
                     <Button
+                        variant="contained"
+                        type="submit"
+                        size="large"
                         className={`${account.changeInfo} ${account.update}`}
                     >
                         Cập nhật thông tin
-                    </Button>
-                    <Button
-                        className={`${account.changePassword} ${account.update}`}
-                    >
-                        Sửa mật khẩu
-                    </Button>
-                </div>
+                    </Button><Button
+                    variant="contained"
+                    size="large"
+                    onClick={onChangeHandler}
+                    onCancel={onCancelHandler}
+                    className={`${account.changePassword} ${account.update}`}
+                >
+                    Sửa mật khẩu
+                </Button>
+                </form>
+                
+                {pwdPopup && <ChangePass onCancel={onCancelHandler} />}
             </div>
         </div>
         // <div classname="center">

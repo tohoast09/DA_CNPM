@@ -8,25 +8,19 @@ const DUMMY_DATA = [
         id: "123456789",
         date: "01/01/2021",
         description: "Some description.",
-        price: "200000đ",
-        status: "Hoàn thành",
-        className: "orderItem",
+        status: 'read'
     },
     {
         id: "123456789",
         date: "01/01/2021",
         description: "Some description.",
-        price: "200000đ",
-        status: "Hoàn thành",
-        className: "orderItem",
+        status: 'unread'
     },
     {
         id: "123456789",
         date: "01/01/2021",
         description: "Some description.",
-        price: "200000đ",
-        status: "Hoàn thành",
-        className: "orderItem",
+        status: 'read'
     },
 ];
 
@@ -44,8 +38,7 @@ function Noti() {
                                     // id={order.id}
                                     date={order.date}
                                     description={order.description}
-                                    // price={order.price}
-                                    // status={order.status}
+                                    status={order.status}
                                 />
                             );
                         })}
