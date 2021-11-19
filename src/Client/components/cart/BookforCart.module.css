@@ -1,0 +1,98 @@
+.card {
+background-color: white;
+border-radius: 10px;
+box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+padding: 10px;
+width: 90%;
+margin-bottom: 10px;
+}
+.flex_row{
+display: flex;
+flex-direction: row;
+justify-content: flex-start;
+/* border: 1px solid red; */
+}
+.bookforcart{
+height: 100%;
+margin-right: 40px;
+font-size: 16px;
+font-weight: 700;
+width: 50%;
+}
+.bookforcart button{
+padding: 0;
+
+margin-right: 10px;
+}
+.bookforcart img{
+height: 180px;
+width: 126px;
+object-fit: cover;
+}
+.changequanti{
+margin-top: 15px;
+width: 40%;
+font-weight: 700;
+}
+
+.price_cart{
+width: 40%;
+margin-right: 5px;
+}
+
+.changequan{
+width: 40%;
+height: 40px;
+}
+
+
+.changequan *{
+width:30%;
+border:1px solid #aaa;
+text-align: center;
+
+}
+
+.changequan i{
+border: none;
+font-size: 15px;
+}
+.changequan button:hover{
+background: rgb(236, 232, 232);
+text-decoration: none;
+}
+
+.changequan button{
+font-size: 19px;
+}
+
+.input_dec{
+border-radius: 4px 0px 0px 4px;
+text-align: center;
+}
+
+.input_inc{
+border-radius: 0px 4px 4px 0px;
+text-align: center;
+
+}
+
+.delete_book *{
+border: none;
+background: none;
+justify-content: flex-end;
+font-size: 33px;
+}
+
+.delete_book{
+width: 30%;
+text-align: right;
+}
+
+#promotion{
+    color: white;
+    width: fit-content;
+    background: orange;
+    font-weight: 300;
+}
+

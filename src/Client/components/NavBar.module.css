@@ -1,0 +1,63 @@
+
+.menu{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+  background: #ff0000;
+  z-index: 2.5;
+  box-shadow: 0 3px 5px #00000050;
+}
+.menu * { 
+  margin-left: 30px;
+  margin-right: 30px;
+  width: max-content;
+  font-size: 20px;
+  background: transparent;
+  text-decoration: none;
+  color: #fff;
+}
+.button:hover , .dropdown:hover .dropdown_button{
+    text-decoration: underline;
+}
+
+/* thành phần dropdown */
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+/* Ẩn nội dung dropdown*/
+.dropdown_content {
+  display: none;
+  position: absolute;
+  background-color: red;
+  width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+/* thiết lập style cho đường dẫn bên trong dropdown */
+
+.dropdown_content button {
+  float: none;
+  margin: 0;
+  width: 100%;
+  font-size: 12;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown_content a{
+  margin:0
+}
+/* chọn background cho đường dẫn bên trong dropdown khi hover*/
+.dropdown_content button:hover {
+  background-color: darkred;
+
+}
+/* Hiển thị nội dung dropdown khi được hover */
+.dropdown:hover .dropdown_content {
+  display: block;
+}

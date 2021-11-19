@@ -1,0 +1,66 @@
+* {
+    font-family: Roboto;
+    /* font-size: 14px; */
+}
+
+.orderList {
+    width: 100%;
+}
+.notiInsideContent {
+    margin: auto;
+}
+
+.notiCard {
+    border: 1px solid black;
+    height: 120px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    font-size: 16px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.notiCarđ > * {
+    margin: 0px;
+    box-sizing: border-box;
+    padding: 0px 10px;
+}
+.left{
+    width: 70%;
+    display: flex;
+    justify-content: flex-start;
+}
+.right{
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+}
+.notiDate {
+    width: 20%;
+    display: inline-block;
+    display: flex;
+    justify-content: center
+}
+
+.notiDescription {
+    padding-left: 10px;
+    width: 55%;
+    display: inline-block;
+}
+.UserNoti .readNoti {
+    /* width: 20%; */
+    color: #0069e6;
+    text-transform: none;
+}
+
+.readNoti.read{
+    display: none;
+}
+
+.UserNoti .delNoti {
+    width: 5%;
+    color: red;
+    text-transform: none;
+}

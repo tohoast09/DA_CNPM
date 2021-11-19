@@ -1,0 +1,294 @@
+* {
+    font-family: Roboto;
+    /* font-size: 14px; */
+}
+
+.Info {
+    position: relative;
+    z-index: 0;
+}
+
+.Content {
+    width: 65%;
+    top: 0%;
+    right: 5%;
+    position: absolute;
+}
+
+.InfoNav {
+    width: 20%;
+    display: inline-block;
+    position: absolute;
+    left: 5%;
+    top: 10px;
+}
+
+.linkBtn {
+    display: block;
+    width: 100%;
+    height: 60px;
+    text-decoration: none;
+    background-color: #ffffff00;
+    text-align: center;
+    border: none;
+    margin: 10px auto;
+    color: black;
+    border-radius: 5px;
+    text-transform: uppercase;
+    padding: 0px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.linkBtn:hover {
+    background-color: #ffffff;
+}
+
+.linkBtnActive {
+    height: 60px;
+    width: 100%;
+    background-color: #dddddd;
+    display: flex;
+    align-items: center;
+}
+
+.InfoNav .Avatar {
+    width: 100%;
+    position: relative;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.InfoNav .Avatar .img {
+    width: 25vh;
+    height: 25vh;
+    border-radius: 40px;
+    border-color: rgba(0, 0, 0, 0);
+    background-image: url("https://d.newsweek.com/en/full/1868100/what-if-watcher.png?w=790&f=423b1a1360f928cdad7773df817e1f50");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: auto;
+}
+
+.avaBtn {
+    text-decoration: none;
+    width: 60%;
+    height: 40px;
+    margin: 20px;
+    border: solid black 2px;
+    margin: 10px auto;
+    text-align: center;
+    text-transform: uppercase;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+}
+
+.avaBtn:hover {
+    background-color: white;
+}
+
+.InfoNav img {
+    width: 240px;
+    height: 240px;
+}
+
+.UserInfo {
+    display: inline-block;
+}
+
+.UserInfo .MainContent {
+    box-align: center;
+    position: absolute;
+    width: 100%;
+    /* font-size: 20px; */
+    display: inline-block;
+    /* background-color: white; */
+}
+
+.MainContent.info {
+    background-color: white;
+}
+
+.background {
+    background-color: rgb(211, 0, 0);
+    width: 100%;
+}
+
+.UserInfo .MainContent .infoInsideContent {
+    margin: auto;
+    padding: 20px 0px;
+    width: 70%;
+    /* background-color: #ffffff; */
+}
+
+.field {
+    /* background-color: #796fff; */
+    margin: 20px;
+    position: relative;
+}
+
+.field label {
+    display: inline-block;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.field input {
+    position: absolute;
+    display: inline-block;
+    width: 80%;
+    height: 40px;
+    right: 0px;
+    /* font-size: 14px; */
+    background: #efefef;
+    border: 1px solid #dddddd;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.UserInfo .update {
+    display: block;
+    width: 30%;
+    min-width: 240px;
+    height: 50px;
+    color: white;
+    margin: 20px auto;
+    border-radius: 5px;
+}
+
+.UserInfo .update.changeInfo {
+    background-color: #ff313f;
+}
+
+.UserInfo .update.changeInfo:hover {
+    background-color: #cc101c;
+}
+
+.UserInfo .update.changePassword {
+    background-color: #0a42db;
+}
+
+.UserInfo .update.changePassword:hover {
+    background-color: #0934ac;
+}
+
+.field > label {
+    display: inline-block;
+    padding: 10px 0px;
+    width: 20%;
+    box-sizing: content-box;
+}
+
+.field .gender {
+    position: absolute;
+    display: inline-block;
+    width: 80%;
+    height: 40px;
+    right: 0px;
+}
+
+.genderSelection {
+    padding: 0px !important;
+}
+
+.ChangeAvatar {
+    width: 100%;
+    height: 80vh;
+    /* height: fit-content; */
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.avaChangeHeader {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: fit-content;
+}
+.avaChange {
+    width: 15vw;
+    height: 15vw;
+    background-color: blue;
+    border-radius: 20px;
+    background-image: url("https://accesstvpro.co/wp-content/uploads/2021/11/Eternals-big-red-robot-celestial-Arishem-explained-by-Marvel-comics.jpg");
+    background-size: cover;
+    background-position: center;
+}
+.avaSlider {
+    width: 40%;
+    /* background-color: green; */
+    height: 20px;
+    margin: 20px 0px;
+}
+.avaChangeCancel {
+    text-decoration: none;
+    padding: 20px 0px;
+}
+
+.changePass {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.changePassForm {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.changePassForm button {
+    margin: 10px 0px;
+}
+
+.changePassConfirm,
+.changePassCancel {
+    width: 180px;
+    height: 50px;
+}
+
+.changePassCancel {
+    background-color: #ff313f;
+}
+.changePassCancel:hover {
+    background-color: #cc101c;
+}
+
+.changePassCancel:active {
+    background-color: #94000a;
+}
+
+.passField {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+.passField label {
+    width: 30%;
+    display: inline-block;
+}
+.passField input {
+    /* position: absolute; */
+    display: inline-block;
+    width: 70%;
+    height: 40px;
+    right: 0px;
+    /* font-size: 14px; */
+    background: #efefef;
+    border: 1px solid #dddddd;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
