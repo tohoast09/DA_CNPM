@@ -69,6 +69,7 @@ class CusEdit extends Component {
           <button 
             type="button" 
             className="btn btn-default btn-sm marginR5"
+            style={{backgroundColor: "lightblue"}}
             onClick={()=>this.props.handleEditClickCancel()}
           >
             Hủy

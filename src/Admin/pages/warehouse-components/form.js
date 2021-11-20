@@ -34,6 +34,7 @@ class Form extends Component {
                 <button 
 	                type="button" 
 	                className="btn btn-default marginR5"
+					style={{backgroundColor: "orange"}}
 	                onClick={()=>this.props.handleFormClickCancel()}
 	            >
 	                Hủy
