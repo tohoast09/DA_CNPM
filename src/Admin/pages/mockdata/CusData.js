@@ -3,8 +3,8 @@ import { v4 as uuidv4 } from "uuid";
 const CusDatabase = [
     {
         stt: uuidv4(),
-        id: "123456",
-        name: "Nguyễn Văn A",
+        id: "000001",
+        name: "Nguyễn Văn Anh",
         phone: "0911111111",
         total: 1000000,
         sex: 0,             // Nam
@@ -13,8 +13,8 @@ const CusDatabase = [
     },
     {
         stt: uuidv4(),
-        id: "020202",
-        name: "Lê Văn B",
+        id: "000002",
+        name: "Lê Văn Bình",
         phone: "0900000000",
         total: 500000,
         sex: 0,             // Nam
@@ -23,8 +23,8 @@ const CusDatabase = [
     },
     {
         stt: uuidv4(),
-        id: "555555",
-        name: "Trần Hoàng C",
+        id: "000003",
+        name: "Trần Hoàng Công",
         phone: "0356789012",
         total: 1500000,
         sex: 0,             // Nam
@@ -33,8 +33,8 @@ const CusDatabase = [
     },
     {
         stt: uuidv4(),
-        id: "547301",
-        name: "Đỗ Thị D",
+        id: "000004",
+        name: "Đỗ Thị Duyên",
         phone: "0864213579",
         total: 1000000,
         sex: 1,             // Nữ
@@ -43,8 +43,8 @@ const CusDatabase = [
     },
     {
         stt: uuidv4(),
-        id: "512498",
-        name: "Hoàng Mỹ E",
+        id: "000005",
+        name: "Hoàng Mỹ Dung",
         phone: "0511223344",
         total: 100000,
         sex: 1,             // Nữ
@@ -53,13 +53,53 @@ const CusDatabase = [
     },
     {
         stt: uuidv4(),
-        id: "102563",
-        name: "Mai Văn G",
+        id: "000006",
+        name: "Mai Văn Giang",
         phone: "0712458307",
         total: 700000,
         sex: 0,             // Nam
         bdate: "01/01/2001",
         email: "maig@gmail.com"
+    },
+    {
+        stt: uuidv4(),
+        id: "000007",
+        name: "Đoàn Thanh Tâm",
+        phone: "0907512568",
+        total: 700000,
+        sex: 1,             // Nữ
+        bdate: "01/01/2001",
+        email: "doantam@gmail.com"
+    },
+    {
+        stt: uuidv4(),
+        id: "000008",
+        name: "Lâm Cao Đức",
+        phone: "0915678423",
+        total: 700000,
+        sex: 0,             // Nam
+        bdate: "01/01/2001",
+        email: "lamduc@gmail.com"
+    },
+    {
+        stt: uuidv4(),
+        id: "000009",
+        name: "Đào Minh Trí",
+        phone: "0758946178",
+        total: 700000,
+        sex: 0,             // Nam
+        bdate: "01/01/2001",
+        email: "daotri@gmail.com"
+    },
+    {
+        stt: uuidv4(),
+        id: "000010",
+        name: "Huỳnh Ngọc",
+        phone: "0547823548",
+        total: 700000,
+        sex: 1,             // Nữ
+        bdate: "01/01/2001",
+        email: "huynhngoc@gmail.com"
     }
 ];
 

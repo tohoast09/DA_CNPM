@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import SweetAlert from 'react-bootstrap-sweetalert';
 import Search from './cus-components/cus-search';
-import Sort from './components/Sort';
 import Form from './cus-components/cus-form';
 import CusDatabase from './mockdata/CusData';
 import Customer from './cus-components/customer';
 import CusEdit from './cus-components/cus-edit';
-
-
+import CustomerDetail from './Customer-detail';
 
 let arrayLevel = [];
 for(let i = 0; i < CusDatabase.length; i++) {
@@ -23,6 +21,7 @@ class Customers extends Component {
     super(props);
     this.state = {
       customers: CusDatabase,
+
       showAlert: false,
       idAlert: '',
       nameAlert: '',
@@ -51,11 +50,12 @@ class Customers extends Component {
       bdayCus: '',
       emailCus: '',
 
-      sortType: '',
-      sortOrder: '',
       valueSearch: '',
       isSearch: false,
-      customersSearch: []
+      customersSearch: [],
+
+      showDetail: false,
+      customerDetail: null
     }
   }
   handleShowAlert = (cus) => {
@@ -137,12 +137,16 @@ class Customers extends Component {
     });
   }
   handleEditClickSubmit = () => {
-    let {customers, sttEdit, nameEdit, sexEdit} = this.state; 
+    let {customers, sttEdit, idEdit, nameEdit, sexEdit, bdayEdit, emailEdit, phoneEdit} = this.state; 
     if(customers.length > 0) { 
       for(let i = 0; i < customers.length; i++) {
         if(customers[i].stt === sttEdit) {
+          customers[i].id = idEdit;
           customers[i].name = nameEdit;
           customers[i].sex = +sexEdit;
+          customers[i].bdate = bdayEdit;
+          customers[i].email = emailEdit;
+          customers[i].phone = phoneEdit;
           break;
         }
       }
@@ -226,52 +230,6 @@ class Customers extends Component {
       valueSearch: ''
     });
   }
-  handleSort = (sortType,sortOrder) => {
-    let {customers} = this.state;
-    if(sortOrder !== '' && sortType !== '') {
-      let value = `${sortType}-${sortOrder}`;
-      switch(value) {
-        default:
-          break;
-        case "name-asc":
-          customers.sort(this.compareValues('name','asc'));
-          break;
-        case "name-desc":
-          customers.sort(this.compareValues('name','desc'));
-          break;
-        case "level-desc":
-          customers.sort(this.compareValues('level','asc'));
-          break;
-        case "level-asc":
-          customers.sort(this.compareValues('level','desc'));
-          break;
-      }
-      this.setState({
-        customers    : customers,
-        sortType : sortType,
-        sortOrder: sortOrder
-      });
-    }
-  }
-  // hàm cho sắp xếp động
-  compareValues = (key, order='asc') => {
-    return function(a, b) {
-      if(!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
-        return 0;   
-      }
-      const varA = (typeof a[key] === 'string') ? a[key].toUpperCase() : a[key];
-      const varB = (typeof b[key] === 'string') ? b[key].toUpperCase() : b[key];
-      let comparison = 0;
-      if (varA > varB) {
-        comparison = 1;
-      } else if (varA < varB) {
-        comparison = -1;
-      }
-      return (
-        (order === 'desc') ? (comparison * -1) : comparison
-      );
-    };
-  }
   handleSearch = (search) => {
     let {customers} = this.state;
     let customersSearch = [...customers];
@@ -294,8 +252,20 @@ class Customers extends Component {
       valueSearch: search
     });
   } 
+  handleShowDetail = (cus) => {
+    this.setState({
+      showDetail: true,
+      customerDetail: cus
+    })
+  }
+  handleBackward = () => {
+    this.setState({
+      showDetail: false,
+      customerDetail: null
+    })
+  }
   renderCustomer = () => {
-    let {customers, sttEdit, indexEdit, idEdit, nameEdit, sexEdit, bdayEdit, phoneEdit, emailEdit, arrayLevel, isSearch, customersSearch} = this.state;
+    let {customers, sttEdit, indexEdit, idEdit, nameEdit, sexEdit, bdayEdit, phoneEdit, emailEdit, arrayLevel, isSearch, customersSearch, showDetail, customerDetail, indexDetail} = this.state;
     if (isSearch) {
       customers = customersSearch
     }
@@ -333,11 +303,20 @@ class Customers extends Component {
           key={cus.id} 
           handleShowAlert={this.handleShowAlert} 
           handleEditItem={this.handleEditItem}
+          handleShowDetail={this.handleShowDetail}
         />
       )
     });
   }
   render() {
+    if (this.state.showDetail) {
+      return (
+        <CustomerDetail
+          cus={this.state.customerDetail}
+          handleBackward={this.handleBackward}
+        />
+      );
+    }
     return (
       <div className="container">
         <SweetAlert
@@ -365,15 +344,9 @@ class Customers extends Component {
               handleSearch={this.handleSearch}
             />
           </div>
-          <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-            <Sort 
-              sortType={this.state.sortType}
-              sortOrder={this.state.sortOrder}
-              handleSort={this.handleSort}
-            />
-          </div>
+          <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
           <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-            <button 
+            <button               
               type="button" 
               className="btn btn-info btn-block marginB10"
               onClick={this.handleShowForm}

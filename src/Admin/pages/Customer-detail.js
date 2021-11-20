@@ -1,14 +1,54 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import OrderList from './mockdata/CusOrder';
 
 class CustomerDetail extends Component {
-    render() { 
-      return (
+	constructor(props) {
+		super(props);
+		this.state = {
+			orders: OrderList,
+			stt: 0
+		}
+	}
+	renderDetail = (id) => {
+		let {orders, stt} = this.state;
+		return orders.map((order) => {
+			if (order.cus === id) {
+				stt += 1;
+				let tt;
+				if (order.level === 2)		tt = "Chưa xử lí";
+				else if (order.level === 1)	tt = "Đang vận chuyển";
+				else if (order.level === 0)	tt = "Đã hoàn thành";
+				return (
+					<tr>
+						<td style={{width: '10%'}}>{stt}</td>
+						<td style={{width: '15%'}}>{order.code}</td>
+					  	<td style={{width: '15%'}}>{order.date}</td>
+					  	<td style={{width: '15%'}}>{order.price} VND</td>
+					  	<td style={{width: '30%'}}>{order.address}</td>
+					  	<td style={{width: '15%'}}>{tt}</td>
+					</tr>
+				);
+			}
+		});
+	}
+	render() { 
+		let {cus} = this.props; 
+		let gender;
+		if (cus.sex === 0) 		gender = "Nam";
+		else if (cus.sex === 1)	gender = "Nữ";
+      	return (
           <div className='container'>
             <div className='page-header'>
-              <h1>Thông tin khách hàng</h1>
-              <Link to="/admin/customer"><button type='button' className="btn btn-primary marginR5">Trở về</button></Link>
+              <h1 className="text-center">Thông tin khách hàng</h1>
+              <button 
+			  	type='button' 
+				className="btn btn-primary marginR5"
+				onClick={()=>this.props.handleBackward()}
+			  >
+				Trở về
+			  </button>
             </div>
+			<br></br>
             <div className="panel panel-success">
               <table className="table table-hover">
               <thead>
@@ -23,16 +63,18 @@ class CustomerDetail extends Component {
                 </tr>
               </thead>
               <tbody> 
-			  		<td style={{width: '10%'}}>123456</td>
-                  	<td style={{width: '15%'}}>AAAAAA</td>
-                  	<td style={{width: '10%'}}>Nam</td>
-                  	<td style={{width: '15%'}}>01/01/2001</td>
-                  	<td>0101010101</td>
-                  	<td style={{width: '15%'}}>010101@gmail.com</td>
-                  	<td style={{width: '20%'}} className="text-center">100000 VND</td>
+			  		<td style={{width: '10%'}}>{cus.id}</td>
+                  	<td style={{width: '15%'}}>{cus.name}</td>
+                  	<td style={{width: '10%'}}>{gender}</td>
+                  	<td style={{width: '15%'}}>{cus.bdate}</td>
+                  	<td>{cus.phone}</td>
+                  	<td style={{width: '15%'}}>{cus.email}</td>
+                  	<td style={{width: '20%'}} className="text-center">{cus.total} VND</td>
 					<br></br>
               </tbody>
               </table>
+			  <h3 className="text-center">Danh sách đơn hàng</h3>
+			  <br></br>
 			  <table className="table table-hover">
 				  <thead>
 					  <th style={{width: '10%'}}>STT</th>
@@ -43,13 +85,7 @@ class CustomerDetail extends Component {
 					  <th style={{width: '15%'}}>Tình trạng</th>
 				  </thead>
 				  <tbody>
-				  	  <td style={{width: '10%'}}>1</td>
-					  <td style={{width: '15%'}}>ABCDEG0123456</td>
-					  <td style={{width: '15%'}}>01/09/2021</td>
-					  <td style={{width: '15%'}}>100000 VND</td>
-					  <td style={{width: '30%'}}>100, đường AB, phường CD, quận EF, tp. GH</td>
-					  <td style={{width: '15%'}}>Đã hoàn thành</td>
-					  <br></br>
+				  	  {this.renderDetail(cus.id)}
 				  </tbody>
 			  </table>
             </div>

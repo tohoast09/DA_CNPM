@@ -18,6 +18,7 @@ class Form extends Component {
       <form className="form-inline" onSubmit={()=>this.props.handleFormClickSubmit()}>
 	<div className="form-group marginR5">
 	  <input 
+	  	style={{width: '15%'}}
 	    type="text" 
 	    className="form-control" 
 	    placeholder="ID" 
@@ -25,6 +26,7 @@ class Form extends Component {
 	    onChange={(event)=>this.props.handleIDFormInputChange(event.target.value)}
 	  />
 	  <input 
+	  	style={{width: '25%'}}
 	    type="text" 
 	    className="form-control" 
 	    placeholder="Họ và tên" 
@@ -32,6 +34,7 @@ class Form extends Component {
 	    onChange={(event)=>this.props.handleNameFormInputChange(event.target.value)}
 	  />
 	  <select 
+	  	style={{width: '15%'}}
 	    className="form-control"
 	    value={this.props.levelItem}
 	    onChange={(event)=>this.props.handleFormSelectChange(event.target.value)} 
@@ -39,6 +42,7 @@ class Form extends Component {
 	    {this.renderSex()}
 	  </select>
 	  <input 
+	  	style={{width: '15%'}}
 	    type="text" 
 	    className="form-control" 
 	    placeholder="Ngày sinh: dd/mm/yyyy" 
@@ -46,6 +50,7 @@ class Form extends Component {
 	    onChange={(event)=>this.props.handleBDayFormInputChange(event.target.value)}
 	  />
 	  <input 
+	  	style={{width: '15%'}}
 	    type="text" 
 	    className="form-control" 
 	    placeholder="Số điện thoại" 
@@ -53,6 +58,7 @@ class Form extends Component {
 	    onChange={(event)=>this.props.handlePhoneFormInputChange(event.target.value)}
 	  />
 	  <input 
+	  	style={{width: '15%'}}
 	    type="text" 
 	    className="form-control" 
 	    placeholder="Email" 

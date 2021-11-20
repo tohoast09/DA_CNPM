@@ -48,7 +48,7 @@ const Mockdata = [
   },
   {
     id: uuidv4(),
-    name: "Qúa trẻ để chết",
+    name: "Quá trẻ để chết",
     level: 2 // high
   },
   {
