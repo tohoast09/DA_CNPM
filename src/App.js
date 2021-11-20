@@ -1,15 +1,12 @@
-import Admin from "./Admin/Admin";
-import Client from "./Client/Client";
-
-function App(){
-    const isUser=true;
-    const isAdmin=true;
-    return(
-        <div>
-            <Client/>
-            {isAdmin&&<Admin/>}
-        </div>
-    )
+import './App.css';
+import Header from './components/Header';
+import { Routes, Route } from 'react-router-dom' 
+import ElementRoutes from './routes/Routes';
+import Footer from './components/Footer';
+function App() {
+  return (
+    <ElementRoutes/>
+  );
 }
 
 export default App;
