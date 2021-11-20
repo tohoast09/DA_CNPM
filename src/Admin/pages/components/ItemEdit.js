@@ -19,26 +19,30 @@ class ItemEdit extends Component {
       <tr>
         <td className="text-center">{this.props.indexEdit}</td>
         <td>
-          <input 
-            type="text" 
-            className="form-control" 
-            value={this.props.nameEdit}  
-            onChange={(event) => this.props.handleEditInputChange(event.target.value)}
-          />
-        </td>
-        <td className="text-center">
-          <select 
+        <select 
             className="form-control"
+            style={{width: '15%'}}
             value={this.props.levelEdit}
             onChange={(event) => this.props.handleEditSelectChange(event.target.value)} 
           >
             {this.renderLevel()}
           </select>
         </td>
+        <td className="text-center">
+          
+          <input 
+            type="text" 
+            className="form-control" 
+            style={ {"width": "auto"}}
+            value={this.props.nameEdit}  
+            onChange={(event) => this.props.handleEditInputChange(event.target.value)}
+          />
+        </td>
         <td>
           <button 
             type="button" 
-            className="btn btn-default btn-sm marginR5"
+            className="btn btn-default btn-sm "
+            style={{backgroundColor: "lightblue"}}
             onClick={()=>this.props.handleEditClickCancel()}
           >
             Cancel

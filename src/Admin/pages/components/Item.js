@@ -31,8 +31,8 @@ class Item extends Component {
     return(
       <tr>
         <td className="text-center">{index}</td>
-        <td>{item.name}</td>
         <td className="text-center"><span className={classNameLabel}>{nameLabel}</span></td>
+        <td >{item.name}</td>
         <td>
           <button 
             type="button" 

@@ -8,6 +8,8 @@ import Mockdata from './mockdata/Mockdata';
 import Item from './components/Item'; 
 import ItemEdit from './components/ItemEdit';
 
+//import 'bootstrap@3.3.7'
+//import '../css/bootstrap.min.css';
 
 let arrayLevel = [];
 for(let i = 0; i < Mockdata.length; i++) {
@@ -297,12 +299,12 @@ class Order extends Component {
         </div>
         <div className="panel panel-success">
           <div className="panel-heading">List Item</div>
-          <table className="table table-hover ">
+          <table className="table  ">
             <thead>
               <tr>
                 <th style={{width: '10%'}} className="text-center">#</th>
-                <th>Name</th>
-                <th style={{width: '15%'}} className="text-center">Level</th>
+                <th className="text-center">Tình trạng</th>
+                <th style={{width: '50%'}} className="text-center">Tên Sách</th>
                 <th style={{width: '15%'}}>Action</th>
               </tr>
             </thead>
