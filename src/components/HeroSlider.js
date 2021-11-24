@@ -1,12 +1,14 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState, useCallback, useContext } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import HeroSliderData from '../assets/firebase-data/hero-slider'
 
 import Button from './Button'
 
 const HeroSlider = props => {
-
-    const data = props.data
+    const HeroSliderDataCtx = useContext(HeroSliderData);
+    const data = HeroSliderDataCtx.data;
+    useEffect(HeroSliderDataCtx.fetchData,[]);
 
     const timeOut = props.timeOut ? props.timeOut : 3000
 
@@ -65,11 +67,11 @@ const HeroSlider = props => {
 }
 
 HeroSlider.propTypes = {
-    data: PropTypes.array.isRequired,
     control: PropTypes.bool,
     auto: PropTypes.bool,
     timeOut: PropTypes.number
 }
+
 
 const HeroSliderItem = props => (
     <div className={`hero-slider__item ${props.active ? 'active' : ''}`}>
@@ -94,7 +96,7 @@ const HeroSliderItem = props => (
         </div>
         <div className="hero-slider__item__image">
             <div className={`shape bg-${props.item.color}`}></div>
-            <img src={props.item.img} alt="" />
+            <img  src={props.item.img} alt="" />
         </div>
     </div>
 )

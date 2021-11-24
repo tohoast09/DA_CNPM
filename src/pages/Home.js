@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect, useContext } from 'react'
+
 import { Link } from 'react-router-dom'
 
 import Helmet from '../components/Helmet'
@@ -8,24 +9,25 @@ import PolicyCard from '../components/PolicyCard'
 import Grid from '../components/Grid'
 import ProductCard from '../components/ProductCard'
 
-import heroSliderData from '../assets/fake-data/hero-slider'
 import policy from '../assets/fake-data/policy'
-import productData from '../assets/fake-data/products'
+import ProductData from '../assets/firebase-data/products'
+import { HeroSliderDataProvider } from '../assets/firebase-data/hero-slider'
 
 import banner from '../assets/images/banner.png'
 
 const Home = () => {
+    const ProductDataCtx = useContext(ProductData);
+   
     return (
-        <div className='container'>
-            <div className='main'>
         <Helmet title="Trang chủ">
             {/* hero slider */}
+            <HeroSliderDataProvider>
             <HeroSlider
-                data={heroSliderData}
                 control={true}
                 auto={false}
                 timeOut={5000}
             />
+            </HeroSliderDataProvider>
             {/* end hero slider */}
 
             {/* policy section */}
@@ -64,7 +66,7 @@ const Home = () => {
                         gap={20}
                     >
                         {
-                            productData.getProducts(4).map((item, index) => (
+                            ProductDataCtx.getProducts(4).map((item, index) => (
                                 <ProductCard
                                     key={index}
                                     img01={item.image01}
@@ -93,7 +95,7 @@ const Home = () => {
                         gap={20}
                     >
                         {
-                            productData.getProducts(8).map((item, index) => (
+                            ProductDataCtx.getProducts(8).map((item, index) => (
                                 <ProductCard
                                     key={index}
                                     img01={item.image01}
@@ -132,7 +134,7 @@ const Home = () => {
                         gap={20}
                     >
                         {
-                            productData.getProducts(12).map((item, index) => (
+                            ProductDataCtx.getProducts(12).map((item, index) => (
                                 <ProductCard
                                     key={index}
                                     img01={item.image01}
@@ -148,8 +150,7 @@ const Home = () => {
             </Section>
             {/* end popular product section */}
         </Helmet>
-</div>
-        </div>
+
     )
 }
 

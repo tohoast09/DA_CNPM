@@ -1,28 +1,32 @@
-import React, { useCallback, useState, useEffect, useRef } from 'react'
+import React, { useCallback, useState, useEffect, useRef, useContext } from 'react'
 
 import Helmet from '../components/Helmet'
 import CheckBox from '../components/CheckBox'
 
-import productData from '../assets/fake-data/products'
+import ProductData from '../assets/firebase-data/products'
 import category from '../assets/fake-data/category'
 import colors from '../assets/fake-data/product-color'
 import size from '../assets/fake-data/product-size'
 import Button from '../components/Button'
 import InfinityList from '../components/InfinityList'
-
+import  { FilterState } from '../stores/AppState'
 const Catalog = () => {
 
     const initFilter = {
+        title:"",
         category: [],
         color: [],
         size: []
     }
 
-    const productList = productData.getAllProducts()
+    const filterStateCtx = useContext(FilterState)
+    const ProductDataCtx =useContext(ProductData)
+    const productList = ProductDataCtx.getAllProducts()
 
     const [products, setProducts] = useState(productList)
 
-    const [filter, setFilter] = useState(initFilter)
+    const filter = filterStateCtx.state;
+    const setFilter = filterStateCtx.setState;
 
     const filterSelect = (type, checked, item) => {
         if (checked) {
@@ -62,7 +66,9 @@ const Catalog = () => {
     const updateProducts = useCallback(
         () => {
             let temp = productList
-
+            if (filter.title.length > 0) {
+                temp = temp.filter(e => e.title.toLowerCase().indexOf(filter.title.toLowerCase())!== -1)
+            }
             if (filter.category.length > 0) {
                 temp = temp.filter(e => filter.category.includes(e.categorySlug))
             }

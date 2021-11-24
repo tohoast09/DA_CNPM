@@ -3,17 +3,17 @@ import PropTypes from 'prop-types'
 
 import { Link } from 'react-router-dom'
 
-// import { useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
-// import { set } from '../redux/product-modal/productModalSlice'
+import { set } from '../redux/product-modal/productModalSlice'
 
 import Button from './Button'
 
-// import numberWithCommas from '../utils/numberWithCommas'
+import numberWithCommas from '../utils/numberWithCommas'
 
 const ProductCard = props => {
 
-    // const dispatch = useDispatch()
+    const dispatch = useDispatch()
 
     return (
         <div className="product-card">
@@ -24,9 +24,9 @@ const ProductCard = props => {
                 </div>
                 <h3 className="product-card__name">{props.name}</h3>
                 <div className="product-card__price">
-                    {/* {numberWithCommas(props.price)} */}
+                     {numberWithCommas(props.price)} 
                     <span className="product-card__price__old">
-                        {/* <del>{numberWithCommas(399000)}</del> */}
+                     <del>{numberWithCommas(props.price)}</del> 
                     </span>
                 </div>
             </Link>
@@ -35,7 +35,7 @@ const ProductCard = props => {
                     size="sm"    
                     icon="bx bx-cart"
                     animate={true}
-                    // onClick={() => dispatch(set(props.slug))}
+                    onClick={() => dispatch(set(props.slug))}
                 >
                     chọn mua
                 </Button>

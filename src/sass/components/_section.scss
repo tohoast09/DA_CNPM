@@ -9,5 +9,14 @@
         font-size: 2rem;
         text-transform: capitalize;
         text-align: center;
+        background: #4267b2;
+        color: white;
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 15px;
+        transform: skew(-15deg);
+
     }
 }
