@@ -16,12 +16,18 @@
 .icon {
     display: block;
     font-size: 60px !important;
-    color: #0069e6;
+    color: #4267b2;
     margin-bottom: 20px;
 }
 .balance {
     font-size: 40px;
     margin-left: 10px;
     display: block;
-    color: #0069e6;
+    color: #4267b2;
+}
+.button {
+    background-color: #4267b2 !important;
+}
+.button:hover {
+    background-color: #154094 !important;
 }

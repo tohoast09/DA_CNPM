@@ -12,7 +12,11 @@ h1 {
 
 .orderList {
     width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 20px 20px 0px #00000020;
 }
+
 .orderCard {
     height: 60px;
     font-size: 16px;
@@ -23,14 +27,15 @@ h1 {
 }
 
 .bar.orderCard div {
-    background-color: #dddddd;
+    background-color: #4267b2;
+    color: white;
     vertical-align: middle;
 }
 
 .orderCard > div {
     display: inline-block;
     height: 100%;
-    border: solid #666666 0.5px;
+    /* border: solid #666666 0.5px; */
     font-size: 16px;
     box-sizing: border-box;
     text-align: center;
@@ -52,13 +57,13 @@ h1 {
     background-color: rgba(0, 0, 0, 0);
 }
 .orderId {
-    width: 15%;
+    width: 25%;
 }
 .orderDate {
-    width: 15%;
+    width: 10%;
 }
 .orderDescription {
-    width: 50%;
+    width: 40%;
     text-align: left;
     padding-left: 10px;
     box-sizing: border-box;
@@ -84,7 +89,7 @@ h1 {
     width: 10%;
 }
 .orderStatus {
-    width: 10%;
+    width: 15%;
 }
 
 .OrderDetail {
@@ -104,6 +109,7 @@ h1 {
     justify-content: space-between;
     list-style: none;
     padding: 0px;
+    /* box-shadow: 0px 10px 20px 10px #00000030; */
 }
 
 .orderInsideContent ul li {
@@ -112,7 +118,8 @@ h1 {
     width: 33%;
     background-color: rgb(255, 255, 255);
     padding: 10px 20px;
-    border: solid lightgray 1px;
+    /* border: solid lightgray 1px; */
+    box-shadow: 0px 2px 5px 0px #00000020;
     border-radius: 5px;
     box-sizing: border-box;
     margin-bottom: 5px;
@@ -130,17 +137,22 @@ li div span {
     justify-content: space-around;
     /* background: yellow; */
 }
-
+.lower {
+    /* background-color:red; */
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 20px 20px 0px #00000020;
+}
 .titlebar {
     height: 60px;
     color: white;
-    background-color: #cc1c1c;
+    background-color: #4267b2;
 
     box-sizing: border-box;
 }
 .titlebar > div {
     display: inline-block;
-    border: solid 0.5px black;
+    /* border: solid 0.5px black; */
     box-sizing: border-box;
 }
 .titlebar > div > span {
@@ -160,7 +172,7 @@ li div span {
 
 .OrderDetailCard > div {
     display: inline-block;
-    border: 0.5px solid gray;
+    border-top: 0.5px solid gray;
     padding: 40px 20px;
     height: 100%;
     box-sizing: border-box;
@@ -261,17 +273,20 @@ button.productAdd:hover {
     display: block;
     height: 40px;
     line-height: 40px;
+    margin-top: 20px;
 }
 
 .totalField {
     position: absolute;
     right: 50%;
+    /* margin-top: 20px;; */
 }
 .totalValue {
     position: absolute;
     right: 0%;
 }
 .totalCost {
+    /* margin-top: 40px; */
     font-size: 24px;
-    color: red;
+    color: #4267b2;
 }

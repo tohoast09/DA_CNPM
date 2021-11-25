@@ -60,7 +60,7 @@ function Order() {
             <h1>Đơn hàng của tôi</h1>
             <div className={`${style.MainContent} ${order.order}`}>
                 <div className={style.orderInsideContent}>
-                    <div className={order.OrderList}>
+                    <div className={order.orderList}>
                         <div className={`${order.orderCard} ${order.bar}`}>
                             <div className={order.orderId}>
                                 <span>Mã đơn</span>

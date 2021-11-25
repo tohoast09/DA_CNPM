@@ -30,6 +30,12 @@ function Address() {
                             Thêm địa chỉ mới
                         </Button>
                     </div>
+                    {addPopup && (
+                        <AddAddress
+                            onAdd={() => setaddPopup(false)}
+                            onCancel={() => setaddPopup(false)}
+                        />
+                    )}
                     <div className={address.addressList}>
                         {addressInfo.map((doc) => {
                             return <AddressCard key={doc.id} data={doc} />;
@@ -37,12 +43,6 @@ function Address() {
                     </div>
                 </div>
             </div>
-            {addPopup && (
-                <AddAddress
-                    onAdd={() => setaddPopup(false)}
-                    onCancel={() => setaddPopup(false)}
-                />
-            )}
         </div>
     );
 }

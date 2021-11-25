@@ -9,7 +9,7 @@ function AccountNavigation() {
                         <div className={classes.img}>
 
                         </div>
-                        <Link to='/account/changeavatar' className={classes.avaBtn}>Sửa ảnh đại diện</Link>
+                        {/* <Link to='/account/changeavatar' className={classes.avaBtn}>Sửa ảnh đại diện</Link> */}
                     </div>
                     <NavLink end className={navData=>navData.isActive?`${classes.linkBtnActive} ${classes.linkBtn}`:classes.linkBtn} to= '/account'>  <span>Thông tin cá nhân</span>  </NavLink>
                     <NavLink     className={navData=>navData.isActive?`${classes.linkBtnActive} ${classes.linkBtn}`:classes.linkBtn} to= '/account/noti/'>    <span>Thông báo</span>          </NavLink>

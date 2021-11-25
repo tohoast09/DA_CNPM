@@ -11,11 +11,12 @@
 }
 
 .notiCard {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     height: 120px;
     padding: 10px 20px;
     margin-bottom: 10px;
     border-radius: 20px;
+    box-shadow: 0px 10px 30px 0px #00000020;
     font-size: 16px;
     background-color: white;
     display: flex;

@@ -163,21 +163,23 @@
     margin: 20px auto;
     border-radius: 5px;
 }
-
+/* .Mui-checked{
+    color: red;
+} */
 .UserInfo .update.changeInfo {
-    background-color: #ff313f;
+    background-color: #4267b2;
 }
 
 .UserInfo .update.changeInfo:hover {
-    background-color: #cc101c;
+    background-color: #154094;
 }
 
 .UserInfo .update.changePassword {
-    background-color: #0a42db;
+    background-color: #e0432e;
 }
 
 .UserInfo .update.changePassword:hover {
-    background-color: #0934ac;
+    background-color: #ce2c16;
 }
 
 .field > label {
@@ -198,11 +200,13 @@
 .genderSelection {
     padding: 0px !important;
 }
+.genderSelection .Mui-checked{
+    color: red;
+}
 
 .ChangeAvatar {
     width: 100%;
     height: 80vh;
-    /* height: fit-content; */
     background-color: rgb(255, 255, 255);
     border-radius: 20px;
     display: flex;

@@ -10,11 +10,15 @@ function Wallet() {
             <h1>Ví BK</h1>
             <div className={wallet.MainContent}>
                 <div className={wallet.walletInsideContent}>
-                    <AccountBalanceWalletOutlinedIcon className={wallet.icon}/>
+                    <AccountBalanceWalletOutlinedIcon className={wallet.icon} />
                     <span>Số dư tài khoản</span>
                     <span className={wallet.balance}>₫{tempBalance}</span>
                 </div>
-                <Button variant="contained" size="large">
+                <Button
+                    className={wallet.button}
+                    variant="contained"
+                    size="large"
+                >
                     Nạp tiền
                 </Button>
             </div>
