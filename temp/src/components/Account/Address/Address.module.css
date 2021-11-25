@@ -1,0 +1,249 @@
+.Content {
+    top: 0%;
+    left: 30%;
+    right: 5%;
+    position: absolute;
+}
+
+.AddressPopup h1{
+    margin-left: auto;
+    width: 100%;
+    text-align: center;
+}
+
+.AddressPopup {
+    position: absolute;
+    top: 0%;
+    display: inline-block;
+    width: 100%;
+    height: fit-content;
+    /* bordeder-radius: 20px; */
+    background-color: #ffffff;
+}
+
+.AddressPopup .MainContent {
+    box-align: center;
+    position: absolute;
+    width: 100%;
+    height: fit-content;
+    display: inline-block;
+    /* background-color: #1b10cc; */
+}
+
+.MainContent.add{
+    background-color: rgb(255, 255, 255);
+}
+
+.AddressPopup .MainContent .infoInsideContent {
+    margin: auto;
+    padding: 20px 0px; 
+    width: 70%;
+}
+
+.field{
+    margin: 20px 0px;
+    height: 40px;
+    position: relative;
+    display: flex;
+}
+
+.field label{
+    /* display: inline-block; */
+    height: 100%;
+    width: 20%;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    /* line-height: 40px; */
+}
+
+select{
+    position: absolute;
+    left: 20%; 
+    width: 80%;
+    height: 100%;
+    background: #efefef;
+    border: 1px solid #dddddd;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.field .fieldInput{
+    position: absolute;
+    display: inline-block;
+    width: 80%;
+    height: 40px;
+    right: 0px;
+    font-size: 14px;
+    background: #efefef;
+    border: 1px solid #dddddd;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.AddressPopup .update {
+    display: block;
+    width: 160px;
+    height: 50px;
+    font-size: 16px;
+    color: white;
+    margin: 20px auto;
+    border-radius: 5px;
+}
+
+.inputAddressType{
+    position: absolute;
+    display: inline-block;
+    right: 0%;
+    width: 80%;
+    height: 100%;
+}
+.selectAddressType{
+    position: static;
+}
+.typeSelection{
+    position: static;
+}
+
+/* .selectAddressType{
+    width: 35%;
+    height: 100%;
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0px;
+    margin-right: 20px;
+} */
+/* 
+.selectAddressType label{
+    position: absolute;
+    left: 10%;
+    width: fit-content;
+}
+
+.selectAddressType span{
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translateY(-50%);
+    padding: 0px;
+    margin: 0px;
+}
+
+.selectAddressType input{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translateY(-50%);
+    padding: 0px;
+    margin: 0px;
+} */
+.gender{
+    position: absolute;
+    display: inline-block;
+    width: 80%;
+    height: 40px;
+    right: 0px;
+}
+
+.orderList {
+    width: 100%;
+}
+.orderCard span {
+    display: inline-block;
+    border: solid black 1px;
+    font-size: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: aliceblue;
+}
+
+.addressCard {
+    border: 1px solid black;
+    padding: 15px 5px; 
+    box-sizing: border-box;
+    height: 120px;
+    margin: 10px 0px;
+    border-radius: 20px;
+    font-size: 16px;
+    background-color: white;
+    width: 100%;
+    margin-right: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.info{
+    /* width: 60%;  */
+    height: 100%;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* position: absolute; */
+    left: 0px;
+}
+
+.addressButton
+{
+    margin: 0px 20px;
+    /* width: 40%; */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content:flex-end;
+}
+.addressButton .delAddr{
+    color: red;
+}
+/* .addressButton.defaultAddress{
+    display: none;
+} */
+
+.addressButton button
+{
+    background-color: rgba(240, 248, 255, 0);
+    color: #0069e6;
+    text-transform: none;
+    font-weight: none;
+}
+
+.UserAddress .buttonBar{
+    width: 100%;
+    display: flex;
+    justify-content:center;
+}
+
+.addButton {
+    color: white;
+    min-height: 50px;
+    margin: auto;
+}
+.update.cancelAdd {
+    background-color:#ff4444;
+}
+.update.cancelAdd:hover {
+    background-color:#ff1111;
+}
+.invalidForm{
+    width: 100%;
+    color: red;
+    text-align: center;
+}
+.defaultCheck{
+    width: fit-content;
+    display: inline-block;
+    padding-left: 10px;
+}
+.defaultCheck span{
+    color: rgb(0, 167, 0);
+    padding-right: 5px;
+}
