@@ -24,7 +24,7 @@ function AddressCard(props) {
                     {props.data.data.defaultAddr && (
                         <div className={address.defaultCheck}>
                             <div>
-                                <CheckCircleOutlineIcon />
+                                <CheckCircleOutlineIcon className={address.defaultIcon}/>
                                 <span>Địa chỉ mặc định</span>
                             </div>
                         </div>

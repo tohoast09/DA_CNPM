@@ -37,7 +37,7 @@ import { useUserInfo } from "../../../context/getUserAPI";
 function Order() {
     const { orders } = useUserInfo();
     const getDescription = (order) => {
-        const firstbook = order.data.books[0].id;
+        const firstbook = order.data.books[0].bookName;
         const numberleft = order.data.books.length - 1;
         if (numberleft)
             return firstbook + " và " + numberleft + " sản phẩm khác";

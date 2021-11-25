@@ -38,7 +38,7 @@ function Noti() {
 
                         {DUMMY_DATA.map((order) => {
                             return (
-                                <OrderCard
+                                <OrderCard 
                                     // id={order.id}
                                     date={order.date}
                                     description={order.description}

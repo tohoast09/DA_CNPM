@@ -16,7 +16,6 @@
     top: 0%;
     display: block;
     height: 670px;
-    /* height: fit-content; */
     background-color: #ffffff;
     border-radius: 20px;
     overflow: hidden;
@@ -30,7 +29,6 @@
     width: 100%;
     height: fit-content;
     display: block;
-    /* background-color: #1b10cc; */
 }
 
 .MainContent.add {
@@ -120,7 +118,7 @@ select {
 
 .addressCard {
     /* border: 1px solid black; */
-    box-shadow: 0px 10px 10px 0px #00000020;
+    box-shadow: 0px 5px 30px 0px #00000030;
     padding: 15px 5px;
     box-sizing: border-box;
     height: 120px;
@@ -219,4 +217,11 @@ select {
 .defaultCheck div * {
     color: rgb(0, 167, 0);
     padding-right: 5px;
+}
+.defaultIcon{
+    font-size: 18px;;
+}
+.addressName{
+    display:flex;
+   align-items:center;
 }
