@@ -141,6 +141,7 @@ li div span {
 .titlebar > div {
     display: inline-block;
     border: solid 0.5px black;
+    box-sizing: border-box;
 }
 .titlebar > div > span {
     width: 100%;
@@ -174,13 +175,13 @@ li div span {
 }
 
 .orderProduct {
-    width: 40%;
+    width: 50%;
 }
 
 .productImg {
     height: 100%;
     width: 35%;
-    background-image: url("https://images-na.ssl-images-amazon.com/images/I/71aFt4+OTOL.jpg");
+    /* background-image: url("https://images-na.ssl-images-amazon.com/images/I/71aFt4+OTOL.jpg"); */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -235,16 +236,16 @@ button.productAdd:hover {
 }
 
 .unitPrice {
-    width: 15%;
+    width: 20%;
 }
 .productQty {
-    width: 15%;
+    width: 10%;
 }
-.productDiscount {
+/* .productDiscount {
     width: 15%;
-}
+} */
 .totalPrice {
-    width: 15%;
+    width: 20%;
 }
 
 .totalCalc {

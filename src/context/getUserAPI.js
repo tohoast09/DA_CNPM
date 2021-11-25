@@ -23,8 +23,10 @@ export function useUserInfo() {
 }
 
 export default function GetUserProvider(props) {
+    const [orderId, setOrderId] = useState("");
     const [addressInfo, setAdd] = useState([]);
     const [userInfo, setUserInfo] = useState({});
+    const [orderDetail, setOrderDetail] = useState({});
     const [notiInfo, setNoti] = useState([]);
     const [orderInfo, SetOrder] = useState([]);
     const [isLoading, setLoading] = useState(false);
@@ -34,12 +36,6 @@ export default function GetUserProvider(props) {
     const getUserInfo = () => {
         return onSnapshot(doc(db, "users/" + user.uid), (doc) => {
             setUserInfo(doc.data());
-            // console.log("userInfo: ", userInfo);
-            // console.log("userInfo: ", userInfo.name);
-            // console.log("userInfo: ", userInfo.email);
-            // console.log("userInfo: ", userInfo.phone);
-            // console.log("userInfo: ", userInfo.gender);
-            // console.log("userInfo: ", userInfo.bdate);
         });
     };
 
@@ -53,7 +49,7 @@ export default function GetUserProvider(props) {
         await console.log("userInfo updated: ", data);
     };
 
-    const getOrder = () => {
+    const getOrders = () => {
         return onSnapshot(
             collection(db, "users/" + user.uid + "/orders"),
             (snapshot) => {
@@ -65,6 +61,14 @@ export default function GetUserProvider(props) {
                 console.log("Orders: ", ords);
             }
         );
+    };
+
+    const getOrderDetail = (orderId) => {
+        var i = 0;
+        for (i = 0; i < orders.length; i++) {
+            if (orders[i].id === orderId) setOrderDetail(orders[i]);
+            console.log(orderDetail);
+        }
     };
 
     const getAddress = () => {
@@ -97,7 +101,6 @@ export default function GetUserProvider(props) {
                     };
                     order.push(order_item);
                 });
-                console.log(order[0]);
                 SetOrder(order);
             }
         );
@@ -153,7 +156,7 @@ export default function GetUserProvider(props) {
             getAddress(),
             getCart(),
             getUserInfo(),
-            getOrder(),
+            getOrders(),
         ]);
         setLoading(false);
 
@@ -170,6 +173,10 @@ export default function GetUserProvider(props) {
         userInfo,
         updateUserInfo,
         orders,
+        getOrderDetail,
+        orderId,
+        orderDetail,
+        setOrderId,
     };
 
     return (

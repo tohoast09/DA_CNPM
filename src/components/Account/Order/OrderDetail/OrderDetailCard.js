@@ -1,33 +1,27 @@
 import React from "react";
 import order from "../Order.module.css";
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
 
 function OrderDetailCard(props) {
+    console.log("img src: ",props.data.img)
     return (
         <div className={order.OrderDetailCard}>
             <div className={order.orderProduct}>
-                <div className={order.productImg}></div>
+                    <img src="https://www.trustpilot.com/review/bobcares.com?utm_medium=Trustbox&utm_source=BlogPost" alt="Hình ảnh sản phẩm" width="500" height="600"/>
+                <div className={order.productImg}>
+                </div>
                 <div className={order.productProp}>
-                    <div className={order.productName}>Nhà Giả Kim</div>
-                    <Button variant="outlined" className={order.productDetail}>
-                        Xem chi tiết
-                    </Button>
-                    <Button variant="contained" className={order.productAdd}>
-                        Thêm vào giỏ hàng
-                    </Button>
+                    <div className={order.productName}>{props.data.bookName}</div>
                 </div>
             </div>
             <div className={order.unitPrice}>
-                <span>50000đ</span>
+                <span>{props.data.price}₫</span>
             </div>
             <div className={order.productQty}>
-                <span>2</span>
-            </div>
-            <div className={order.productDiscount}>
-                <span>0đ</span>
+                <span>{props.data.quantity}</span>
             </div>
             <div className={order.totalPrice}>
-                <span>100000đ</span>
+                <span>{props.data.price*props.data.quantity}₫</span>
             </div>
         </div>
     );

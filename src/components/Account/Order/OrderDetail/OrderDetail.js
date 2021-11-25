@@ -1,12 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
+import { useUserInfo } from "../../../../context/getUserAPI";
 import order from "../Order.module.css";
 import OrderDetailCard from "./OrderDetailCard";
 
-
 function OrderDetail() {
+    const { orderDetail } = useUserInfo();
+    console.log("callOrderdetail: ", orderDetail);
+    const getCost = (bookList) => {
+        // var bookList = order.data.books;
+        var i = 0;
+        var res = 0;
+        for (i = 0; i < bookList.length; i++) {
+            res += bookList[i].price * bookList[i].quantity;
+        }
+        return res;
+    };
+
     return (
         <div className={order.OrderDetail}>
-            <h1>Chi tiết đơn hàng #</h1>
+            <h1>
+                Chi tiết đơn hàng #<span>{orderDetail.id}</span>
+            </h1>
+            <img src="https://lucloi.vn/wp-content/uploads/2021/03/151260959_116663000465628_4883317510036424454_n.jpg" alt="bug ảnh" />
             <div className={`${order.MainContent} ${order.orderDetail}`}>
                 <div className={order.orderInsideContent}>
                     <ul>
@@ -15,13 +30,19 @@ function OrderDetail() {
                                 className={`${order.sideInfo} ${order.orderAddress}`}
                             >
                                 <span className={order.infoName}>
-                                    Nguyễn Văn A
+                                    {orderDetail.data.name}
                                 </span>
                                 <span className={order.infoAddress}>
-                                    KTX khu A, Đông Hòa, Dĩ An, Bình Dương
+                                    {orderDetail.data.location_detail}
+                                    {", "}
+                                    {orderDetail.data.location_3}
+                                    {", "}
+                                    {orderDetail.data.location_2}
+                                    {", "}
+                                    {orderDetail.data.location_1}
                                 </span>
                                 <span className={order.infoNumber}>
-                                    0987654321
+                                    {orderDetail.data.phone}
                                 </span>
                             </div>
                         </li>
@@ -30,13 +51,20 @@ function OrderDetail() {
                                 className={`${order.sideInfo} ${order.orderTransport}`}
                             >
                                 <span className={order.transportName}>
-                                    Đơn vị vận chuyển: Giao hàng nhanh
+                                    {"Thời gian đặt hàng: "}
+                                    {orderDetail.data.createAt
+                                        .toDate()
+                                        .toLocaleDateString("pt-PT")}
                                 </span>
                                 <span className={order.transportTime}>
-                                    Thời gian nhận: 01/01/2021
+                                    {"Thời gian nhận hàng: "}
+                                    {orderDetail.data.deliveryAt
+                                        .toDate()
+                                        .toLocaleDateString("pt-PT")}
                                 </span>
                                 <span className={order.transportStatus}>
-                                    Giao hàng thành công
+                                    {"Trạng thái: "}
+                                    {orderDetail.data.status}
                                 </span>
                             </div>
                         </li>
@@ -45,7 +73,8 @@ function OrderDetail() {
                                 className={`${order.sideInfo} ${order.orderPayment}`}
                             >
                                 <span className={order.paymentName}>
-                                    Thanh toán qua Ví MoMo
+                                    {"Hình thức thanh toán: "}
+                                    {orderDetail.data.method}
                                 </span>
                                 <span className={order.paymentStatus}>
                                     Trạng thái: Thanh toán thành công
@@ -64,38 +93,40 @@ function OrderDetail() {
                             <div className={order.productQty}>
                                 <span>Số lượng</span>
                             </div>
-                            <div className={order.productDiscount}>
+                            {/* <div className={order.productDiscount}>
                                 <span>Giảm giá</span>
-                            </div>
+                            </div> */}
                             <div className={order.totalPrice}>
                                 <span>Tạm tính</span>
                             </div>
                         </div>
-
-                        <OrderDetailCard />
+                        {orderDetail.data.books.map((book) => {
+                            console.log(book);
+                            return <OrderDetailCard data={book}/>
+                        })}
                     </div>
 
                     <div className={order.totalCalc}>
-                        <div className={order.field}>
+                        {/* <div className={order.field}>
                             <span className={order.totalField}>Tạm tính:</span>{" "}
                             <span className={order.totalValue}>100.000đ</span>
                         </div>
                         <div className={order.field}>
                             <span className={order.totalField}>Giảm giá:</span>{" "}
                             <span className={order.totalValue}>0đ</span>
-                        </div>
-                        <div className={order.field}>
+                        </div> */}
+                        {/* <div className={order.field}>
                             <span className={order.totalField}>
                                 Phí vận chuyển:
                             </span>{" "}
                             <span className={order.totalValue}>25.000đ</span>
-                        </div>
+                        </div> */}
                         <div className={order.field}>
                             <span className={order.totalField}>Tổng cộng:</span>{" "}
                             <span
                                 className={`${order.totalValue} ${order.totalCost}`}
                             >
-                                125.000đ
+                                {getCost(orderDetail.data.books)}₫
                             </span>
                         </div>
                     </div>

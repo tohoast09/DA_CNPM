@@ -48,10 +48,13 @@ function Order() {
         var i = 0;
         var res = 0;
         for (i = 0; i < bookList.length; i++) {
-            res += bookList[i].price * bookList[i].qty;
+            res += bookList[i].price * bookList[i].quantity;
         }
         return res;
     };
+    // const convertDateTime = (timeStamp) => {
+    //     return timeStamp.toDate().toLocaleDateString("pt-PT");
+    // };
     return (
         <div className={order.UserOrder}>
             <h1>Đơn hàng của tôi</h1>
@@ -83,7 +86,7 @@ function Order() {
                                 <OrderCard
                                     key={order.id}
                                     id={order.id}
-                                    date={order.data.date}
+                                    date={order.data.createAt.toDate().toLocaleDateString("pt-PT")}
                                     description={getDescription(order)}
                                     cost={getCost(order)}
                                     status={order.data.status}
