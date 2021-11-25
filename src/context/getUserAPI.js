@@ -29,7 +29,7 @@ export default function GetUserProvider(props) {
     const [orderInfo, SetOrder] = useState([]);
     const [isLoading, setLoading] = useState(false);
     const { user } = useUserContext();
-    const [orders, setOrders] = useState([])
+    const [orders, setOrders] = useState([]);
 
     const getUserInfo = () => {
         return onSnapshot(doc(db, "users/" + user.uid), (doc) => {
@@ -44,25 +44,28 @@ export default function GetUserProvider(props) {
     };
 
     const updateUserInfo = async (data) => {
-        await setDoc(doc(db, "users/" + user.uid), {
+        await updateDoc(doc(db, "users/" + user.uid), {
             name: data.name,
             phone: data.phone,
-            gender: data.phone,
-            bdate: data.bdate
+            gender: data.gender,
+            bdate: data.bdate,
         });
+        await console.log("userInfo updated: ", data);
     };
 
     const getOrder = () => {
-        return onSnapshot(collection(db, "users/" + user.uid + "/orders"),
-        (snapshot) =>{
-            const ords = [];
+        return onSnapshot(
+            collection(db, "users/" + user.uid + "/orders"),
+            (snapshot) => {
+                const ords = [];
                 snapshot.docs.map((doc) => {
                     ords.push({ id: doc.id, data: doc.data() });
                 });
                 setOrders(ords);
-                console.log("Orders: ",ords);
-        })
-    }
+                console.log("Orders: ", ords);
+            }
+        );
+    };
 
     const getAddress = () => {
         return onSnapshot(
@@ -165,6 +168,7 @@ export default function GetUserProvider(props) {
         setDefaultAddress,
         delAddress,
         userInfo,
+        updateUserInfo,
         orders,
     };
 

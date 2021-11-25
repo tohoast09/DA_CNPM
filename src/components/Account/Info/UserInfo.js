@@ -14,7 +14,7 @@ import { useUserContext } from "../../../context/userContext";
 import { useUserInfo } from "../../../context/getUserAPI";
 
 function UserInfo(props) {
-    const { userInfo } = useUserInfo();
+    const { userInfo, updateUserInfo } = useUserInfo();
     const [nameInput, setNameInput] = useState("");
     const [phoneInput, setPhoneInput] = useState("");
     const [bdateInput, setBdateInput] = useState("");
@@ -33,17 +33,19 @@ function UserInfo(props) {
         setpwdPopup(false);
     }
 
-    function submitHandler(event) {
+    const submitHandler = (event)=> {
         event.preventDefault();
 
-        let userData = {
+        let userInfo = {
             name: nameInput.value,
             phone: phoneInput.value,
             bdate: bdateInput.value,
-            gender: genderInput.value,
+            gender: genderInput,
         };
 
-        console.log(userData);
+        console.log(userInfo);
+        updateUserInfo(userInfo)
+
     }
 
     return (
@@ -61,7 +63,6 @@ function UserInfo(props) {
                             type="text"
                             id="name"
                             defaultValue={userInfo.name}
-                            // onChange={handleChange}
                             innerRef={(input) => setNameInput(input)}
                             // ref={nameInputRef}
                         />
@@ -74,8 +75,6 @@ function UserInfo(props) {
                             id="phone"
                             defaultValue={userInfo.phone}
                             innerRef={(input) => setPhoneInput(input)}
-                            // onChange={handleChange}
-                            // ref={phoneInputRef}
                         />
                     </div>
                     <div className={account.field}>
@@ -96,35 +95,23 @@ function UserInfo(props) {
                             id="bdate"
                             defaultValue={userInfo.bdate}
                             innerRef={(input) => setBdateInput(input)}
-                            // onChange={handleChange}
                         />
                     </div>
                     <div className={account.field}>
                         <label htmlFor="gender">Giới tính</label>
-                        <Input
-                            name="gender"
-                            type="text"
-                            id="gender"
-                            defaultValue={userInfo.gender}
-                            disabled
-                            // innerRef={(input) => setBdateInput(input)}
-                            // onChange={handleChange}
-                        />
                         <div className={account.gender}>
-                            {/* <FormControl
+                            <FormControl
                                 className={account.selectGender}
                                 component="fieldset"
                             >
                                 <RadioGroup
                                     row
                                     aria-label="gender"
-                                    name="genderInput"
+                                    name="row-radio-buttons-group"
                                     id="gender"
-                                    value={userInfo.gender}
-                                    // onChange={(event) => {
-                                    //     setGenderInput(event.target.value);
-                                    //     console.log(genderInput);
-                                    // }}
+                                    onChange={(event) =>
+                                        onChangeGender(event.target.value)
+                                    }
                                 >
                                     <FormControlLabel
                                         className={account.genderSelection}
@@ -145,28 +132,7 @@ function UserInfo(props) {
                                         label="Khác"
                                     />
                                 </RadioGroup>
-                            </FormControl> */}
-                            {/* <FormControl component="fieldset">
-                                <RadioGroup
-                                    aria-label="gender"
-                                    name="controlled-radio-buttons-group"
-                                    value={userInfo.gender}
-                                    onChange={(event) => {
-                                        setGenderInput(event.target.value);
-                                    }}
-                                >
-                                    <FormControlLabel
-                                        value="female"
-                                        control={<Radio />}
-                                        label="Female"
-                                    />
-                                    <FormControlLabel
-                                        value="male"
-                                        control={<Radio />}
-                                        label="Male"
-                                    />
-                                </RadioGroup>
-                            </FormControl> */}
+                            </FormControl>
                         </div>
                     </div>
                     <Button
@@ -180,8 +146,6 @@ function UserInfo(props) {
                     <Button
                         variant="contained"
                         size="large"
-                        // onClick={onChangeHandler}
-                        // onCancel={onCancelHandler}
                         className={`${account.changePassword} ${account.update}`}
                     >
                         Sửa mật khẩu

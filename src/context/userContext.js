@@ -33,8 +33,6 @@ export const UserContextProvider = ({ children }) => {
     const [loading, setLoading] = useState();
     const [emailError, setEmailError] = useState("");
     const [passwordError, setPasswordError] = useState("");
-    // const addressOfUser = {};
-    const [addressOfUser, setAddressOfUser] = useState([]);
 
     useEffect(() => {
         setLoading(true);
@@ -48,34 +46,7 @@ export const UserContextProvider = ({ children }) => {
         return unsubscribe;
     }, []);
 
-    // const registerUser = (email, name, lname, password) => {
-
-    //     setLoading(true);
-    //     createUserWithEmailAndPassword(auth, email, password)
-    //         .then(() => {
-    //             return updateProfile(auth.currentUser, {
-    //                 displayName: name,
-    //             });
-    //         })
-    //         .then((res) => console.log(res))
-    //         .catch((err) => {
-    //             switch (err.code) {
-    //                 case "auth/email-already-in-use":
-    //                     setEmailError("Email đã được sử dụng");
-    //                     break;
-    //                 case "auth/invalid-email":
-    //                     setEmailError("Email không hợp lệ");
-    //                     break;
-    //                 case "auth/weak-password":
-    //                     setPasswordError("Mật khẩu quá yếu");
-    //                     break;
-    //                 default:
-    //                     setEmailError(err.message);
-    //             }
-    //         })
-    //         .finally(() => setLoading(false));
-    // };
-    const registerUser = async (email, name, lname, password) => {
+    const registerUser = async (name, email, password) => {
         try {
             await createUserWithEmailAndPassword(auth, email, password).then(
                 (res) => {
@@ -83,7 +54,6 @@ export const UserContextProvider = ({ children }) => {
                     // db.collection('test').doc("Xin_chao").set(res);
                     const docRef = setDoc(doc(db, "users", res.user.uid), {
                         name: name,
-                        lname: lname,
                         email: email,
                         password: password,
                     });
@@ -134,24 +104,11 @@ export const UserContextProvider = ({ children }) => {
             .finally(() => setLoading(false));
     };
     const logoutUser = () => {
-        ///
         signOut(auth);
     };
 
     const forgetPassword = (email) => {
-        //
         return sendPasswordResetEmail(auth, email);
-    };
-
-    const changeInfo = (value) => {
-        //get user id
-        //set data cho cái id đó
-    };
-
-    const changePassword = (password) => {
-        //get user id,
-        //idk change password manaul or use firebase
-        return user.updatePassword(password);
     };
 
 
@@ -166,8 +123,6 @@ export const UserContextProvider = ({ children }) => {
         signInUser,
         logoutUser,
         forgetPassword,
-        changeInfo,
-        changePassword,
     };
     return (
         <UserContext.Provider value={contextValue}>

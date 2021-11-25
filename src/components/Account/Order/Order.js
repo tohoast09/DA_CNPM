@@ -83,7 +83,6 @@ function Order() {
                     </div>
                 </div>
             </div>
-            {/* <OrderDetail/> */}
         </div>
     );
 }
