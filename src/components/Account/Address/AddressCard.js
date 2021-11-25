@@ -3,6 +3,7 @@ import address from "./Address.module.css";
 import Button from "@mui/material/Button";
 import { useUserContext } from "../../../context/userContext";
 import { useUserInfo } from "../../../context/getUserAPI";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 function AddressCard(props) {
     const { setDefaultAddress, delAddress } = useUserInfo();
     const [useFunc, setUseFunc] = useState("");
@@ -22,8 +23,10 @@ function AddressCard(props) {
                     <span>{`Tên: ${props.data.data.name}`}</span>
                     {props.data.data.defaultAddr && (
                         <div className={address.defaultCheck}>
-                            <span>Logo mặc định</span>
-                            <span>Địa chỉ mặc định</span>
+                            <div>
+                                <CheckCircleOutlineIcon />
+                                <span>Địa chỉ mặc định</span>
+                            </div>
                         </div>
                     )}
                 </div>

@@ -12,7 +12,7 @@ import { useUserInfo } from "../../../context/getUserAPI";
 // import account from '../address.module.css'
 
 function AddAddress(props) {
-    const history=useNavigate();
+    const history = useNavigate();
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
     const [loc1, setLoc1] = useState("");
@@ -20,26 +20,20 @@ function AddAddress(props) {
     const [loc3, setLoc3] = useState("");
     const [locDetail, setLocDetail] = useState("");
     const [err, setErr] = useState("");
-    const { updateAddress } = useUserInfo();
+    const { addAddress } = useUserInfo();
 
     const onSubmit = (event) => {
         event.preventDefault();
         setErr("");
-        function invalid() {
-            return (
-                name === "" ||
-                phone === "" ||
-                loc1 === "" ||
-                loc2 === "" ||
-                loc3 === "" ||
-                locDetail === "" ||
-                phone === ""
-            );
-        }
-        if (invalid()) {
-            console.log("error");
-            setErr("Bạn cần nhập đầy đủ thông tin trên");
-        } else {
+        if (
+            name.value &&
+            phone.value &&
+            loc1.value &&
+            loc2.value &&
+            loc3.value &&
+            locDetail.value &&
+            phone.value
+        ) {
             const newAddress = {
                 name: name.value,
                 phone: phone.value,
@@ -50,9 +44,13 @@ function AddAddress(props) {
                 defaultAddr: false,
             };
             console.log(newAddress);
-            updateAddress("add", newAddress);
+            addAddress(newAddress);
+            props.onAdd();
+        } else {
+            console.log("error");
+            setErr("Bạn cần nhập đầy đủ thông tin trên");
         }
-        props.onAdd();
+
         // history('/account/address');
     };
     return (
