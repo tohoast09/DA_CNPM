@@ -11,11 +11,11 @@ function AccountNavigation() {
                         </div>
                         <Link to='/account/changeavatar' className={classes.avaBtn}>Sửa ảnh đại diện</Link>
                     </div>
-                    <NavLink exact activeClassName={classes.linkBtnActive} className={classes.linkBtn} to= '/account'>  <span>Thông tin cá nhân</span>  </NavLink>
-                    <NavLink activeClassName={classes.linkBtnActive} className={classes.linkBtn} to= '/account/noti/'>    <span>Thông báo</span>          </NavLink>
-                    <NavLink activeClassName={classes.linkBtnActive} className={classes.linkBtn} to= '/account/orders/'>  <span>Danh sách đơn hàng</span> </NavLink>
-                    <NavLink activeClassName={classes.linkBtnActive} className={classes.linkBtn} to= '/account/address/'> <span>Danh sách địa chỉ</span>  </NavLink>
-                    <NavLink activeClassName={classes.linkBtnActive} className={classes.linkBtn} to= '/account/wallet'> <span>Ví</span>  </NavLink>
+                    <NavLink end className={navData=>navData.isActive?`${classes.linkBtnActive} ${classes.linkBtn}`:classes.linkBtn} to= '/account'>  <span>Thông tin cá nhân</span>  </NavLink>
+                    <NavLink     className={navData=>navData.isActive?`${classes.linkBtnActive} ${classes.linkBtn}`:classes.linkBtn} to= '/account/noti/'>    <span>Thông báo</span>          </NavLink>
+                    <NavLink     className={navData=>navData.isActive?`${classes.linkBtnActive} ${classes.linkBtn}`:classes.linkBtn} to= '/account/orders/'>  <span>Danh sách đơn hàng</span> </NavLink>
+                    <NavLink     className={navData=>navData.isActive?`${classes.linkBtnActive} ${classes.linkBtn}`:classes.linkBtn} to= '/account/address/'> <span>Danh sách địa chỉ</span>  </NavLink>
+                    <NavLink     className={navData=>navData.isActive?`${classes.linkBtnActive} ${classes.linkBtn}`:classes.linkBtn} to= '/account/wallet/'> <span>Ví</span>  </NavLink>
                 </div >
         </div>
     );

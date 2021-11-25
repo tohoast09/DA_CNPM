@@ -43,6 +43,15 @@ function Order() {
             return firstbook + " và " + numberleft + " sản phẩm khác";
         else return firstbook;
     };
+    const getCost = (order) => {
+        var bookList = order.data.books;
+        var i = 0;
+        var res = 0;
+        for (i = 0; i < bookList.length; i++) {
+            res += bookList[i].price * bookList[i].qty;
+        }
+        return res;
+    };
     return (
         <div className={order.UserOrder}>
             <h1>Đơn hàng của tôi</h1>
@@ -76,7 +85,7 @@ function Order() {
                                     id={order.id}
                                     date={order.data.date}
                                     description={getDescription(order)}
-                                    cost={order.data.cost}
+                                    cost={getCost(order)}
                                     status={order.data.status}
                                 />
                             );
