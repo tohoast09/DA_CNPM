@@ -2,7 +2,7 @@ import React from "react";
 import order from "../Order.module.css";
 import Button from "@mui/material/Button";
 
-function OrderDetailCard() {
+function OrderDetailCard(props) {
     return (
         <div className={order.OrderDetailCard}>
             <div className={order.orderProduct}>

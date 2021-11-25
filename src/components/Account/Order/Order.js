@@ -72,6 +72,7 @@ function Order() {
                         {orders.map((order) => {
                             return (
                                 <OrderCard
+                                    key={order.id}
                                     id={order.id}
                                     date={order.data.date}
                                     description={getDescription(order)}
