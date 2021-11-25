@@ -1,0 +1,23 @@
+.MainContent{
+    /* background-color:red; */
+    width: 100%;
+    display: flex; align-items:center; flex-direction: column;
+}
+.walletInsideContent{
+    padding: 20px;
+    box-sizing: border-box;
+    font-size: 30px;
+    display: flex; align-items:center; flex-direction: column;
+}
+.icon{
+    display:block;
+    font-size:60px;
+    color: #0069e6;
+    margin-bottom: 20px;
+}
+.balance{
+    font-size: 40px;
+    margin-left: 10px;
+    display: block;
+    color: #0069e6;
+}

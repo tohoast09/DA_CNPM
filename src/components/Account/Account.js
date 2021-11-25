@@ -11,6 +11,7 @@ import { Container, Row } from "reactstrap";
 import classes from "./Account.module.css";
 import ChangeAvatar from "./AccountNav/ChangeAvatar";
 import GetUserProvider from "../../context/getUserAPI";
+import Wallet from "./Wallet/Wallet";
 function Account() {
     return (
         <GetUserProvider>
@@ -27,6 +28,10 @@ function Account() {
                         <Route
                             path="/changeavatar"
                             element={<ChangeAvatar />}
+                        />
+                        <Route
+                            path="/wallet"
+                            element={<Wallet/>}
                         />
                     </Routes>
                 </Container>

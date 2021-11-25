@@ -15,6 +15,7 @@ function AccountNavigation() {
                     <NavLink activeClassName={classes.linkBtnActive} className={classes.linkBtn} to= '/account/noti/'>    <span>Thông báo</span>          </NavLink>
                     <NavLink activeClassName={classes.linkBtnActive} className={classes.linkBtn} to= '/account/orders/'>  <span>Danh sách đơn hàng</span> </NavLink>
                     <NavLink activeClassName={classes.linkBtnActive} className={classes.linkBtn} to= '/account/address/'> <span>Danh sách địa chỉ</span>  </NavLink>
+                    <NavLink activeClassName={classes.linkBtnActive} className={classes.linkBtn} to= '/account/wallet'> <span>Ví</span>  </NavLink>
                 </div >
         </div>
     );
