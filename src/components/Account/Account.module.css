@@ -2,7 +2,9 @@
     font-family: Roboto;
     /* font-size: 14px; */
 }
-
+h1{
+    display: block;
+}
 .Content {
     font-size: 14px;
 }
