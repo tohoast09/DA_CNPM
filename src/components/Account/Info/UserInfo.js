@@ -46,8 +46,6 @@ function UserInfo(props) {
         console.log(userInfo);
         updateUserInfo(userInfo);
     };
-
-    // if (userInfo)
         return (
             <div className={account.UserInfo}>
                 <h1>Thông tin tài khoản</h1>

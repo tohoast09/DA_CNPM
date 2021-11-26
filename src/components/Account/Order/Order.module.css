@@ -21,7 +21,7 @@ h1 {
     height: 60px;
     font-size: 16px;
     /* background-color: red; */
-    background-color: white;
+    /* background-color: white; */
     align-items: center;
     display: flex;
 }
@@ -102,9 +102,9 @@ h1 {
 }
 
 .OrderDetail .MainContent {
-    /* background-color: rgb(126, 0, 0); */
+    background-color: rgb(126, 0, 0);
     width: 100%;
-    height: 100px;
+    height: 1000px;
 }
 
 .orderInsideContent ul {
@@ -145,6 +145,7 @@ li div span {
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0px 20px 20px 0px #00000020;
+    background-color: red;
 }
 .titlebar {
     height: 60px;
@@ -180,7 +181,7 @@ li div span {
     height: 100%;
     box-sizing: border-box;
     vertical-align: top;
-    background-color: white;
+    /* background-color: white; */
 }
 
 .OrderDetailCard > div > span {
@@ -190,7 +191,7 @@ li div span {
 }
 
 .orderProduct {
-    width: 40%;
+    width: 50%;
 }
 
 .productImg {
@@ -224,7 +225,7 @@ li div span {
     box-sizing: border-box;
     border-radius: 5px;
 }
-
+/* 
 button.productDetail {
     background-color: #ffffff;
     color: #0069e6;
@@ -249,7 +250,7 @@ button.productAdd {
 button.productAdd:hover {
     background-color: hsl(213, 100%, 34%);
     color: rgb(255, 255, 255);
-}
+} */
 
 .unitPrice {
     width: 20%;

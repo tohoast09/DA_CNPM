@@ -3,16 +3,21 @@ import order from "../Order.module.css";
 // import Button from "@mui/material/Button";
 
 function OrderDetailCard(props) {
-    console.log("img src: ",props.data.img)
+    console.log("img src: ", props.data.img);
     return (
         <div className={order.OrderDetailCard}>
             <div className={order.orderProduct}>
                 <div className={order.productImg}>
-                <img src={props.data.img} alt="Hình ảnh sản phẩm" height="100%" maxWidth="200%"/>
-
+                    <img
+                        src={props.data.img}
+                        alt="Hình ảnh sản phẩm"
+                        height="100%"
+                    />
                 </div>
                 <div className={order.productProp}>
-                    <div className={order.productName}>{props.data.bookName}</div>
+                    <div className={order.productName}>
+                        {props.data.bookName}
+                    </div>
                 </div>
             </div>
             <div className={order.unitPrice}>
@@ -22,7 +27,7 @@ function OrderDetailCard(props) {
                 <span>{props.data.quantity}</span>
             </div>
             <div className={order.totalPrice}>
-                <span>{props.data.price*props.data.quantity}₫</span>
+                <span>{props.data.price * props.data.quantity}₫</span>
             </div>
         </div>
     );
