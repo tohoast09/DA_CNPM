@@ -5,7 +5,6 @@ import CardPay from '../components/payment/CardPay';
 import InforCart from '../components/cart/InforCart';
 import GetUserProvider from '../assets/firebase-data/getUserAPI';
 import CartContext from '../stores/CartContext';
-import logo from '../assets/images/emptycart.jpg'
 import EmptyCart from './EmptyCart';
 
 function Payment(){

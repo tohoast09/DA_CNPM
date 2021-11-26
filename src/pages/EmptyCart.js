@@ -8,17 +8,17 @@ import { useNavigate } from 'react-router'
 export default function EmptyCart() {
     const naviagte=useNavigate();
     return (
-        <>
-        <div className={classes.empty}>
+        <> 
+        <div className={classes.empty_cart}>
             <img src={logo}/>
         </div>
-        <div className={classes.empty}>
+        <div className={classes.empty_cart}>
         <Typography variant="h5" gutterBottom>
         Bạn chưa có món hàng nào trong giỏ, hãy tiếp tục khám phá nhé
         </Typography>
         </div>
 
-        <div className={classes.empty}>
+        <div className={classes.empty_cart}>
             <Button variant="contained" onClick={()=> naviagte('/')}>Tiếp tục mua hàng</Button>
         </div>
         </>

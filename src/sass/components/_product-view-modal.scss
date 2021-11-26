@@ -37,5 +37,6 @@
     &.active &__content {
         opacity: 1;
         transform: translateY(0);
+        border-radius: 5px;
     }
 }

@@ -44,8 +44,14 @@
 
     &-sm {
         font-size: 1rem;
-    }
+        border-radius: 5px;
 
+    }
+    &-sm:hover {
+        background-color: #2e487c;
+        ;        ;
+
+    }
     &-sm &__txt {
         padding: 0.7rem 1.5rem;
     }

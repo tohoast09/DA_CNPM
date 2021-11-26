@@ -1,20 +1,24 @@
 import React, { useState, useEffect, useContext } from 'react'
 import PropTypes from 'prop-types'
 import CartContext from '../stores/CartContext'
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import Button from '@mui/material/Button';
 // import { withRouter } from 'react-router-dom';
 
-// import { useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 // import { addItem } from '../redux/shopping-cart/cartItemsSlide'
-// import { remove } from '../redux/product-modal/productModalSlice'
+import { remove } from '../redux/product-modal/productModalSlice'
 
-import Button from './Button'
 import numberWithCommas from '../utils/numberWithCommas'
-
+import { Navigate, useNavigate } from 'react-router';
+import Stack from "@mui/material/Stack";
+import AddBoxIcon from "@mui/icons-material/AddBox";
+import IndeterminateCheckBoxIcon from "@mui/icons-material/IndeterminateCheckBox";
 const ProductView = props => {
 
-    // const dispatch = useDispatch()
-
+    const dispatch = useDispatch()
+    const navigate=useNavigate();
     let product = props.product
 
     if (product === undefined) product = {
@@ -29,19 +33,28 @@ const ProductView = props => {
         description: ""
     }
 
+    
     const [previewImg, setPreviewImg] = useState(product.image01)
 
     const [descriptionExpand, setDescriptionExpand] = useState(false)
 
     const CrtCtx=useContext(CartContext);
 
-    const [quantity, setQuantity] = useState(1)
+    const [quantity, setQuantity] = useState(1);
 
-    const updateQuantity = (type) => {
-        if (type === 'plus') {
-            setQuantity(quantity + 1)
-        } else {
-            setQuantity(quantity - 1 < 1 ? 1 : quantity - 1)
+    function onHandleChange(event){
+        if(Number(event.target.value>0)){
+            setQuantity(Number(event.target.value));
+        }
+    }
+    
+    function onIncrease(){
+        setQuantity(prev=>{return prev+1});
+    }
+    
+    function onDecrease(){
+        if(quantity>1){
+            setQuantity(prev=>{return prev-1});
         }
     }
 
@@ -102,7 +115,7 @@ const ProductView = props => {
                     </div>
                     <div className="product-description__content" dangerouslySetInnerHTML={{__html: product.description}}></div>
                     <div className="product-description__toggle">
-                        <Button size="sm" onClick={() => setDescriptionExpand(!descriptionExpand)}>
+                        <Button size="sm" variant='contained' onClick={() => setDescriptionExpand(!descriptionExpand)}>
                             {
                                 descriptionExpand ? 'Thu gọn' : 'Xem thêm'
                             }
@@ -123,21 +136,43 @@ const ProductView = props => {
                     <div className="product__info__item__title">
                         Số lượng
                     </div>
-                    <div className="product__info__item__quantity">
-                        <div className="product__info__item__quantity__btn" onClick={() => updateQuantity('minus')}>
-                            <i className="bx bx-minus"></i>
-                        </div>
-                        <div className="product__info__item__quantity__input">
-                            {quantity}
-                        </div>
-                        <div className="product__info__item__quantity__btn" onClick={() => updateQuantity('plus')}>
-                            <i className="bx bx-plus"></i>
-                        </div>
-                    </div>
+                <Stack spacing={0} direction="row" alignItems="center">
+                <IndeterminateCheckBoxIcon
+                  color="primary"
+                  fontSize="large"
+                  sx={{ cursor: "pointer" }}
+                  onClick={onDecrease}
+                />
+                <input
+                  type="number"
+                  style={{
+                    width: "40px",
+                    height: "24px",
+                    textAlign:"center",
+                    border: "none",
+                    outline: "none",
+                    fontWeight:'600',
+                  }}
+                  value={quantity}
+                  onChange={onHandleChange}
+                ></input>
+
+                <AddBoxIcon
+                  color="primary"
+                  fontSize="large"
+                  sx={{ cursor: "pointer" }}
+                  onClick={onIncrease}
+                />
+              </Stack>
                 </div>
                 <div className="product__info__item">
-                    <Button onClick={addToCart}>thêm vào giỏ</Button>
-                    <Button onClick={() => {/*goToCart()*/} }>mua ngay</Button>
+                    <Button size='large' onClick={addToCart} startIcon={<AddShoppingCartIcon/>} variant='contained'>thêm vào giỏ</Button>
+                    <Button size='large' onClick={() => {
+                        if('modal' in props){
+                            dispatch(remove());
+                        }
+                        navigate('/cart')
+                        } } variant='contained'>mua ngay</Button>
                 </div>
             </div>
             <div className={`product-description mobile ${descriptionExpand ? 'expand' : ''}`}>

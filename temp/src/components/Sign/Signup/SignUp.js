@@ -53,15 +53,12 @@ export default function SignUp(props) {
 
         const email = data.get("email");
         const password = data.get("password");
-        const firstName = data.get("firstName");
-        const lastName = data.get("lastName");
-        if (email && password && firstName && lastName)
-            registerUser(email, firstName, lastName, password);
+        const name = data.get("name");
+        if (email && password && name) registerUser(name, email, password);
         console.log({
             email: email,
             password: password,
-            firstName: firstName,
-            lastName: lastName,
+            name: name,
         });
     };
 
@@ -97,23 +94,11 @@ export default function SignUp(props) {
                         <Grid container spacing={2}>
                             <Grid item xs={12} sm={6}>
                                 <TextField
-                                    required
-                                    fullWidth
-                                    id="lastName"
-                                    label="Họ"
-                                    name="lastName"
-                                    autoComplete="family-name"
-                                    autoFocus
-                                />
-                            </Grid>
-
-                            <Grid item xs={12} sm={6}>
-                                <TextField
                                     autoComplete="given-name"
-                                    name="firstName"
+                                    name="name"
                                     required
                                     fullWidth
-                                    id="firstName"
+                                    id="name"
                                     label="Tên"
                                 />
                             </Grid>

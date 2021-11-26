@@ -7,8 +7,9 @@ function OrderDetailCard(props) {
     return (
         <div className={order.OrderDetailCard}>
             <div className={order.orderProduct}>
-                    <img src="https://www.trustpilot.com/review/bobcares.com?utm_medium=Trustbox&utm_source=BlogPost" alt="Hình ảnh sản phẩm" width="500" height="600"/>
                 <div className={order.productImg}>
+                <img src={props.data.img} alt="Hình ảnh sản phẩm" width="500" height="600"/>
+
                 </div>
                 <div className={order.productProp}>
                     <div className={order.productName}>{props.data.bookName}</div>

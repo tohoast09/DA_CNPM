@@ -87,7 +87,13 @@ const ElementRoutes = () => {
             }/>
             <Route path='/account/*' element={
                 <PrivateRoute check_user={true} route="/login">
-                    <Account/>
+                <Header/>
+                <div className='container'>
+                    <div className='main'>
+                        <Account />
+                    </div>
+                </div>
+                <Footer/>
                 </PrivateRoute>
             }/>
         </Routes>

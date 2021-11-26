@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useUserInfo } from "../../../context/getUserAPI";
+import { useUserInfo } from "../../../assets/firebase-data/getUserAPI";
 import classes from "./Order.module.css";
 
 function OrderCard(props) {

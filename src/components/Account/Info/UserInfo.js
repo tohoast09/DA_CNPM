@@ -9,20 +9,19 @@ import { React } from "react";
 import account from "../Account.module.css";
 import ChangePass from "./ChangePass";
 import { useState } from "react";
-
-import { useUserContext } from "../../../context/userContext";
-import { useUserInfo } from "../../../context/getUserAPI";
+import { useUserInfo } from "../../../assets/firebase-data/getUserAPI";
+import { useUserContext } from "../../../stores/AppState";
 
 function UserInfo(props) {
     const { userInfo, updateUserInfo } = useUserInfo();
-    // const [data, setData] = useState(userInfo)
     const [nameInput, setNameInput] = useState(userInfo.name);
     const [phoneInput, setPhoneInput] = useState(userInfo.phone);
     const [bdateInput, setBdateInput] = useState(userInfo.bdate);
     const [genderInput, setGenderInput] = useState(userInfo.gender);
     // const [loading, setLoading] = useState(true);
     // console.log("render userInfo: ", userInfo);
-
+    const {logoutUser}=useUserContext();
+    console.log(phoneInput);
 
     const [pwdPopup, setpwdPopup] = useState(false);
 
@@ -157,6 +156,7 @@ function UserInfo(props) {
                             variant="contained"
                             size="large"
                             className={`${account.changePassword} ${account.update}`}
+                            onClick={logoutUser}
                         >
                             Đăng xuất tài khoản
                         </Button>

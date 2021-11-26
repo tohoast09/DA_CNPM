@@ -3,9 +3,7 @@ import Button from "@mui/material/Button";
 import address from "./Address.module.css";
 import { useState } from "react";
 import AddAddress from "./AddAddress";
-import { useUserContext } from "../../../context/userContext";
-import { useUserInfo } from "../../../context/getUserAPI";
-
+import { useUserInfo } from "../../../assets/firebase-data/getUserAPI";
 function Address() {
     // const {getAddress} = useUserContext;
     const [addPopup, setaddPopup] = useState(false);

@@ -19,7 +19,7 @@ import { useUserInfo } from "../../assets/firebase-data/getUserAPI";
 import Loading from "../Loading";
 import { set } from "../../redux/product-modal/productModalSlice";
 import { VpnLock } from "@mui/icons-material";
-import CartContext, { CartContextProvider } from "../../stores/CartContext";
+import CartContext from "../../stores/CartContext";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 import { useNavigate } from "react-router";
@@ -29,7 +29,7 @@ const steps = [
   "Phương thức thanh toán"
 ];
 
-const theme = createTheme();
+const theme = createTheme(); 
 const UseStyles = makeStyles({
   root: {
     "& .MuiFormControl-root": {
@@ -132,8 +132,8 @@ export default function CardPay() {
     if (activeStep === 0) {
       return (
         <form className={classes.root} onSubmit={HandleSubmit}>
-          <TextField label="Họ và tên" variant="outlined" onChange={HandleChange} name='name'  value={Info.name} />
-          <TextField label="Số điện thoại" variant="outlined" onChange={HandleChange} name='phone'  value={Info.phone} type='number'/>
+          <TextField label="Họ và tên" required variant="outlined" onChange={HandleChange} name='name'  value={Info.name} />
+          <TextField label="Số điện thoại" required variant="outlined" onChange={HandleChange} name='phone'  value={Info.phone} type='number'/>
           <Box sx={{ display: "flex", flexDirection: "row", pt: 3 }}>
             <Button
               color="inherit"

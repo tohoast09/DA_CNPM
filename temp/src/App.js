@@ -1,29 +1,27 @@
 // import logo from './logo.svg';
 import "./App.css";
 import Button from "@mui/material/Button";
-import Backdrop from "./components/Sign/Backdrop";
 import { Link } from "react-router-dom";
-import Login from "./components/Sign/Login/Login";
-import SignUp from "./components/Sign/Signup/SignUp";
-import Forget from "./components/Sign/Forget/Forget";
-import ForgetChangePass from "./components/Sign/Forget/ForgetChangePass";
+// import Backdrop from "./components/Sign/Backdrop";
+// import Login from "./components/Sign/Login/Login";
+// import SignUp from "./components/Sign/Signup/SignUp";
+// import Forget from "./components/Sign/Forget/Forget";
+// import ForgetChangePass from "./components/Sign/Forget/ForgetChangePass";
+// import Address from "./components/Account/Address/Address";
+// import Noti from "./components/Account/Noti/Noti";
+// import Order from "./components/Account/Order/Order";
+// import app from "./components/Sign/temp/fire.js";
+// import Authentication from "./components/Sign/Authentication";
 import Account from "./components/Account/Account";
-import Address from "./components/Account/Address/Address";
-import Noti from "./components/Account/Noti/Noti";
-import Order from "./components/Account/Order/Order";
 import Main from "./Main.js";
-import app from "./components/Sign/temp/fire.js";
 
 import { Routes, Route } from "react-router-dom";
-// import { Redirect } from "react-router";
 
 import { useState, useEffect } from "react";
 import { useUserContext } from "./context/userContext";
-// import Auth from "./components/Sign/temp/Auth";
-import Authentication from "./components/Sign/Authentication";
 
 function App() {
-    const [popUp, setPopUp] = useState("");
+    // const [popUp, setPopUp] = useState("");
 
     // const [user, setUser] = useState("");
     // const [email, setEmail] = useState("");
@@ -97,7 +95,7 @@ function App() {
     // useEffect(() => {
     //     authListener();
     // }, []);
-    const { loading, emailError, passwordError, user, logoutUser } =
+    const {  user } =
         useUserContext();
 
     return (

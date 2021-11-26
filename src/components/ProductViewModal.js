@@ -4,8 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import ProductView from './ProductView'
 
-import Button from './Button'
-
+import Button from '@mui/material/Button'
 import { remove } from '../redux/product-modal/productModalSlice'
 
 import ProductData from '../assets/firebase-data/products'
@@ -24,11 +23,12 @@ const ProductViewModal = () => {
     return (
         <div className={`product-view__modal ${product === undefined ? '' : 'active'}`}>
             <div className="product-view__modal__content">
-                <ProductView product={product}/>
+                <ProductView product={product} modal={true}/>
                 <div className="product-view__modal__content__close">
                     <Button
-                        size="sm"    
+                        size="large"    
                         onClick={() => dispatch(remove())}
+                        variant='contained'
                     >
                         đóng
                     </Button>

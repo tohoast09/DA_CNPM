@@ -6,11 +6,9 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import { Input } from "reactstrap";
 import address from "./Address.module.css";
-import { useUserContext } from "../../../context/userContext";
 import { useNavigate } from "react-router";
-import { useUserInfo } from "../../../context/getUserAPI";
 // import account from '../address.module.css'
-
+import { useUserInfo } from "../../../assets/firebase-data/getUserAPI";
 function AddAddress(props) {
     const history = useNavigate();
     const [name, setName] = useState("");

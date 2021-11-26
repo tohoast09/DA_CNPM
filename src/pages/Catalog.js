@@ -61,7 +61,7 @@ const Catalog = () => {
         }
     }
 
-    const clearFilter = () => setFilter(initFilter)
+    const clearFilter = () => setFilter((prev)=>{return {...initFilter,title:prev.title};});
 
     const updateProducts = useCallback(
         () => {
@@ -161,6 +161,14 @@ const Catalog = () => {
                                     </div>
                                 ))
                             }
+                        </div>
+                    </div>
+                    <div className="catalog__filter__widget">
+                        <div className="catalog__filter__widget__title">
+                            giá
+                        </div>
+                        <div className="catalog__filter__widget__content">
+                             
                         </div>
                     </div>
 

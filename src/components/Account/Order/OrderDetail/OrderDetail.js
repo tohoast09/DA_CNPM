@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useUserInfo } from "../../../../context/getUserAPI";
 import order from "../Order.module.css";
 import OrderDetailCard from "./OrderDetailCard";
+import { useUserInfo } from "../../../../assets/firebase-data/getUserAPI";
 
 function OrderDetail() {
     const { orderDetail } = useUserInfo();
@@ -21,8 +21,6 @@ function OrderDetail() {
             <h1>
                 Chi tiết đơn hàng #<span>{orderDetail.id}</span>
             </h1>
-            <img src="https://lucloi.vn/wp-content/uploads/2021/03/151260959_116663000465628_4883317510036424454_n.jpg" alt="bug ảnh" />
-            <iframe src="https://drive.google.com/file/d/1igcSYLgNajQW9CMAO07XY-QgkiXZz939/preview" width="640" height="480" allow="autoplay"></iframe>
             <div className={`${order.MainContent} ${order.orderDetail}`}>
                 <div className={order.orderInsideContent}>
                     <ul>

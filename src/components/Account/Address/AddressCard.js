@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import address from "./Address.module.css";
 import Button from "@mui/material/Button";
-import { useUserContext } from "../../../context/userContext";
-import { useUserInfo } from "../../../context/getUserAPI";
+import { useUserInfo } from "../../../assets/firebase-data/getUserAPI";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 function AddressCard(props) {
     const { setDefaultAddress, delAddress } = useUserInfo();

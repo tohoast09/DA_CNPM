@@ -8,9 +8,21 @@ import { UserContextProvider } from './stores/AppState';
 import { FilterStateProvider } from './stores/AppState';
 import { CartContextProvider } from './stores/CartContext';
 import GetUserProvider from './assets/firebase-data/getUserAPI';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+const theme = createTheme({
+   palette:{
+     primary:{
+       main: '#4267b2',
+     }
+   }
+});
+
+
 function App() {
   
   return (
+    <ThemeProvider theme={theme}>
     <UserContextProvider>
     <CartContextProvider>
 
@@ -22,7 +34,7 @@ function App() {
     </FilterStateProvider>
     </CartContextProvider>
     </UserContextProvider>
-
+    </ThemeProvider>
       );
 }
 

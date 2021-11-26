@@ -8,7 +8,7 @@ import CartContext from '../../stores/CartContext';
 import Loading from '../../components/Loading';
 
 
-
+// à đúng r sorry 
 const GetUserContext=React.createContext();
 
 
@@ -19,11 +19,12 @@ export function useUserInfo(){
 }
 
 export default function GetUserProvider(props) {
-
-
     const [addressInfo, setAdd]=useState([]);
     const [userInfo, setUserInfo] = useState({});
-    const [notiInfo, setNoti] = useState([]);
+    const [orderId, setOrderId] = useState("");
+    const [orderDetail, setOrderDetail] = useState({});
+
+    // const [notiInfo, setNoti] = useState([]);
     const [isLoading, setLoading]=useState(true);
     const [loadingAdd, setLoadingAdd]=useState(true);
     const [loadingInfo, setLoadingInfo]=useState(true);
@@ -31,7 +32,7 @@ export default function GetUserProvider(props) {
     
     const [orders, setOrders] = useState([]);
 
-    const [tempcart, setTempcart]=useState([]);
+    // const [tempcart, setTempcart]=useState([]);
     const {user} = useUserContext();
     const CrtCtx=useContext(CartContext);
 
@@ -45,6 +46,7 @@ export default function GetUserProvider(props) {
             // console.log("userInfo: ", userInfo.phone);
             // console.log("userInfo: ", userInfo.gender);
             // console.log("userInfo: ", userInfo.bdate);
+            setLoadingInfo(false);
         });
     };
 
@@ -64,43 +66,57 @@ export default function GetUserProvider(props) {
         return onSnapshot(query(
             collection(db, "users/"+ user.uid + "/address"),
             orderBy("defaultAddr", "desc")), (snapshot)=>{
-                setLoadingAdd(true);
                 const addr=[];
                 snapshot.docs.map(doc=>{ 
                     addr.push({id: doc.id, data: doc.data()});
                 });
                 setAdd(addr);
+
                 setLoadingAdd(false);
+                console.log("IIIIIIIII");
         });
     }
 
-    const getOrder = () => {
+    const getOrders = () => {
         return onSnapshot(
             collection(db, "users/" + user.uid + "/orders"),
             (snapshot) => {
-                setLoadingOrder(true);
+                console.log('DAMN WHYY');
                 const ords = [];
-                snapshot.docs.map((doc) => {
+                snapshot.docs.map((doc) => { 
                     ords.push({ id: doc.id, data: doc.data() });
                 });
                 setOrders(ords);
+                console.log(ords);
                 setLoadingOrder(false);
-                console.log("Orders: ", ords);
+                console.log("NOOOOOOOO");
+                //ủa sao lạ v có return promise chổ nào ko 
+                //lúc mà nhiều đơn á, nó ko chạy dc dòng NOOOO luôn, lúc mà nhiều đơn nó kêu undefined
+                //hoi cay :v
+                //à rồi đm, ủa hài vậy, khoan nha :v Đăng nó làm hài quá
             }
         );
     };
 
-    const getNoti=()=>{
-        return onSnapshot(
-            collection(db, "users/"+ user.uid + "/noti"), (snapshot)=>{
-            const noti=[];
-            snapshot.docs.map(doc=>{
-                //do with each noti
-                noti.push({id: doc.id, data: doc.data()});
-            });
-            setNoti(noti);
-        });
-    }
+    const getOrderDetail = (orderId) => {
+        var i = 0;
+        for (i = 0; i < orders.length; i++) {
+            if (orders[i].id === orderId) setOrderDetail(orders[i]);
+            console.log(orderDetail);
+        }
+    };
+
+    // const getNoti=()=>{
+    //     return onSnapshot(
+    //         collection(db, "users/"+ user.uid + "/noti"), (snapshot)=>{
+    //         const noti=[];
+    //         snapshot.docs.map(doc=>{
+    //             //do with each noti
+    //             noti.push({id: doc.id, data: doc.data()});
+    //         });
+    //         setNoti(noti);
+    //     });
+    // }
 
 
 
@@ -171,8 +187,8 @@ export default function GetUserProvider(props) {
         });
     };
 
-    const delAddress = (addressID) => {
-        deleteDoc(doc(db, "users/" + user.uid + "/address", addressID));
+    const delAddress = async (addressID) => {
+        await deleteDoc(doc(db, "users/" + user.uid + "/address", addressID));
     };
 
     const addDays= (date, days)=>{
@@ -187,7 +203,7 @@ export default function GetUserProvider(props) {
                 price: item.price*(1-item.promotion/100),
                 img: item.img,
                 quantity: item.quantity,
-                name: item.name,
+                bookName: item.name,
             }
             return book;
         })
@@ -204,30 +220,42 @@ export default function GetUserProvider(props) {
         await addDoc(collection(db, "users/" + user.uid + "/orders"), payload);
     }
 
-    useEffect( () => {
-        
-        getAddress();
+    useEffect(async () => {
+        setLoading(true);
+        const result = await Promise.all([
+            getAddress(),
+            getOrders(),
+            getUserInfo(),
+        ]);
+        setLoading(false);
 
         console.log("Helo World");
         return ()=>{
         }
     }, [])
 
-    const UserInfo={
+    const UserData={
         addressInfo,
         loadingAdd,
+        loadingInfo,
+        loadingOrder,
+        orders,
+        orderId,
+        orderDetail,
+        userInfo,
+        getOrderDetail,
         addAddress,
         setDefaultAddress,
         delAddress,
-        userInfo,
         updateUserInfo,
         addOrder,
-        orders,
+        setOrderId,
     }
 
     return (
-        <GetUserContext.Provider value={UserInfo}>
-            {loadingAdd? <Loading loading={loadingAdd}/>: props.children}
+        <GetUserContext.Provider value={UserData}>
+            {/* {loadingOrder?  <Loading loading={(loadingOrder)}/>: props.children}  */}
+            {(isLoading||loadingOrder||loadingInfo||loadingAdd)? <Loading loading={(isLoading||loadingOrder||loadingInfo||loadingAdd)}/>: props.children}
         </GetUserContext.Provider>
     )
 }
