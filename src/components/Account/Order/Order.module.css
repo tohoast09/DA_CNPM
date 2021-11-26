@@ -71,6 +71,9 @@ h1 {
 
 .orderDescription a {
     margin-left: 10px;
+    color:hsl(213, 100%, 34%);
+    text-decoration: none;
+    /* display: flex; align-items: flex-end; */
 }
 
 .orderDescription.bar {
@@ -187,7 +190,7 @@ li div span {
 }
 
 .orderProduct {
-    width: 50%;
+    width: 40%;
 }
 
 .productImg {
@@ -212,6 +215,7 @@ li div span {
 
 .productName {
     height: 50px;
+    font-size: 24px;;
 }
 
 .productProp button {
@@ -251,13 +255,13 @@ button.productAdd:hover {
     width: 20%;
 }
 .productQty {
-    width: 10%;
+    width: 15%;
 }
 /* .productDiscount {
     width: 15%;
 } */
 .totalPrice {
-    width: 20%;
+    width: 25%;
 }
 
 .totalCalc {

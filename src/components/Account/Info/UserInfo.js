@@ -145,13 +145,13 @@ function UserInfo(props) {
                         >
                             Cập nhật thông tin
                         </Button>
-                        <Button
+                        {/* <Button
                             variant="contained"
                             size="large"
                             className={`${account.changePassword} ${account.update}`}
                         >
                             Sửa mật khẩu
-                        </Button>
+                        </Button> */}
                         <Button
                             variant="contained"
                             size="large"

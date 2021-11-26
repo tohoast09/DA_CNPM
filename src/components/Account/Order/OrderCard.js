@@ -8,7 +8,7 @@ function OrderCard(props) {
     return (
         <div className={classes.orderCard}>
             <div className={classes.orderId}>
-                <span>{props.id}</span>
+                <span>#{props.id}</span>
             </div>
             <div className={classes.orderDate}>
                 <span>{props.date}</span>
@@ -21,7 +21,7 @@ function OrderCard(props) {
                     }}
                     to="/account/orderdetail"
                 >
-                    Chi tiết
+                    Xem chi tiết
                 </Link>
             </div>
             <div className={classes.orderPrice}>

@@ -8,7 +8,7 @@ function OrderDetailCard(props) {
         <div className={order.OrderDetailCard}>
             <div className={order.orderProduct}>
                 <div className={order.productImg}>
-                <img src={props.data.img} alt="Hình ảnh sản phẩm" width="500" height="600"/>
+                <img src={props.data.img} alt="Hình ảnh sản phẩm" height="100%" maxWidth="200%"/>
 
                 </div>
                 <div className={order.productProp}>
