@@ -8,7 +8,7 @@ class ItemEdit extends Component {
         case 0:
           return <option key={index} value={level}>Giao thành công</option>
         case 1:
-          return <option key={index} value={level}>Đang vận chuyển</option>
+          return <option key={index} value={level}>Đang vận chuyểnnn</option>
         default:
           return <option key={index} value={level}>Chưa xử lý</option>
       }

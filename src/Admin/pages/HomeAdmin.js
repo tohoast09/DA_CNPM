@@ -22,10 +22,6 @@ class HomeAdmin extends Component {
         };
     }
 
-    getAllOrder = (order) => {
-        return order.data();
-    };
-
     getOrder = async () => {
         // const users = await collection(db, "users");
         // console.log(users);
@@ -41,12 +37,12 @@ class HomeAdmin extends Component {
                     collection(user.ref, "orders")
                 );
                 await queryOrders.forEach((order) => {
-                    console.log("Order: ", order.id);
-                    console.log(
+                    //console.log("Order: ", order.id);
+                    
                         order
                             .data()
                             .books.map((book) => console.log(book.bookName))
-                    );
+                    
                 });
             }
         });

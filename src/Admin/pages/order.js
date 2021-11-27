@@ -5,22 +5,36 @@ import Search from './components/Search';
 import Sort from './components/Sort';
 import Form from './components/Form';
 import Mockdata from './mockdata/Mockdata';
-import Item from './components/Item'; 
+import GetOrder from './mockdata/Mockdata';
+import Item from './components/Item';
 import ItemEdit from './components/ItemEdit';
-
+import connectFB from "../connectFB";
+import { db } from "../connectFB";
+import {
+  collection,
+  deleteDoc,
+  getDocs,
+  updateDoc,
+  getDoc,
+  query,
+  orderBy,
+  doc,
+  addDoc,
+  setDoc,
+} from "firebase/firestore";
 //import 'bootstrap@3.3.7'
 //import '../css/bootstrap.min.css';
 
 let arrayLevel = [];
-for(let i = 0; i < Mockdata.length; i++) {
-  if(arrayLevel.indexOf(Mockdata[i].level) === -1) {
+for (let i = 0; i < Mockdata.length; i++) {
+  if (arrayLevel.indexOf(Mockdata[i].level) === -1) {
     arrayLevel.push(Mockdata[i].level);
   }
 }
-arrayLevel.sort(function(a, b){return a - b});
+arrayLevel.sort(function (a, b) { return a - b });
 
 class Order extends Component {
-  constructor(props) {    
+  constructor(props) {
     super(props);
     this.state = {
       items: Mockdata,
@@ -50,15 +64,15 @@ class Order extends Component {
     });
   }
   handleDeleteItem = () => {
-    let {idAlert, items} = this.state;
-    if(items.length > 0) {
-      for(let i = 0; i < items.length; i++) {
-        if(items[i].id === idAlert) {
+    let { idAlert, items } = this.state;
+    if (items.length > 0) {
+      for (let i = 0; i < items.length; i++) {
+        if (items[i].id === idAlert) {
           items.splice(i, 1);
           break;
         }
       }
-      this.setState({items});
+      this.setState({ items });
     }
     this.setState({
       showAlert: false,
@@ -66,7 +80,7 @@ class Order extends Component {
       valueSearch: ''
     });
   }
-  handleEditItem = (index,item) => {
+  handleEditItem = (index, item) => {
     this.setState({
       indexEdit: index,
       idEdit: item.id,
@@ -86,14 +100,14 @@ class Order extends Component {
   }
   handleEditSelectChange = (value) => {
     this.setState({
-        levelEdit: value
+      levelEdit: value
     });
   }
   handleEditClickSubmit = () => {
-    let {items, idEdit, nameEdit, levelEdit} = this.state; 
-    if(items.length > 0) { 
-      for(let i = 0; i < items.length; i++) {
-        if(items[i].id === idEdit) {
+    let { items, idEdit, nameEdit, levelEdit } = this.state;
+    if (items.length > 0) {
+      for (let i = 0; i < items.length; i++) {
+        if (items[i].id === idEdit) {
           items[i].name = nameEdit;
           items[i].level = +levelEdit;
           break;
@@ -105,6 +119,7 @@ class Order extends Component {
     });
   }
   handleShowForm = () => {
+    console.log(Mockdata);
     this.setState({
       showForm: !this.state.showForm
     });
@@ -126,13 +141,13 @@ class Order extends Component {
     });
   }
   handleFormClickSubmit = () => {
-    let {valueItem, levelItem, items} = this.state;
-    if(valueItem.trim() === 0) return false;
+    let { valueItem, levelItem, items } = this.state;
+    if (valueItem.trim() === 0) return false;
     let newItem = {
       id: uuidv4(),
       name: valueItem,
       level: +levelItem
-    }; 
+    };
     items.push(newItem);
     this.setState({
       items,
@@ -143,38 +158,38 @@ class Order extends Component {
       valueSearch: ''
     });
   }
-  handleSort = (sortType,sortOrder) => {
-    let {items} = this.state;
-    if(sortOrder !== '' && sortType !== '') {
+  handleSort = (sortType, sortOrder) => {
+    let { items } = this.state;
+    if (sortOrder !== '' && sortType !== '') {
       let value = `${sortType}-${sortOrder}`;
-      switch(value) {
+      switch (value) {
         default:
           break;
         case "name-asc":
-          items.sort(this.compareValues('name','asc'));
+          items.sort(this.compareValues('name', 'asc'));
           break;
         case "name-desc":
-          items.sort(this.compareValues('name','desc'));
+          items.sort(this.compareValues('name', 'desc'));
           break;
         case "level-desc":
-          items.sort(this.compareValues('level','asc'));
+          items.sort(this.compareValues('level', 'asc'));
           break;
         case "level-asc":
-          items.sort(this.compareValues('level','desc'));
+          items.sort(this.compareValues('level', 'desc'));
           break;
       }
       this.setState({
-        items    : items,
-        sortType : sortType,
+        items: items,
+        sortType: sortType,
         sortOrder: sortOrder
       });
     }
   }
   // hàm cho sắp xếp động
-  compareValues = (key, order='asc') => {
-    return function(a, b) {
-      if(!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
-        return 0;   
+  compareValues = (key, order = 'asc') => {
+    return function (a, b) {
+      if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
+        return 0;
       }
       const varA = (typeof a[key] === 'string') ? a[key].toUpperCase() : a[key];
       const varB = (typeof b[key] === 'string') ? b[key].toUpperCase() : b[key];
@@ -190,36 +205,38 @@ class Order extends Component {
     };
   }
   handleSearch = (search) => {
-    let {items} = this.state;
+    let { items } = this.state;
     let itemsSearch = [...items];
     let newArray = [];
-    if(search.length <= 0) {
-      this.setState({isSearch: false})
+    if (search.length <= 0) {
+      this.setState({ isSearch: false })
     } else {
-      for(let item of itemsSearch) {
-        if(item.name.toLowerCase().indexOf(search.toLowerCase()) > -1) {
+      for (let item of itemsSearch) {
+        if (item.name.toLowerCase().indexOf(search.toLowerCase()) > -1) {
           newArray.push(item);
         }
       }
-      this.setState({isSearch: true})
+      this.setState({ isSearch: true })
     }
     this.setState({
       itemsSearch: newArray,
       valueSearch: search
     });
-  } 
+  }
+
   renderItem = () => {
-    let {items, idEdit, indexEdit, nameEdit, levelEdit, arrayLevel, isSearch, itemsSearch} = this.state;
+    const k= GetOrder;
+    let { items, idEdit, indexEdit, nameEdit, levelEdit, arrayLevel, isSearch, itemsSearch } = this.state;
     if (isSearch) {
       items = itemsSearch
     }
-    if(items.length === 0) {
+    if (items.length === 0) {
       return <Item item={0} />
     }
     return items.map((item, index) => {
-      if(item.id === idEdit) {
+      if (item.id === idEdit) {
         return (
-          <ItemEdit 
+          <ItemEdit
             key={index}
             indexEdit={indexEdit}
             nameEdit={nameEdit}
@@ -233,11 +250,11 @@ class Order extends Component {
         )
       }
       return (
-        <Item 
-          index={index+1} 
-          item={item} 
-          key={item.id} 
-          handleShowAlert={this.handleShowAlert} 
+        <Item
+          index={index + 1}
+          item={item}
+          key={item.id}
+          handleShowAlert={this.handleShowAlert}
           handleEditItem={this.handleEditItem}
         />
       )
@@ -251,31 +268,31 @@ class Order extends Component {
           title="Delete Item?"
           text={this.state.titleAlert}
           showCancelButton
-          onOutsideClick={()  => this.setState({ showAlert: false })}
-          onEscapeKey={()     => this.setState({ showAlert: false })}
-          onCancel={()        => this.setState({ showAlert: false })}
-          onConfirm={()       => this.handleDeleteItem()}
+          onOutsideClick={() => this.setState({ showAlert: false })}
+          onEscapeKey={() => this.setState({ showAlert: false })}
+          onCancel={() => this.setState({ showAlert: false })}
+          onConfirm={() => this.handleDeleteItem()}
         />
         <div className="page-header">
           <h1>Đơn hàng</h1>
         </div>
         <div className="row">
           <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-            <Search 
+            <Search
               valueSearch={this.state.valueSearch}
               handleSearch={this.handleSearch}
             />
           </div>
           <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-            <Sort 
+            <Sort
               sortType={this.state.sortType}
               sortOrder={this.state.sortOrder}
               handleSort={this.handleSort}
             />
           </div>
           <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-            <button 
-              type="button" 
+            <button
+              type="button"
               className="btn btn-info btn-block marginB10"
               onClick={this.handleShowForm}
             >
@@ -285,7 +302,7 @@ class Order extends Component {
         </div>
         <div className="row marginB10">
           <div className="col-md-offset-7 col-md-5">
-            <Form 
+            <Form
               showForm={this.state.showForm}
               arrayLevel={this.state.arrayLevel}
               valueItem={this.state.valueItem}
@@ -302,10 +319,10 @@ class Order extends Component {
           <table className="table  ">
             <thead>
               <tr>
-                <th style={{width: '10%'}} className="text-center">#</th>
+                <th style={{ width: '10%' }} className="text-center">#</th>
                 <th className="text-center">Tình trạng</th>
-                <th style={{width: '50%'}} className="text-center">Tên Sách</th>
-                <th style={{width: '15%'}}>Action</th>
+                <th style={{ width: '50%' }} className="text-center">Tên Sách</th>
+                <th style={{ width: '15%' }}>Action</th>
               </tr>
             </thead>
             <tbody>
