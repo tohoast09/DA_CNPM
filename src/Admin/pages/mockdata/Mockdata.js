@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import connectFB from "../../connectFB";
 import { db } from "../../connectFB";
 import {
@@ -13,32 +13,37 @@ import {
   addDoc,
   setDoc,
 } from "firebase/firestore";
-function getlevel(status){
-  if(status ==="complete"){
+function getlevel(status) {
+  if (status === "complete") {
     return 0;
-  }
-  else if(status === "preparing"){
+  } else if (status === "preparing") {
     return 2;
-  }
-  else{
+  } else {
     return 1;
   }
 }
-var Mockdata =[];
+var Mockdata = [];
 const getOrder = async () => {
   const queryUsers = await getDocs(collection(db, "users"));
   await queryUsers.forEach(async (user) => {
     {
       await console.log("User: ", user.id, " => ", user.data());
-      const queryOrders = await getDocs(
-        collection(user.ref, "orders")
-      );
+      const queryOrders = await getDocs(collection(user.ref, "orders"));
       await queryOrders.forEach((order) => {
         //console.log("Order: ", order.id);
         const status = order.data().status;
-        order
-          .data()
-          .books.map((book) => Mockdata.push({id: uuidv4(), level: parseInt(getlevel(status)), name: book.bookName}))
+        const orderID = order.id;
+
+        order.data().books.map((book, index) => {
+          const newBook = {
+            id: orderID,
+            idx: index,            
+            level: parseInt(getlevel(status)),
+            name: book.bookName,
+          };
+          Mockdata.push(newBook);
+          console.log("newPush: ", newBook);
+        });
       });
     }
   });
@@ -126,5 +131,5 @@ const getOrder = async () => {
 //     level: 2 // high
 //   }
 // ];
-export const GetOrder =getOrder();
+export const GetOrder = getOrder();
 export default Mockdata;

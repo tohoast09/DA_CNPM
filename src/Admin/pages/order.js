@@ -293,14 +293,14 @@ class Order extends Component {
           <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
             <button
               type="button"
-              className="btn btn-info btn-block marginB10"
+              className="btn btn-info btn-block "
               onClick={this.handleShowForm}
             >
               {this.state.showForm ? 'Close Item' : 'Add Item'}
             </button>
           </div>
         </div>
-        <div className="row marginB10">
+        <div className="row ">
           <div className="col-md-offset-7 col-md-5">
             <Form
               showForm={this.state.showForm}
