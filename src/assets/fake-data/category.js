@@ -1,15 +1,23 @@
 const category = [
     {
-        display: "Áo thun",
-        categorySlug: "ao-thun"
+        display: "Hài",
+        categorySlug: "comedy"
     },
     {
-        display: "Áo somi",
-        categorySlug: "ao-somi"
+        display: "Viễn tưởng",
+        categorySlug: "fantasy"
     },
     {
-        display: "Quần jean",
-        categorySlug: "quan-jean"
+        display: "Cổ điển",
+        categorySlug: "classical"
+    },
+    {
+        display: "Văn học",
+        categorySlug: "literature"
+    },
+    {
+        display: "Tội phạm",
+        categorySlug: "crime"
     }
 ]
 

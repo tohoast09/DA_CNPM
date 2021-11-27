@@ -183,8 +183,8 @@ function show_promotion(){
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Không đồng ý</Button>
           <Button onClick={onRemove}>Đồng ý</Button>
+          <Button color="error" onClick={handleClose}>Không đồng ý</Button>
         </DialogActions>
       </Dialog>
     </Paper>

@@ -66,14 +66,9 @@ const Home = () => {
                         gap={20}
                     >
                         {
-                            ProductDataCtx.getProducts(4).map((item, index) => (
+                            ProductDataCtx.getProductsByTag('best-seller').map((item, index) => (
                                 <ProductCard
-                                    key={index}
-                                    img01={item.image01}
-                                    img02={item.image02}
-                                    name={item.title}
-                                    price={Number(item.price)}
-                                    slug={item.slug}
+                                    data={item}
                                 />
                             ))
                         }
@@ -95,14 +90,9 @@ const Home = () => {
                         gap={20}
                     >
                         {
-                            ProductDataCtx.getProducts(8).map((item, index) => (
+                             ProductDataCtx.getProductsByTag('recent').map((item, index) => (
                                 <ProductCard
-                                    key={index}
-                                    img01={item.image01}
-                                    img02={item.image02}
-                                    name={item.title}
-                                    price={Number(item.price)}
-                                    slug={item.slug}
+                                    data={item}
                                 />
                             ))
                         }
@@ -136,12 +126,7 @@ const Home = () => {
                         {
                             ProductDataCtx.getProducts(12).map((item, index) => (
                                 <ProductCard
-                                    key={index}
-                                    img01={item.image01}
-                                    img02={item.image02}
-                                    name={item.title}
-                                    price={Number(item.price)}
-                                    slug={item.slug}
+                                    data={item}
                                 />
                             ))
                         }

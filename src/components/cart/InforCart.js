@@ -101,7 +101,7 @@ export default function InforCart(props) {
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle>{"Xóa giỏ hàng"}</DialogTitle>
+        <DialogTitle>{"Đăng nhập"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
             Bạn cần đăng nhập để thanh toán

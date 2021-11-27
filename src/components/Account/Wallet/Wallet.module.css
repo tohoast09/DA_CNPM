@@ -28,9 +28,9 @@
     display: block;
     color: #4267b2;
 }
-.button {
-    background-color: #4267b2 !important;
+.addmoney{
+    margin: 10px;
 }
-.button:hover {
-    background-color: #154094 !important;
-}
+/* .addmoney *{
+    margin: 10px;
+} */

@@ -4,9 +4,9 @@ import CartContext from '../stores/CartContext'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import Button from '@mui/material/Button';
 // import { withRouter } from 'react-router-dom';
-
+import { Rating } from '@mui/material';
 import { useDispatch } from 'react-redux'
-
+import LoadingButton from '@mui/lab/LoadingButton';
 // import { addItem } from '../redux/shopping-cart/cartItemsSlide'
 import { remove } from '../redux/product-modal/productModalSlice'
 
@@ -15,8 +15,12 @@ import { Navigate, useNavigate } from 'react-router';
 import Stack from "@mui/material/Stack";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import IndeterminateCheckBoxIcon from "@mui/icons-material/IndeterminateCheckBox";
+import StarRateIcon from '@mui/icons-material/StarRate';
+import { updateDoc,doc } from '@firebase/firestore';
+import ProductData from '../assets/firebase-data/products';
+import { db } from '../firebase';
 const ProductView = props => {
-
+    const PrdCtx=useContext(ProductData);
     const dispatch = useDispatch()
     const navigate=useNavigate();
     let product = props.product
@@ -27,17 +31,15 @@ const ProductView = props => {
         image01: null,
         image02: null,
         categorySlug: "",
-        colors: [],
         slug: "",
-        size: [],
         description: ""
     }
-
-    
+    // console.log("AAAAAAA "+product.id);
+    const [loadingReview, setLoadingReview]=useState(false);
     const [previewImg, setPreviewImg] = useState(product.image01)
 
     const [descriptionExpand, setDescriptionExpand] = useState(false)
-
+    const [reviewpoint,setReviewPoint]=useState(0);
     const CrtCtx=useContext(CartContext);
 
     const [quantity, setQuantity] = useState(1);
@@ -64,7 +66,17 @@ const ProductView = props => {
 
     }, [product])
 
-
+    const onReview=async ()=>{
+        const point=product.totalPoint;
+        const review=product.totalReview;
+        setLoadingReview(true);
+        await updateDoc(doc(db,'/books',product.id),{
+            "totalPoint":point+reviewpoint,
+            "totalReview":review+1,
+        })
+        PrdCtx.fetchData();
+        setLoadingReview(false);
+    }
     const addToCart = () => {
         let newBook={
             name: product.title,
@@ -94,7 +106,8 @@ const ProductView = props => {
     //         }
     //     }
     // }
-
+    console.log(descriptionExpand);
+    // console.log("AAAAAAAAAAAAAAAAA");
     return (
         <div className="product">
             <div className="product__images">
@@ -113,21 +126,23 @@ const ProductView = props => {
                     <div className="product-description__title">
                         Chi tiết sản phẩm
                     </div>
-                    <div className="product-description__content" dangerouslySetInnerHTML={{__html: product.description}}></div>
+                    <div className="product-description__content" dangerouslySetInnerHTML={{__html: product.description}} ></div>
                     <div className="product-description__toggle">
-                        <Button size="sm" variant='contained' onClick={() => setDescriptionExpand(!descriptionExpand)}>
+                        {product.description.length>400&&<Button size="sm" variant='contained' onClick={() => setDescriptionExpand(!descriptionExpand)}>
                             {
-                                descriptionExpand ? 'Thu gọn' : 'Xem thêm'
+                                descriptionExpand ? 'Thu Gọn' : 'Xem thêm'
                             }
                         </Button>
+                        }
                     </div>
                 </div>
             </div>
             <div className="product__info">
                 <h1 className="product__info__title">{product.title}</h1>
+                <Rating name="read-only" value={Number(product.totalPoint/product.totalReview).toFixed(1)} readOnly precision={0.5} />
                 <div className="product__info__item">
                     <span className="product__info__item__price">
-                        {numberWithCommas(product.price)}
+                        {numberWithCommas(product.price)}đ
                     </span>
                 </div>
                
@@ -173,6 +188,27 @@ const ProductView = props => {
                         }
                         navigate('/cart')
                         } } variant='contained'>mua ngay</Button>
+                </div>
+                <div className="product__info__item">
+                <div className="product__info__item__title">
+                        Đánh giá của bạn
+                    </div>
+                    <Stack spacing={2}>
+                    <Rating name="read-only" value={reviewpoint} onChange={(event, newValue)=>{setReviewPoint(newValue)}} precision={0.5} />
+                    <LoadingButton
+                        startIcon={<StarRateIcon/>}
+                        loading={loadingReview}
+                        loadingPosition="end"
+                        variant="contained"
+                        sx={{
+                            width:'30%'
+                        }}
+                        endIcon={<StarRateIcon/>}
+                        onClick={onReview}
+                    >
+                        Đánh giá
+                    </LoadingButton>
+                    </Stack>
                 </div>
             </div>
             <div className={`product-description mobile ${descriptionExpand ? 'expand' : ''}`}>

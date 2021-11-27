@@ -3,3 +3,11 @@
     position: relative;
     z-index: 0;
 }
+
+.paypal{
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

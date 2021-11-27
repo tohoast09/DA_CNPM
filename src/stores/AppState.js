@@ -49,7 +49,7 @@ export const UserContextProvider = ({ children }) => {
         return unsubscribe;
     }, []);
 
-    const registerUser = async (email, name, lname, password) => {
+    const registerUser = async (name, email, password) => {
         try {
             await createUserWithEmailAndPassword(auth, email, password).then(
                 (res) => {
@@ -57,12 +57,14 @@ export const UserContextProvider = ({ children }) => {
                     // db.collection('test').doc("Xin_chao").set(res);
                     const docRef = setDoc(doc(db, "users", res.user.uid), {
                         name: name,
-                        lname: lname,
                         email: email,
                         password: password,
+                        wallet: 0,
                     });
                 }
             );
+            navigate('/');
+
         } catch (err) {
             switch (err.code) {
                 case "auth/email-already-in-use":
@@ -78,7 +80,6 @@ export const UserContextProvider = ({ children }) => {
                     setEmailError(err.message);
             }
         }
-        navigate('/');
     };
 
     const signInUser = async (email, password) => {
@@ -185,11 +186,10 @@ export function FilterStateProvider(props){
     const initState= {
         title:"",
         category: [],
-        color: [],
-        size: []
+        tag: [],
+        price: [0,100]
     }
     const [filterState, setFilterState]=useState(initState)
-
     const context={
         state:filterState,
         searchRef: useRef(),
@@ -212,8 +212,7 @@ export function FilterStateProvider(props){
         setFilterState(initState);
         if (context.searchRef.current!==null) context.searchRef.current.value="";
     }
-    //sao rồi,  uuủa3  la5 v 
-    //export cái search hay gì chưa
+
     return(
         <FilterState.Provider value={context}>
             {props.children}

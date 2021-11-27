@@ -1,5 +1,6 @@
 import React from "react";
 import order from "../Order.module.css";
+import { Link } from "react-router-dom";
 // import Button from "@mui/material/Button";
 
 function OrderDetailCard(props) {
@@ -8,11 +9,13 @@ function OrderDetailCard(props) {
         <div className={order.OrderDetailCard}>
             <div className={order.orderProduct}>
                 <div className={order.productImg}>
+                <Link to={`/catalog/${props.data.id}`}>
                     <img
                         src={props.data.img}
                         alt="Hình ảnh sản phẩm"
                         height="100%"
                     />
+                    </Link>
                 </div>
                 <div className={order.productProp}>
                     <div className={order.productName}>
@@ -21,13 +24,13 @@ function OrderDetailCard(props) {
                 </div>
             </div>
             <div className={order.unitPrice}>
-                <span>{props.data.price}₫</span>
+                <span>{Number(props.data.price).toLocaleString()}₫</span>
             </div>
             <div className={order.productQty}>
                 <span>{props.data.quantity}</span>
             </div>
             <div className={order.totalPrice}>
-                <span>{props.data.price * props.data.quantity}₫</span>
+                <span>{Number(props.data.price * props.data.quantity).toLocaleString()}₫</span>
             </div>
         </div>
     );

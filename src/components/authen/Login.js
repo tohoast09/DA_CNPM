@@ -71,12 +71,10 @@ export default function Login(props) {
 
     };
 
-    // const forgetPasswordHandler=(event)=>{
-    //     event.preventDefault();
-    //     console.log("Doi mat khau");
-    //     const data = new FormData(event.currentTarget);
-    //     const email = data.get("email");
-    //     if (email) forgetPassword(email);
+    // const signUpHandler =()=>{
+    //     setEmailError("");
+    //     setPasswordError("");
+    //     props.onSignup();
     // }
 
     return (
@@ -167,7 +165,7 @@ export default function Login(props) {
                             </Grid>
                             <Grid item>
                                 <Link
-                                    onClick={props.onSignup}
+                                    onClick={()=>{props.onSignup(); setEmailError(""); setPasswordError("");}}
                                     href="#"
                                     variant="body2"
                                 >

@@ -15,7 +15,16 @@ function OrderDetail() {
         }
         return res;
     };
-
+    const getStatus=()=>{
+        switch(orderDetail.data.status){
+            case 'unconfirmed':
+                return 'Đang xử lý';
+            case 'complete':
+                return 'Giao hàng thành công';
+            case 'in transit':
+                return 'Đang vận chuyển';
+        }
+    }
     return (
         <div className={order.OrderDetail}>
             <h1>
@@ -41,7 +50,7 @@ function OrderDetail() {
                                     {orderDetail.data.location_1}
                                 </span>
                                 <span className={order.infoNumber}>
-                                    {orderDetail.data.phone}
+                                    Số điện thoại: {orderDetail.data.phone}
                                 </span>
                             </div>
                         </li>
@@ -63,7 +72,7 @@ function OrderDetail() {
                                 </span>
                                 <span className={order.transportStatus}>
                                     {"Trạng thái: "}
-                                    {orderDetail.data.status}
+                                    {getStatus()}
                                 </span>
                             </div>
                         </li>
@@ -125,7 +134,7 @@ function OrderDetail() {
                             <span
                                 className={`${order.totalValue} ${order.totalCost}`}
                             >
-                                {getCost(orderDetail.data.books)}₫
+                                {getCost(orderDetail.data.books).toLocaleString()}₫
                             </span>
                         </div>
                     </div>

@@ -1,5 +1,5 @@
 .backdrop{
-    background-color: #fd000030;
+    background-color: #578ae7;
     width: 100vw;
     height: 100vh;
 }
@@ -10,6 +10,8 @@
 
 .passwordErr, .emailErr{
     color: rgb(212, 0, 0);
+    display: inline-block;
+    padding: 15px 0px 0px;
 }
 
 /* .LoginForm {

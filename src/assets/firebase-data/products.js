@@ -8,7 +8,9 @@ const ProductData = createContext({
     getAllProducts:()=>{},
     getProducts:()=>{},
     getProductBySlug:()=>{},
-    getCartItemsInfo:()=>{}
+    getCartItemsInfo:()=>{},
+    getProductsByTag:()=>{},
+    sortProducts:()=>{}
 })
 export function ProductDataProvider(props){
     const [products,setProducts] = useState([]);
@@ -30,8 +32,17 @@ export function ProductDataProvider(props){
         const start = Math.floor(Math.random() * (max - min) + min)
         return products.slice(start, start + count)
     }
-    
+    const sortProductsHandler= (func)=>{
+        setProducts((prev)=>{
+            const x=[...prev];
+            console.log(x.map(item=>item.title));
+            x.sort(func);
+            console.log(x.map(item=>item.title));
+            return x;
+        })
+    }
     const getProductBySlugHandler = (slug) => products.find(e => e.slug === slug)
+    const getProductsByTagHandler = (tag) => products.filter(e => e.tag.includes(tag))
     
     const getCartItemsInfoHandler = (cartItems) => {
         let res = []
@@ -56,7 +67,9 @@ export function ProductDataProvider(props){
         getAllProducts:getAllProductsHandler,
         getProducts:getProductsHandler,
         getProductBySlug:getProductBySlugHandler,
-        getCartItemsInfo:getCartItemsInfoHandler
+        getCartItemsInfo:getCartItemsInfoHandler,
+        getProductsByTag:getProductsByTagHandler,
+        sortProducts: sortProductsHandler
     }
 
     return (

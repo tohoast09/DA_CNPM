@@ -23,6 +23,7 @@ import CartContext from "../../stores/CartContext";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 import { useNavigate } from "react-router";
+import BKWallet from "./BKWallet";
 const steps = [
   "Thông tin cá nhân",
   "Địa chỉ nhận hàng",
@@ -72,6 +73,7 @@ export default function CardPay() {
 
   const [Info, setInfo]= useState(initStateInfo);
   const [activeStep, setActiveStep] =useState(0);
+  const [complete, setComplete]=useState(false);
   const classes = UseStyles();
   const navigate=useNavigate();
 
@@ -122,10 +124,16 @@ export default function CardPay() {
 
   const onSuccessPay = ()=>{
     toast.info('Thanh toán thành công');
+    setComplete(true);
+
   }
 
   const onErrorPay= ()=>{
     toast.error('Thanh toán thất bại')
+  }
+
+  const onErrorNotEnoughPay= ()=>{
+    toast.error('Bạn không đủ tiền trong ví')
   }
 
   const getForm = () => {
@@ -205,11 +213,13 @@ export default function CardPay() {
 
             <Box sx={{ flex: "1 1 auto" }} />
 
-            <Button type='submit' disabled={Info.method==="Paypal" || Info.method==="ViBK"}>
+            <Button type='submit' disabled={(Info.method==="Paypal"&&!complete) || (Info.method==="ViBK"&&!complete)}>
               {activeStep === steps.length - 1 ? "Xác nhận" : "Tiếp theo"}
             </Button>
           </Box>
-          {Info.method==="Paypal"&&<Paypal onSuccess={onSuccessPay} onError={onErrorPay}/>}
+          {(Info.method==="Paypal"&&complete===false)&&<Paypal onSuccess={onSuccessPay} onError={onErrorPay}/>}
+          {(Info.method==="ViBK"&&complete===false)&&<BKWallet onSuccess={onSuccessPay} onError={onErrorPay} onErrorNotEnough={onErrorNotEnoughPay}/>}
+
         </form>
       );
     }

@@ -53,7 +53,15 @@
     animation-delay: 150ms;
 }
 
+.cate .dropdown:hover > .dropdown_menu p:nth-child(4){
+    animation: animate 300ms ease-in-out forwards;
+    animation-delay: 300ms;
+}
 
+.cate .dropdown:hover > .dropdown_menu p:nth-child(5){
+    animation: animate 300ms ease-in-out forwards;
+    animation-delay: 450ms;
+}
 
 @keyframes animate{
     0% {

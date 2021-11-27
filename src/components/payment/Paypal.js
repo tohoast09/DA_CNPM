@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useContext } from "react";
 import ReactDOM from "react-dom"
 import CartContext from "../../stores/CartContext";
+import style from './Pay.module.css'
 const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
 
 
@@ -39,10 +40,12 @@ export default function Paypal(props) {
     }
 
     return (
-        <PayPalButton
-        createOrder={(data, actions) => CreateOrder(data, actions)}
-        onApprove={(data, actions) => onApprove(data, actions)}
-      />
+        <div className={style.paypal}>
+                <PayPalButton
+                createOrder={(data, actions) => CreateOrder(data, actions)}
+                onApprove={(data, actions) => onApprove(data, actions)}
+                />
+      </div>
     );
 }
 

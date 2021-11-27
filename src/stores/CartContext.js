@@ -1,11 +1,22 @@
-import {createContext, useState} from 'react'
+import {createContext, useState, useEffect} from 'react'
 
 const CartContext=createContext();
 
 export function CartContextProvider(props){
     
-    const [userCart, SetUserCart]=useState([])
+    const [userCart, SetUserCart]=useState(()=>{
+        const data=localStorage.getItem('bookCart');
+        if(data){
+            return JSON.parse(data);
+        }
+        else{
+            return [];
+        }
+    })
 
+    useEffect(() => {
+        localStorage.setItem('bookCart', JSON.stringify(userCart));
+    }, [userCart])
     const context={
         cart:userCart,
         totalBook: getTotalBook(userCart),

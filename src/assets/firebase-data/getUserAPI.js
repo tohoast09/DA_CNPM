@@ -77,6 +77,7 @@ export default function GetUserProvider(props) {
         });
     }
 
+
     const getOrders = () => {
         return onSnapshot(
             collection(db, "users/" + user.uid + "/orders"),
@@ -90,10 +91,6 @@ export default function GetUserProvider(props) {
                 console.log(ords);
                 setLoadingOrder(false);
                 console.log("NOOOOOOOO");
-                //ủa sao lạ v có return promise chổ nào ko 
-                //lúc mà nhiều đơn á, nó ko chạy dc dòng NOOOO luôn, lúc mà nhiều đơn nó kêu undefined
-                //hoi cay :v
-                //à rồi đm, ủa hài vậy, khoan nha :v Đăng nó làm hài quá
             }
         );
     };
@@ -212,6 +209,7 @@ export default function GetUserProvider(props) {
             totalPay: CrtCtx.totalPay,
             createAt: new Date(),
             books: booklist,
+            status: 'unconfirmed'
         }
         payload['deliveryAt']= addDays(payload.createAt,4);
 
@@ -220,6 +218,24 @@ export default function GetUserProvider(props) {
         await addDoc(collection(db, "users/" + user.uid + "/orders"), payload);
     }
 
+    const payByWallet= async (value)=>{
+        const user_wallet=Number(userInfo.wallet);
+        if(value>userInfo.wallet){
+            throw ('Not enough money');
+        }
+        else{
+            await updateDoc(doc(db, "users/", user.uid),{
+                wallet: user_wallet-value,
+            });
+        }
+    }
+
+    const addWallet= async (value)=>{
+        const user_wallet=Number(userInfo.wallet);
+        await updateDoc(doc(db, "users/", user.uid),{
+                wallet: user_wallet+value,
+            });
+    }
     useEffect(async () => {
         setLoading(true);
         const result = await Promise.all([
@@ -250,6 +266,8 @@ export default function GetUserProvider(props) {
         updateUserInfo,
         addOrder,
         setOrderId,
+        payByWallet,
+        addWallet,
     }
 
     return (
