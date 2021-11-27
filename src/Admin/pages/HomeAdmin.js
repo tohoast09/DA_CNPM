@@ -1,28 +1,73 @@
-import React, {Component} from 'react';
-import ReportData from './mockdata/MockReport';
-
+import React, { Component } from "react";
+import ReportData from "./mockdata/MockReport";
+import connectFB from "../connectFB";
+import { db } from "../connectFB";
+import {
+	collection,
+	deleteDoc,
+	getDocs,
+	updateDoc,
+	getDoc,
+	query,
+	orderBy,
+	doc,
+	addDoc,
+	setDoc,
+} from "firebase/firestore";
 class HomeAdmin extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			reports: ReportData
-		}
+			reports: ReportData,
+		};
 	}
+
+	getAllOrder=(order)=>{
+		return order.data()
+	}
+
+	getOrder = async () => {
+		const users = await collection(db, "users");
+		console.log(users);
+		await users.docs.map(user=>console.log(user.data()));
+		/*users.docs.map((user) => {
+			return user.data().orders.docs.map((order) => {
+				console.log(order.data());
+				return order.data();
+			});
+		});*/
+		await console.log(users);
+	};
+
 	renderReport = () => {
-		let {reports} = this.state;
+		let { reports } = this.state;
 		return reports.map((report, index) => {
 			return (
-			  	<tr>
-					<td style={{width: '10%'}} className="text-center">{index+1}</td>
-					<td style={{width: '50%'}} className="text-left">{report.title}</td>
-					<td style={{width: '20%'}} className="text-center">{report.update}</td>
-                	<th style={{width: '20%'}} className="text-center"><a href="https://drive.google.com/file/d/17_saZOXJPa-9GyriqJ-t69eLvzSSOiqZ/view?usp=sharing">Tải về</a></th>
+				
+				<tr>
+					<td style={{ width: "10%" }} className="text-center">
+						{index + 1}
+					</td>     
+					<td style={{ width: "50%" }} className="text-left">
+						{report.title}
+					</td>
+					<td style={{ width: "20%" }} className="text-center">
+						{report.update}
+					</td>
+					<th style={{ width: "20%" }} className="text-center">
+						<a href="https://drive.google.com/file/d/17_saZOXJPa-9GyriqJ-t69eLvzSSOiqZ/view?usp=sharing">
+							Tải về
+						</a>
+					</th>
+					<button type="button" className="btn btn-info btn-block marginB10" onClick={this.getOrder}>abc</button>
 				</tr>
 			);
 		});
-	}
+	};
 	render() {
-  		return (
+		console.log(connectFB);
+		//this.getOrder();
+		return (
 			<div className="container">
 				<div className="page-header">
 					<h1>Doanh thu</h1>
@@ -30,14 +75,20 @@ class HomeAdmin extends Component {
 				<br></br>
 				<table className="table table-hover">
 					<thead>
-						<th style={{width: '10%'}} className="text-center">#</th>
-						<th style={{width: '50%'}} className="text-center">Nội dung</th>
-						<th style={{width: '20%'}} className="text-center">Ngày cập nhật</th>
-						<th style={{width: '20%'}} className="text-center">Tải về</th>
+						<th style={{ width: "10%" }} className="text-center">
+							#
+						</th>
+						<th style={{ width: "50%" }} className="text-center">
+							Nội dung
+						</th>
+						<th style={{ width: "20%" }} className="text-center">
+							Ngày cập nhật
+						</th>
+						<th style={{ width: "20%" }} className="text-center">
+							Tải về
+						</th>
 					</thead>
-					<tbody>
-						{this.renderReport()}
-					</tbody>
+					<tbody>{this.renderReport()}</tbody>
 				</table>
 			</div>
 		);
