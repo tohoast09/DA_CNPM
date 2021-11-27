@@ -41,6 +41,7 @@ function AddressCard(props) {
                     <Button
                         onClick={setDefault}
                         variant="text"
+                        size="large"
                         className={address.chooseDefault}
                     >
                         Đặt làm mặc định
@@ -48,6 +49,7 @@ function AddressCard(props) {
                     <Button
                         onClick={delAddr}
                         variant="text"
+                        size="large"
                         className={address.delAddr}
                     >
                         Xóa

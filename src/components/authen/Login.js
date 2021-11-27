@@ -98,7 +98,7 @@ export default function Login(props) {
                     }}
                 >
                     <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-                        <LockOutlinedIcon />
+                        <LockOutlinedIcon className={sign.icon}/>
                     </Avatar>
                     <Typography component="h1" variant="h5">
                         Đăng nhập

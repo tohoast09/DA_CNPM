@@ -1,5 +1,5 @@
 .backdrop{
-    background-color: #fd000030;
+    background-color: #58a0ffce;
     width: 100vw;
     height: 100vh;
 }
@@ -11,24 +11,6 @@
 .passwordErr, .emailErr{
     color: rgb(212, 0, 0);
 }
-
-/* .LoginForm {
-    background-color: rgb(255, 255, 255);
-    width: 440px;
-    padding: 10px 30px;
-    border-radius: 20px;
-    box-shadow: 0px 20px 0px 0px black;
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    background-color: white;
-    padding: 1rem;
-    z-index: 10;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-} */
 
 .muiLoginForm {
     background-color: rgb(255, 255, 255);
