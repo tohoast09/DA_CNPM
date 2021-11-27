@@ -11,6 +11,7 @@ import { getFirestore } from "firebase/firestore";
 const firebaseConfig = {
     apiKey: "AIzaSyABdlzLL7goHbfBNXPYW-dUlClQHGRBFh4",
     authDomain: "bk-book.firebaseapp.com",
+    databaseURL: "https://bk-book-default-rtdb.firebaseio.com",
     projectId: "bk-book",
     storageBucket: "bk-book.appspot.com",
     messagingSenderId: "419251146242",
