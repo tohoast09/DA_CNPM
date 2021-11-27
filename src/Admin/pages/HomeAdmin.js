@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ReportData from "./mockdata/MockReport";
 import connectFB from "../connectFB";
 import { db } from "../connectFB";
+import StatisticsRevenue from "./mockdata/StatisticsRevenue"
 import {
     collection,
     deleteDoc,
@@ -78,6 +79,7 @@ class HomeAdmin extends Component {
             );
         });
     };
+
     render() {
         console.log(connectFB);
         //this.getOrder();
@@ -104,6 +106,7 @@ class HomeAdmin extends Component {
                     </thead>
                     <tbody>{this.renderReport()}</tbody>
                 </table>
+                <StatisticsRevenue></StatisticsRevenue>
             </div>
         );
     }
