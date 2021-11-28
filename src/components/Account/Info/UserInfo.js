@@ -185,15 +185,22 @@ function UserInfo(props) {
                     {/* <label for="file-upload" class="custom-file-upload">
                         Custom Upload
                     </label> */}
-                    <label for="files" class="btn">Select Image</label>
-                    <input
-                        id="files"
-                        name="files"
-                        type="file"
-                        onChange={(event) => {
-                            setFile(event.target.files[0]);
-                        }}
-                    ></input>
+                    <div className={account.field}>
+                        <label htmlFor="bdate">Chọn ảnh đại diện</label>
+                        {/* <label for="files" class="btn">
+                            Select Image
+                        </label> */}
+                        <input
+                            className={account.input}
+                            id="files"
+                            name="files"
+                            type="file"
+                            onChange={(event) => {
+                                setFile(event.target.files[0]);
+                            }}
+                        ></input>
+                    </div>
+
                     <Button
                         variant="contained"
                         type="submit"
