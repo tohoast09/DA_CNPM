@@ -12,7 +12,7 @@ function AccountNavigation() {
                     <div
                         className={classes.img}
                         style={{
-                            background: `url(${userInfo.img}) center / cover no-repeat`
+                            background: userInfo.img?`url(${userInfo.img}) center / cover no-repeat`:`url("https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0=") center / cover no-repeat`
                         }}
                     ></div>
                     {/* <NavLink to='/account/changeavatar' className={navData=>navData.isActive?classes.avtBtnActive:classes.avtBtn}>Sửa ảnh đại diện</NavLink> */}
