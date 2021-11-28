@@ -71,6 +71,8 @@ h1 {
 
 .InfoNav .Avatar {
     width: 100%;
+    /* height: 90px; */
+    /* background: red; */
     position: relative;
     margin: auto;
     display: flex;
@@ -84,11 +86,12 @@ h1 {
     height: 25vh;
     border-radius: 40px;
     border-color: rgba(0, 0, 0, 0);
-    background-image: url("https://d.newsweek.com/en/full/1868100/what-if-watcher.png?w=790&f=423b1a1360f928cdad7773df817e1f50");
+    background-image: url("https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0=");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     margin: auto;
+    box-shadow: 0px 10px 30px 10px #00000030;
 }
 
 .avaBtn {

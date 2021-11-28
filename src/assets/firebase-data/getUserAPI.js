@@ -57,6 +57,7 @@ export default function GetUserProvider(props) {
             phone: data.phone,
             gender: data.gender,
             bdate: data.bdate,
+            img: data.img
         });
         // await console.log("userInfo updated: ", data);
     };

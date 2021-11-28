@@ -1,29 +1,29 @@
 import {createContext, useState, useContext, useEffect, useRef} from 'react'
 import {
     createUserWithEmailAndPassword,
-    updateProfile,
     onAuthStateChanged,
     signInWithEmailAndPassword,
     signOut,
     sendPasswordResetEmail,
-    updatePassword
+    // updateProfile,
+    // updatePassword
 } from "firebase/auth";
 import {
-    collection,
-    deleteDoc,
-    getDocs,
-    updateDoc,
-    getDoc,
-    query,
-    orderBy,
+    // collection,
+    // deleteDoc,
+    // getDocs,
+    // updateDoc,
+    // getDoc,
+    // query,
+    // orderBy,
+    // addDoc,
     doc,
-    addDoc,
     setDoc,
 } from "firebase/firestore";
 import { db, auth } from '../firebase';
 import Loading from '../components/Loading';
 import { useNavigate } from 'react-router';
-import { set } from '../redux/product-modal/productModalSlice';
+// import { set } from '../redux/product-modal/productModalSlice';
 const UserContext = createContext({});
 
 export const useUserContext = () => useContext(UserContext);

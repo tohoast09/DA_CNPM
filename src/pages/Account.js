@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { Container, Row } from "reactstrap";
+// import { Container, Row } from "reactstrap";
 import Address from "../components/Account/Address/Address";
 import Order from "../components/Account/Order/Order";
 import UserInfo from "../components/Account/Info/UserInfo";
@@ -12,9 +12,6 @@ import AccountNavigation from "../components/Account/AccountNav/AccountNavigatio
 import GetUserProvider from "../assets/firebase-data/getUserAPI";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-// import AccNavBar from "./AccountNav/AccNavBar";
-// import { styled } from "@mui/material/styles";
-// import Paper from "@mui/material/Paper";
 function Account() {
     return (
         <GetUserProvider>
