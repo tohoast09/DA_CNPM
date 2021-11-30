@@ -1,4 +1,63 @@
-import { v4 as uuidv4 } from "uuid";
+import {db} from '../../connectFB';
+import {
+    collection,
+    getDocs
+} from 'firebase/firestore';
+
+function getlevel(status) {
+    if (status === "complete") {
+        return 0;
+    } else if (status === "preparing") {
+        return 2;
+    } else {
+        return 1;
+    }
+}
+
+var CusDatabase = [];
+
+const getCustomer = async () => {
+    const queryCustomers = await getDocs(collection(db, "users"));
+    await queryCustomers.forEach(async (cus) => {
+        var total = 0;
+        var OrderList = [];
+        const queryOrders = await getDocs(collection(cus.ref, "orders"));
+        await queryOrders.forEach((order) => {
+            total += order.data().totalPay;
+            var timestamp = order.data().createAt;
+            var date = new Date(timestamp.seconds*1000);
+            const newOrder = {
+                code:       order.id,
+                date:       date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear()
+                            +" "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds(),
+                price:      order.data().totalPay,
+                address:    order.data().location_detail + ", " + order.data().location_3 
+                            + ", " + order.data().location_2 + ", " + order.data().location_1,
+                level:      parseInt(getlevel(order.data().status))
+            }
+            OrderList.push(newOrder);
+        });
+        const newCustomer = {
+            id:     cus.id,
+            name:   cus.data().name,
+            phone:  cus.data().phone,
+            total:  total,
+            gender: cus.data().gender,
+            bdate:  cus.data().bdate,
+            email:  cus.data().email,
+            wallet: cus.data().wallet,
+            orders: OrderList     
+        }
+        CusDatabase.push(newCustomer);
+        console.log("newCustomerPush: ", newCustomer);
+    });
+}
+
+export const GetCustomer = getCustomer();
+export default CusDatabase;
+
+
+/*import { v4 as uuidv4 } from "uuid";
 
 const CusDatabase = [
     {
@@ -103,4 +162,4 @@ const CusDatabase = [
     }
 ];
 
-export default CusDatabase;
+export default CusDatabase;*/

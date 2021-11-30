@@ -318,9 +318,22 @@ class Warehouse extends Component {
     });
 	}
 	renderItems = () => {
-		let {items, indexEdit, idEdit, titleEdit, priceEdit, quantityEdit, categorySlugEdit, 
-					descriptionEdit, image01Edit, image02Edit, promotionEdit, tagEdit, slugEdit, 
-				isSearch, itemsSearch} = this.state;
+		let {items, 
+			indexEdit, 
+			idEdit, 
+			titleEdit, 
+			priceEdit, 
+			quantityEdit, 
+			categorySlugEdit, 
+			descriptionEdit, 
+			image01Edit, 
+			image02Edit, 
+			promotionEdit, 
+			tagEdit, 
+			slugEdit, 
+			isSearch, 
+			itemsSearch} = this.state;
+		
 		if (isSearch) {
       items = itemsSearch
     }
