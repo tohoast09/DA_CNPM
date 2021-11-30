@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
 import SweetAlert from 'react-bootstrap-sweetalert';
 import WHData from './mockdata/MockWarehouse';
-import GetBook from './mockdata/MockWarehouse';
 import Item from './warehouse-components/items';
 import Form from './warehouse-components/form';
 import WHEdit from './warehouse-components/edit';
 import Search from './warehouse-components/search';
 import {db} from '../connectFB';
-import {	doc, 
-					updateDoc,
-					collection,
-					addDoc} 
-	from 'firebase/firestore';
+import {doc, 
+				updateDoc,
+				collection,
+				addDoc,
+				deleteDoc 
+} from 'firebase/firestore';
 
 
 class Warehouse extends Component {
@@ -47,10 +47,7 @@ class Warehouse extends Component {
 			tagEdit: '',
 
 			showAlert: false,
-			sttAlert: '',
-			nameAlert: '',
-			priceAlert: '',
-			quantityAlert: 0,
+			idAlert: '',
 
 			isSearch: false,
 			valueSearch: '',
@@ -167,18 +164,15 @@ class Warehouse extends Component {
 	handleShowAlert = (item) => {
 		this.setState({
 			showAlert: true,
-			sttAlert: item.stt,
-			nameAlert: item.name,
-			priceAlert: item.price,
-			quantityAlert: item.quantity
+			idAlert: item.id
 		})
 	}
 	handleDeleteBook = () => {
-		let {sttAlert, items} = this.state;
+		let {idAlert, items} = this.state;
 		if(items.length > 0) {
       for(let i = 0; i < items.length; i++) {
-        if(items[i].stt === sttAlert) {
-          items.splice(i, 1);
+        if(items[i].id === idAlert) {
+          deleteDoc(doc(db, "books", items[i].id));
           break;
         }
       }
