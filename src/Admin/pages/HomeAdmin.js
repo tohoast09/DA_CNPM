@@ -39,10 +39,12 @@ class HomeAdmin extends Component {
                 );
                 await queryOrders.forEach((order) => {
                     //console.log("Order: ", order.id);
+
                     
                         order
                             .data()
                             .books.map((book) => console.log(book.bookName))                    
+
                 });
             }
         });
