@@ -4,31 +4,94 @@ class Form extends Component {
     render() {
         if (this.props.showForm === false) return null;
         return (
-            <form className="form-inline" onSubmit={()=>this.props.handleFormClickSubmit()}>
-                <div className="form-group marginR5">
+            <form className="form-inline">
+				<br/>
+                <div className="form-group marginR5" style={{width: '250%'}}>
                     <input 
+	  	                style={{width: '40%'}}
+	                    type="text" 
+	                    className="form-control" 
+	                    placeholder="tên sách" 
+	                    value={this.props.valueItem} 
+	                    onChange={(event)=>this.props.handleFormInputTitleChange(event.target.value)}
+	                />
+					<input 
+	  	                style={{width: '20%'}}
+	                    type="text" 
+	                    className="form-control" 
+	                    placeholder="giá" 
+	                    value={this.props.valueItem} 
+	                    onChange={(event)=>this.props.handleFormInputPriceChange(event.target.value)}
+	                />
+                    <input 
+	  	                style={{width: '20%'}}
+	                    type="text" 
+	                    className="form-control" 
+	                    placeholder="số lượng" 
+	                    value={this.props.valueItem} 
+	                    onChange={(event)=>this.props.handleFormInputQuantityChange(Number(event.target.value))}
+	                />
+					<input 
+	  	                style={{width: '20%'}}
+	                    type="text" 
+	                    className="form-control" 
+	                    placeholder="category slug" 
+	                    value={this.props.valueItem} 
+	                    onChange={(event)=>this.props.handleFormInputCategorySlugChange(event.target.value)}
+	                />	
+				</div>
+				<div className="form-group marginR5" style={{width: '250%'}}>
+					<input 
+	  	                style={{width: '30%'}}
+	                    type="text" 
+	                    className="form-control" 
+	                    placeholder="promotion" 
+	                    value={this.props.valueItem} 
+	                    onChange={(event)=>this.props.handleFormInputPromotionChange(event.target.value)}
+	                />
+					<input 
+	  	                style={{width: '30%'}}
+	                    type="text" 
+	                    className="form-control" 
+	                    placeholder="slug" 
+	                    value={this.props.valueItem} 
+	                    onChange={(event)=>this.props.handleFormInputSlugChange(event.target.value)}
+	                />
+					<input 
+	  	                style={{width: '40%'}}
+	                    type="text" 
+	                    className="form-control" 
+	                    placeholder="tags" 
+	                    value={this.props.valueItem} 
+	                    onChange={(event)=>this.props.handleFormInputTagChange(event.target.value)}
+	                />
+				</div>
+				<div className="form-group marginR5" style={{width: '250%'}}>
+					<input 
 	  	                style={{width: '50%'}}
 	                    type="text" 
 	                    className="form-control" 
-	                    placeholder="Tên sách" 
+	                    placeholder="ảnh 1" 
 	                    value={this.props.valueItem} 
-	                    onChange={(event)=>this.props.handleFormInputNameChange(event.target.value)}
+	                    onChange={(event)=>this.props.handleFormInputImage01Change(event.target.value)}
 	                />
-                    <input 
-	  	                style={{width: '20%'}}
+					<input 
+	  	                style={{width: '50%'}}
 	                    type="text" 
 	                    className="form-control" 
-	                    placeholder="Mã sách" 
+	                    placeholder="ảnh 2" 
 	                    value={this.props.valueItem} 
-	                    onChange={(event)=>this.props.handleFormInputCodeChange(event.target.value)}
-	                />
-                    <input 
-	  	                style={{width: '20%'}}
+	                    onChange={(event)=>this.props.handleFormInputImage02Change(event.target.value)}
+	                />	
+				</div>
+				<div className="form-group marginR5" style={{width: '250%'}}>
+					<input 
+	  	                style={{width: '100%'}}
 	                    type="text" 
 	                    className="form-control" 
-	                    placeholder="Số lượng" 
+	                    placeholder="mô tả" 
 	                    value={this.props.valueItem} 
-	                    onChange={(event)=>this.props.handleFormInputQuantityChange(event.target.value)}
+	                    onChange={(event)=>this.props.handleFormInputDescriptionChange(event.target.value)}
 	                />
                 </div>
                 <button 
@@ -52,3 +115,4 @@ class Form extends Component {
 };
 
 export default Form;
+// onSubmit={()=>this.props.handleFormClickSubmit()}

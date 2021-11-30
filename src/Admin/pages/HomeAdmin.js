@@ -42,8 +42,7 @@ class HomeAdmin extends Component {
                     
                         order
                             .data()
-                            .books.map((book) => console.log(book.bookName))
-                    
+                            .books.map((book) => console.log(book.bookName))                    
                 });
             }
         });
@@ -106,7 +105,7 @@ class HomeAdmin extends Component {
                     </thead>
                     <tbody>{this.renderReport()}</tbody>
                 </table>
-                <StatisticsRevenue></StatisticsRevenue>
+                {/*<StatisticsRevenue></StatisticsRevenue>*/}
             </div>
         );
     }

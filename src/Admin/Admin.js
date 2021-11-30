@@ -29,7 +29,7 @@ function Admin() {
             <NavbarAdmin/>
             <Order/>
           </Route>
-          <Route path='/admin/team' >
+          <Route path='/admin/warehouse' >
             <NavbarAdmin/>
             <Warehouse/>
           </Route>

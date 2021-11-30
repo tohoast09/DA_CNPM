@@ -1,4 +1,36 @@
-import {v4 as uuidv4} from "uuid";
+import {db} from '../../connectFB';
+import {
+    collection,
+    getDocs
+} from 'firebase/firestore';
+
+var WHData = [];
+
+const getBook = async () => {
+    const queryBooks = await getDocs(collection(db, "books"));
+    await queryBooks.forEach(async (book) => {
+        const newBook = {
+            id:				book.id,
+            title: 			book.data().title,
+            price: 			book.data().price, 
+            quantity: 		book.data().quantity,
+            categorySlug: 	book.data().categorySlug,
+            description: 	book.data().description,
+			image01:		book.data().image01,
+			image02:		book.data().image02,
+			promotion:		book.data().promotion,
+			slug:			book.data().slug,
+			tag:			book.data().tag
+        }
+        WHData.push(newBook);
+        console.log("newBookPush: ", newBook);
+    });
+}
+
+export const GetBook = getBook();
+export default WHData;
+
+/*import {v4 as uuidv4} from "uuid";
 
 const WHData = [
     {
@@ -123,4 +155,4 @@ const WHData = [
     }
 ];
 
-export default WHData;
+export default WHData; */

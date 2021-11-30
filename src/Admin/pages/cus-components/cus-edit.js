@@ -14,27 +14,27 @@ class CusEdit extends Component {
       }
   render() {
     return(
-      <tr>
-        <td className="text-center">{this.props.indexEdit}</td>
+      <tr>        
         <td style={{width: '15%'}}>
           <input 
-            type="text" 
+            type="text"             
             className="form-control" 
             value={this.props.idEdit}  
             onChange={(event) => this.props.handleIDEditInputChange(event.target.value)}
           />
         </td>
-        <td style={{width: '25%'}}>
+        <td style={{width: '20%'}}>
           <input 
-            type="text" 
+            type="text"             
             className="form-control" 
             value={this.props.nameEdit}  
             onChange={(event) => this.props.handleNameEditInputChange(event.target.value)}
           />
         </td>
-        <td className="text-center">
+        <td>
           <select             
             className="form-control"
+            style={{width: '10%'}}
             value={this.props.sexEdit}
             onChange={(event) => this.props.handleEditSelectChange(event.target.value)} 
           >
@@ -51,15 +51,15 @@ class CusEdit extends Component {
         </td>
         <td style={{width: '15%'}}>
           <input             
-            type="text" 
+            type="text"             
             className="form-control" 
             value={this.props.phoneEdit}  
             onChange={(event) => this.props.handlePhoneEditInputChange(event.target.value)}
           />
         </td>
-        <td style={{width: '15%'}}>
+        <td style={{width: '20%'}}>
           <input             
-            type="text" 
+            type="text"  
             className="form-control" 
             value={this.props.emailEdit}  
             onChange={(event) => this.props.handleEmailEditInputChange(event.target.value)}

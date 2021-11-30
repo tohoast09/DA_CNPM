@@ -24,7 +24,7 @@ export const SidebarData = [
   },
   {
     title: 'Quản lý kho',
-    path: '/admin/team',
+    path: '/admin/warehouse',
     icon: <IoIcons.IoIosPaper/>,
     cName: 'nav-text'
   },

@@ -15,14 +15,14 @@ class Item extends Component {
 		return (
 			<tr>
 				<td style={{width: '10%'}} className="text-center">{index}</td>
-				<td style={{width: '40%'}} className="text-center">{item.name}</td>
-				<td style={{width: '15%'}} className="text-center">{item.code}</td>
+				<td style={{width: '40%'}} className="text-center">{item.title}</td>
+				<td style={{width: '15%'}} className="text-center">{item.price}</td>
 				<td style={{width: '20%'}} className="text-center">{item.quantity}</td>
         <td>
           <button 
             type="button" 
             className="btn btn-warning btn-sm marginR5"
-            onClick={()=>this.props.handleEditBook(index,item)}
+            onClick={()=>this.props.handleEditBook(item, index)}
           >
             Edit
           </button>
