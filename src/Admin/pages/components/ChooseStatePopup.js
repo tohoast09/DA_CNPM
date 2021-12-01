@@ -1,6 +1,8 @@
 import React from "react";
 import chef from "./Chef.module.css";
 import { useState } from "react";
+import {doc, updateDoc, deleteDoc} from "firebase/firestore";
+import {db} from "../../connectFB";
 // import axios from "axios";
 // import Button from "@mui/material/Button";
 function OrderStatePopup(props) {
@@ -26,10 +28,19 @@ function OrderStatePopup(props) {
     //     setRefund(total);
     // }
 
-    const onConfirmHandler = async (status) => {
+    const onConfirmHandler = async (status) => { 
         await setconfirmPopup(false);
         // await update();
-        await props.onChooseState(status);
+        // await props.onChooseState(status);
+        setState(status);
+        const orderRef = doc(doc(db, "users", props.cusID), "orders", props.id);
+        if (status === "Done") {
+            updateDoc(orderRef, {status: "complete"});
+        }
+        else if (status === "Canceled") {
+            deleteDoc(orderRef);
+        }
+        
     };
     function onCancelHandler() {
         setconfirmPopup(false);
@@ -81,10 +92,10 @@ function OrderStatePopup(props) {
             {(props.level===1||
                 props.level===2) && (
                 <button
-                    // onClick={() => {
-                    //     confirmPopupHandler("Canceled");
+                    onClick={() => {
+                         confirmPopupHandler("Canceled");
                     //     confirmUpdateRefund(refund + props.total);
-                    // }}
+                    }}
                     className={chef.cancelOrder}
                 >
                     Hủy đơn

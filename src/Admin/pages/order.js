@@ -3,11 +3,9 @@ import { v4 as uuidv4 } from "uuid";
 import SweetAlert from "react-bootstrap-sweetalert";
 import Search from "./components/Search";
 import Sort from "./components/Sort";
-import Form from "./components/Form";
 import Mockdata from "./mockdata/Mockdata";
 import GetOrder from "./mockdata/Mockdata";
 import Item from "./components/Item";
-import ItemEdit from "./components/ItemEdit";
 import connectFB from "../connectFB";
 import { db } from "../connectFB";
 import {
@@ -249,28 +247,11 @@ class Order extends Component {
             return <Item item={0} />;
         }
         return items.map((item, index) => {
-            if (item.id === idEdit) {
-                return (
-                    <ItemEdit
-                        key={index}
-                        indexEdit={indexEdit}
-                        nameEdit={nameEdit}
-                        levelEdit={levelEdit}
-                        arrayLevel={arrayLevel}
-                        handleEditClickCancel={this.handleEditClickCancel}
-                        handleEditInputChange={this.handleEditInputChange}
-                        handleEditSelectChange={this.handleEditSelectChange}
-                        handleEditClickSubmit={this.handleEditClickSubmit}
-                    />
-                );
-            }
             return (
                 <Item
                     index={index + 1}
                     item={item}
                     key={item.id}
-                    handleShowAlert={this.handleShowAlert}
-                    handleEditItem={this.handleEditItem}
                 />
             );
         });
@@ -292,29 +273,16 @@ class Order extends Component {
                     <h1>Đơn hàng</h1>
                 </div>
                 <div className="row">
-                    <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 " style={{paddingLeft: '120px'}}>
+                    <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
+                    <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5 " style={{paddingLeft: '120px'}}>
                         <Search
                             valueSearch={this.state.valueSearch}
                             handleSearch={this.handleSearch}
                         />
                     </div>
                 </div>
-                <div className="row ">
-                    <div className="col-md-offset-7 col-md-5">
-                        <Form
-                            showForm={this.state.showForm}
-                            arrayLevel={this.state.arrayLevel}
-                            valueItem={this.state.valueItem}
-                            handleFormInputChange={this.handleFormInputChange}
-                            levelItem={this.state.levelItem}
-                            handleFormSelectChange={this.handleFormSelectChange}
-                            handleFormClickCancel={this.handleFormClickCancel}
-                            handleFormClickSubmit={this.handleFormClickSubmit}
-                        />
-                    </div>
-                </div>
                 <div className="panel panel-success">
-                    <div className="panel-heading">List Item</div>
+                    <br/>
                     <table className="table  ">
                         <thead>
                             <tr>
@@ -331,7 +299,7 @@ class Order extends Component {
                                 >
                                     Tên Sách
                                 </th>
-                                <th style={{ width: "15%" }}>Action</th>
+                                <th className="text-center" style={{ width: "15%" }}>Action</th>
                             </tr>
                         </thead>
                         <tbody>{this.renderItem()}</tbody>

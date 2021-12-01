@@ -303,7 +303,7 @@ class Warehouse extends Component {
       this.setState({isSearch: false})
     } else {
       for(let item of itemsSearch) {
-        if( item.name.toLowerCase().indexOf(search.toLowerCase()) > -1 || 
+        if( item.title.toLowerCase().indexOf(search.toLowerCase()) > -1 || 
             item.price.toLowerCase().indexOf(search.toLowerCase()) > -1  ||
 						item.quantity.toString().indexOf(search.toLowerCase()) > -1 ) 
         {
@@ -406,14 +406,18 @@ class Warehouse extends Component {
 				<br></br>
 
 				<div className="row">
+					<div className="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
 					<div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-            <Search 
+						<Search 
               valueSearch=	{this.state.valueSearch}
               handleSearch=	{this.handleSearch}
             />
-          </div>
-					<div className="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
-          <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+					</div>
+				</div>
+				<div className="row">
+					<div className="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
+					<div className="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
+          <div className="col-xs-5 col-sm-4 col-md-4 col-lg-4">
             <button 
               type="button" 
               className="btn btn-info btn-block marginB10"

@@ -47,6 +47,7 @@ const getOrder = async () => {
             idx: index,            
             level: parseInt(getlevel(status)),
             name: book.bookName,
+            cusID: user.id
           };
           Mockdata.push(newBook);
           console.log("newPush: ", newBook);

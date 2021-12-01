@@ -42,23 +42,10 @@ class Item extends Component {
                     <span className={classNameLabel}>{nameLabel}</span>
                 </td>
                 <td>{item.name}</td>
-                <td>
-                    <button
-                        type="button"
-                        className="btn btn-warning btn-sm marginR5"
-                        // onClick={() => this.props.handleEditItem(index, item)}
-                    >
-                        Edit
-                    </button>
-                    <button
-                        type="button"
-                        className="btn btn-danger btn-sm"
-                        // onClick={() => this.props.handleShowAlert(item)}
-                    >
-                        Delete
-                    </button>
-                </td>
-                {item.idx===0&&<ChooseStatePopup level={item.level}/>}
+                {item.idx===0&&<ChooseStatePopup 
+                                    level={item.level} 
+                                    id={item.id}
+                                    cusID={item.cusID}/>}
             </tr>
         );
     }

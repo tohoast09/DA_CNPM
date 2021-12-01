@@ -16,8 +16,9 @@ class Search extends Component {
             className="btn " 
             type="button"
             onClick={()=>this.props.handleSearch('')}
+            style={{border: "1px solid black"}}
           >
-            Clear
+            <b>CLEAR</b>
           </button>
         </span>
       </div>
