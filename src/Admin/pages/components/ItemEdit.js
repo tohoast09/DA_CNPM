@@ -3,13 +3,14 @@ import React, {Component} from 'react';
 class ItemEdit extends Component {
   renderLevel = () => {
     let {arrayLevel} = this.props;
+    console.log("Arraylevel nè: ",arrayLevel)
     return arrayLevel.map((level,index)=>{
       switch (level) {
-        case 0:
-          return <option key={index} value={level}>Giao thành công</option>
-        case 1:
+        case 0: //complete
+          return <option key={index} value={level}>Giao thành công</option> 
+        case 1: //shipped
           return <option key={index} value={level}>Đang vận chuyểnnn</option>
-        default:
+        case 2: //preparing
           return <option key={index} value={level}>Chưa xử lý</option>
       }
     });

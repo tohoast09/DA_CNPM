@@ -1,11 +1,18 @@
 import React, {Component} from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import SweetAlert from 'react-bootstrap-sweetalert';
 import WHData from './mockdata/MockWarehouse';
 import Item from './warehouse-components/items';
 import Form from './warehouse-components/form';
 import WHEdit from './warehouse-components/edit';
-import Search from './warehouse-components/search'
+import Search from './warehouse-components/search';
+import {db} from '../connectFB';
+import {doc, 
+				updateDoc,
+				collection,
+				addDoc,
+				deleteDoc 
+} from 'firebase/firestore';
+
 
 class Warehouse extends Component {
 	constructor(props) {
@@ -15,21 +22,32 @@ class Warehouse extends Component {
 
 			showForm: false,
 
-			nameBook: '',
-			codeBook: '',
-			quantityBook: 0,
+			title: '',
+			price: '',
+			quantity: 0,
+			categorySlug: '',
+			description: '',
+			image01: '',
+			image02: '',
+			promotion: '',
+			slug: '',
+			tag: [],
 
 			indexEdit: 0,
-			sttEdit: '',
-			nameEdit: '',
-			codeEdit: '',
+			idEdit: '',
+			titleEdit: '',
+			priceEdit: '',
 			quantityEdit: 0,
+			categorySlugEdit: '',
+			descriptionEdit: '',
+			image01Edit: '',
+			image02Edit: '',
+			promotionEdit: '',
+			slugEdit: '',
+			tagEdit: '',
 
 			showAlert: false,
-			sttAlert: '',
-			nameAlert: '',
-			codeAlert: '',
-			quantityAlert: 0,
+			idAlert: '',
 
 			isSearch: false,
 			valueSearch: '',
@@ -41,44 +59,102 @@ class Warehouse extends Component {
 			showForm: !this.state.showForm
 		});
 	}
-	handleFormInputNameChange = (value) => {
+	handleFormInputTitleChange = (value) => {
 		this.setState({
-			nameBook: value
+			title: value
 		});
 	}
-	handleFormInputCodeChange = (value) => {
+	handleFormInputPriceChange = (value) => {
 		this.setState({
-			codeBook: value
+			price: value
 		});
 	}
 	handleFormInputQuantityChange = (value) => {
 		this.setState({
-			quantityBook: value
+			quantity: value
+		});
+	}
+	handleFormInputCategorySlugChange = (value) => {
+		this.setState({
+			categorySlug: value
+		});
+	}
+	handleFormInputDescriptionChange = (value) => {
+		this.setState({
+			description: value
+		});
+	}
+	handleFormInputImage01Change = (value) => {
+		this.setState({
+			image01: value
+		});
+	}
+	handleFormInputImage02Change = (value) => {
+		this.setState({
+			image02: value
+		});
+	}
+	handleFormInputPromotionChange = (value) => {
+		this.setState({
+			promotion: value
+		});
+	}
+	handleFormInputSlugChange = (value) => {
+		this.setState({
+			slug: value
+		});
+	}
+	handleFormInputTagChange = (value) => {
+		this.setState({
+			tag: this.convertTagToArray(value)
 		});
 	}
 	handleFormClickCancel = () => {
     this.setState({
-      nameBook: '',
-			codeBook: '',
-			quantityBook: '',
+      title: '',
+			price: '',
+			quantity: 0,
+			categorySlug: '',
+			description: '',
+			image01: '',
+			image02: '',
+			promotion: '',
+			slug: '',
+			tag: [],
       showForm: false
     });
   	}
-  	handleFormClickSubmit = () => {
-    let {nameBook, codeBook, quantityBook, items} = this.state;
-    if(nameBook.trim() === 0) return false;
+  handleFormClickSubmit = () => {
+    let {	items, title, price, quantity, categorySlug, description,
+					image01, image02, promotion, slug, tag} = this.state;
+    if(title.trim() === 0) return false;
     let newItem = {
-      stt: uuidv4(),
-      name: nameBook,
-      code: codeBook,
-			quantity: quantityBook
+      title: 				title,
+      price: 				price,
+			quantity: 		quantity,
+			categorySlug:	categorySlug,
+			description:	description,
+			image01:			image01,
+			image02:			image02,
+			promotion:		promotion,
+			slug:					slug,
+			tag:					tag,
+			totalPoint:		0,
+			totalReview:	0
     }; 
-    items.push(newItem);
+    addDoc(collection(db, "books"), newItem);
     this.setState({
       items,
-      nameBook: '',
-			codeBook: '',
-			quantityBook: '',
+      title: '',
+			price: '',
+			quantity: 0,
+			categorySlug: '',
+			description: '',
+			image01: '',
+			image02: '',
+			promotion: '',
+			slug: '',
+			tag: [],
       showForm: false,
       isSearch: false,
       valueSearch: ''
@@ -88,18 +164,15 @@ class Warehouse extends Component {
 	handleShowAlert = (item) => {
 		this.setState({
 			showAlert: true,
-			sttAlert: item.stt,
-			nameAlert: item.name,
-			codeAlert: item.code,
-			quantityAlert: item.quantity
+			idAlert: item.id
 		})
 	}
 	handleDeleteBook = () => {
-		let {sttAlert, items} = this.state;
+		let {idAlert, items} = this.state;
 		if(items.length > 0) {
       for(let i = 0; i < items.length; i++) {
-        if(items[i].stt === sttAlert) {
-          items.splice(i, 1);
+        if(items[i].id === idAlert) {
+          deleteDoc(doc(db, "books", items[i].id));
           break;
         }
       }
@@ -112,23 +185,41 @@ class Warehouse extends Component {
     });
 	}
 
-	handleEditBook = (index,item) => {
+	convertTagToString = (tag) => {
+		var strTag = tag[0];
+		tag.map((value, index) => {
+			if (index != 0) 	strTag = strTag + ", " + value;
+		});
+		return strTag;
+	}
+	convertTagToArray = (tag) => {
+		return tag.split(", ");
+	}
+
+	handleEditBook = (item, index) => {
 		this.setState({
-			indexEdit: index,
-			sttEdit: item.stt,
-			nameEdit: item.name,
-			codeEdit: item.code,
-			quantityEdit: item.quantity
+			indexEdit: 				index,
+			idEdit:						item.id,
+			titleEdit: 				item.title,
+			priceEdit: 				item.price,
+			quantityEdit:			item.quantity,
+			categorySlugEdit: item.categorySlug,
+			descriptionEdit: 	item.description,
+			image01Edit: 			item.image01,
+			image02Edit: 			item.image02,
+			promotionEdit: 		item.promotion,
+			slugEdit:					item.slug,
+			tagEdit: 					this.convertTagToString(item.tag)
 		});
 	}
-	handleEditInputNameChange = (value) => {
+	handleEditInputTitleChange = (value) => {
 		this.setState({
-			nameEdit: value
+			titleEdit: value
 		});
 	}
-	handleEditInputCodeChange = (value) => {
+	handleEditInputPriceChange = (value) => {
 		this.setState({
-			codeEdit: value
+			priceEdit: value
 		});
 	}
 	handleEditInputQuantityChange = (value) => {
@@ -136,25 +227,71 @@ class Warehouse extends Component {
 			quantityEdit: value
 		});
 	}
+	handleEditInputCategorySlugChange = (value) => {
+		this.setState({
+			categorySlugEdit: value
+		});
+	}
+	handleEditInputDescriptionChange = (value) => {
+		this.setState({
+			descriptionEdit: value
+		});
+	}
+	handleEditInputImage01Change = (value) => {
+		this.setState({
+			image01Edit: value
+		});
+	}
+	handleEditInputImage02Change = (value) => {
+		this.setState({
+			image02Edit: value
+		});
+	}
+	handleEditInputPromotionChange = (value) => {
+		this.setState({
+			promotionEdit: value
+		});
+	}
+	handleEditInputSlugChange = (value) => {
+		this.setState({
+			slugEdit: value
+		});
+	}
+	handleEditInputTagChange = (value) => {
+		this.setState({
+			tagEdit: value
+		});
+	}
 	handleEditClickCancel = () => {
 		this.setState({
-			sttEdit: ''
+			idEdit: ''
 		});
 	}
 	handleEditClickSubmit = () => {
-		let {items, sttEdit, nameEdit, codeEdit, quantityEdit} = this.state; 
+		let {	items, idEdit, titleEdit, priceEdit, quantityEdit, categorySlugEdit, 
+					descriptionEdit, image01Edit, image02Edit, promotionEdit, slugEdit, tagEdit} = this.state; 
     if(items.length > 0) { 
       for(let i = 0; i < items.length; i++) {
-        if(items[i].stt === sttEdit) {
-          items[i].name = nameEdit;
-          items[i].code = codeEdit;
-		  items[i].quantity = quantityEdit;
-          break;
+        if(items[i].id === idEdit) {
+          const bookRef = doc(db, "books", idEdit);
+					updateDoc(bookRef, {
+						categorySlug:	categorySlugEdit,
+						description: 	descriptionEdit,
+						image01:			image01Edit,
+						image02:			image02Edit,
+						price:				priceEdit,
+						promotion:		promotionEdit,
+						slug:					slugEdit,
+						quantity:			quantityEdit,
+						tag:					this.convertTagToArray(tagEdit),
+						title:				titleEdit
+					});
+					break;
         }
       }
     }
     this.setState({
-      sttEdit: ''
+      idEdit: ''
     });
 	}
 
@@ -167,7 +304,7 @@ class Warehouse extends Component {
     } else {
       for(let item of itemsSearch) {
         if( item.name.toLowerCase().indexOf(search.toLowerCase()) > -1 || 
-            item.code.toLowerCase().indexOf(search.toLowerCase()) > -1  ||
+            item.price.toLowerCase().indexOf(search.toLowerCase()) > -1  ||
 						item.quantity.toString().indexOf(search.toLowerCase()) > -1 ) 
         {
           newArray.push(item);
@@ -181,7 +318,22 @@ class Warehouse extends Component {
     });
 	}
 	renderItems = () => {
-		let {items, indexEdit, sttEdit, nameEdit, codeEdit, quantityEdit, isSearch, itemsSearch} = this.state;
+		let {items, 
+			indexEdit, 
+			idEdit, 
+			titleEdit, 
+			priceEdit, 
+			quantityEdit, 
+			categorySlugEdit, 
+			descriptionEdit, 
+			image01Edit, 
+			image02Edit, 
+			promotionEdit, 
+			tagEdit, 
+			slugEdit, 
+			isSearch, 
+			itemsSearch} = this.state;
+		
 		if (isSearch) {
       items = itemsSearch
     }
@@ -189,28 +341,42 @@ class Warehouse extends Component {
 			return <Item item={0} />
 		}
 		return items.map((item, index) => { 
-			if (item.stt === sttEdit) {
-				return(
+			if (item.id === idEdit) {
+				return( 
 					<WHEdit 
-						key={index}
-						indexEdit={indexEdit}
-						nameEdit={nameEdit}
-						codeEdit={codeEdit}
-						quantityEdit={quantityEdit}
-						handleEditClickCancel={this.handleEditClickCancel}
-						handleEditClickSubmit={this.handleEditClickSubmit}
-						handleEditInputNameChange={this.handleEditInputNameChange}
-						handleEditInputCodeChange={this.handleFormInputCodeChange}
-						handleEditInputQuantityChange={this.handleFormInputQuantityChange}
-					/>
+						key=															{index}
+						indexEdit=												{indexEdit}
+						titleEdit=												{titleEdit}
+						priceEdit=												{priceEdit}
+						quantityEdit=											{quantityEdit}
+						categorySlugEdit=									{categorySlugEdit}
+						descriptionEdit=									{descriptionEdit}
+						image01Edit=											{image01Edit}
+						image02Edit=											{image02Edit}
+						promotionEdit=										{promotionEdit}
+						slugEdit=													{slugEdit}
+						tagEdit=													{tagEdit}
+						handleEditClickCancel=						{this.handleEditClickCancel}
+						handleEditClickSubmit=						{this.handleEditClickSubmit}
+						handleEditInputNameChange=				{this.handleEditInputTitleChange}
+						handleEditInputPriceChange=				{this.handleEditInputPriceChange}
+						handleEditInputQuantityChange=		{this.handleEditInputQuantityChange}
+						handleEditInputCategorySlugChange={this.handleEditInputCategorySlugChange}
+						handleEditInputDescriptionChange=	{this.handleEditInputDescriptionChange}
+						handleEditInputImage01Change=			{this.handleEditInputImage01Change}
+						handleEditInputImage02Change=			{this.handleEditInputImage02Change}
+						handleEditInputPromotionChange=		{this.handleEditInputPromotionChange}
+						handleEditInputSlugChange=				{this.handleEditInputSlugChange}
+						handleEditInputTagChange=					{this.handleEditInputTagChange}
+					/> 
 				)
 			}
 			return(
 				<Item	
-					index = {index+1}
-					item = {item}
-					key = {item.stt}
-					handleEditBook={this.handleEditBook}
+					index = 				{index+1}
+					item = 					{item}
+					key = 					{item.id}
+					handleEditBook=	{this.handleEditBook}
 					handleShowAlert={this.handleShowAlert}
 				/>
 			)
@@ -223,11 +389,11 @@ class Warehouse extends Component {
           show={this.state.showAlert}
           warning
           showCancel
-          confirmBtnText="Xác nhận"
-          confirmBtnBsStyle="danger"
-          cancelBtnText="Hủy"
-          cancelBtnBsStyle="light"
-          title="Xác nhận xóa sách?"
+          confirmBtnText			="Xác nhận"
+          confirmBtnBsStyle		="danger"
+          cancelBtnText				="Hủy"
+          cancelBtnBsStyle		="light"
+          title								="Xác nhận xóa sách?"
           onOutsideClick={()  => this.setState({ showAlert: false })}
           onEscapeKey={()     => this.setState({ showAlert: false })}
           onCancel={()        => this.setState({ showAlert: false })}
@@ -242,8 +408,8 @@ class Warehouse extends Component {
 				<div className="row">
 					<div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
             <Search 
-              valueSearch={this.state.valueSearch}
-              handleSearch={this.handleSearch}
+              valueSearch=	{this.state.valueSearch}
+              handleSearch=	{this.handleSearch}
             />
           </div>
 					<div className="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
@@ -261,12 +427,18 @@ class Warehouse extends Component {
           <div className="col-md-offset-7 col-md-5">
             <Form 
               showForm={this.state.showForm}
-              nameBook={this.state.nameBook}
-              handleFormInputNameChange={this.handleFormInputNameChange}
-              handleFormInputCodeChange={this.handleFormInputCodeChange}
-              handleFormInputQuantityChange={this.handleFormInputQuantityChange}
-              handleFormClickCancel={this.handleFormClickCancel}
-              handleFormClickSubmit={this.handleFormClickSubmit}
+              handleFormInputTitleChange				={this.handleFormInputTitleChange}
+              handleFormInputPriceChange				={this.handleFormInputPriceChange}
+              handleFormInputQuantityChange			={this.handleFormInputQuantityChange}
+							handleFormInputCategorySlugChange	={this.handleFormInputCategorySlugChange}
+							handleFormInputDescriptionChange	={this.handleFormInputDescriptionChange}
+							handleFormInputImage01Change			={this.handleFormInputImage01Change}
+							handleFormInputImage02Change			={this.handleFormInputImage02Change}
+							handleFormInputPromotionChange		={this.handleFormInputPromotionChange}
+							handleFormInputSlugChange					={this.handleFormInputSlugChange}
+							handleFormInputTagChange					={this.handleFormInputTagChange}
+              handleFormClickCancel							={this.handleFormClickCancel}
+              handleFormClickSubmit							={this.handleFormClickSubmit}
             />
           </div>
         </div>
@@ -277,7 +449,7 @@ class Warehouse extends Component {
 						<thead>
 							<th style={{width: '10%'}} className="text-center">STT</th>
 							<th style={{width: '40%'}} className="text-center">Tựa sách</th>
-							<th style={{width: '15%'}} className="text-center">Mã sách</th>
+							<th style={{width: '15%'}} className="text-center">Giá</th>
 							<th style={{width: '20%'}} className="text-center">Còn lại trong kho (quyển)</th>
 							<th></th>
 						</thead>
