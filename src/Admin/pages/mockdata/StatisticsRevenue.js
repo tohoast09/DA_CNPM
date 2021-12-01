@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 // import { useMemo } from "react";
 import { Bar } from 'react-chartjs-2';
-
+//import {CategoryScale} from 'react-chartjs-2';
 import { v4 as uuidv4 } from "uuid";
 import connectFB from "../../connectFB";
 import { db } from "../../connectFB";
@@ -91,16 +91,16 @@ const StatisticsRevenue = () => {
 
 <Bar
             data = {{
-                labels: ['t1','t2','t3'],
+                labels: arr1,
                 datasets: [
                     {
-                        label: 'Số lượng',
-                        data: [10,10,20],
+                        label: 'Số tiền',
+                        data: arr2,
                         backgroundColor:[
-                            'rgba(255, 99, 132, 0.2)'
+                            'rgba(255, 205, 71, 0.2)'
                         ],
                         borderColor: [
-                            'rgba(255, 99, 132, 1)',
+                            'rgba(255, 182, 71, 1)',
                         ],
                         borderWidth: 1,
                         

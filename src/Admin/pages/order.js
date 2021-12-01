@@ -273,24 +273,18 @@ class Order extends Component {
           onCancel={() => this.setState({ showAlert: false })}
           onConfirm={() => this.handleDeleteItem()}
         />
-        <div className="page-header">
-          <h1>Đơn hàng</h1>
-        </div>
+        
+          <h1 style={{margin: '0 auto'}}>Đơn hàng</h1>
+        
         <div className="row">
-          <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+          <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 justify-content-center" style={{margin: '0 auto'}}>
             <Search
               valueSearch={this.state.valueSearch}
               handleSearch={this.handleSearch}
             />
           </div>
-          <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-            <Sort
-              sortType={this.state.sortType}
-              sortOrder={this.state.sortOrder}
-              handleSort={this.handleSort}
-            />
-          </div>
-          <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+          
+          {/* <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
             <button
               type="button"
               className="btn btn-info btn-block "
@@ -298,7 +292,7 @@ class Order extends Component {
             >
               {this.state.showForm ? 'Close Item' : 'Add Item'}
             </button>
-          </div>
+          </div> */}
         </div>
         <div className="row ">
           <div className="col-md-offset-7 col-md-5">

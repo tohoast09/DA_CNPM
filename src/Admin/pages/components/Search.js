@@ -13,7 +13,7 @@ class Search extends Component {
         />
         <span className="input-group-btn">
           <button 
-            className="btn btn-info" 
+            className="btn " 
             type="button"
             onClick={()=>this.props.handleSearch('')}
           >

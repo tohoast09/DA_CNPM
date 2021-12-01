@@ -68,13 +68,7 @@ class HomeAdmin extends Component {
                             Tải về
                         </a>
                     </th>
-                    <button
-                        type="button"
-                        className="btn btn-info btn-block marginB10"
-                        onClick={this.getOrder}
-                    >
-                        abc
-                    </button>
+                    
                 </tr>
             );
         });
