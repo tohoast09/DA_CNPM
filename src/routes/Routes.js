@@ -15,6 +15,7 @@ import Authentication from '../pages/Authentication';
 import PrivateRoute from './PrivateRoute';
 import Account from '../pages/Account';
 import Cart from '../pages/Cart';
+import Admin from '../Admin/Admin';
 const ElementRoutes = () => {
     const ProductDataCtx = useContext(ProductData)
     useEffect(() => {
@@ -86,7 +87,7 @@ const ElementRoutes = () => {
             </PrivateRoute>
             }/>
             <Route path='/account/*' element={
-                <PrivateRoute check_user={true} route="/login">
+                <PrivateRoute check_user={true} check_admin={false} route="/login">
                 <Header/>
                 <div className='container'>
                     <div className='main'>
@@ -94,6 +95,12 @@ const ElementRoutes = () => {
                     </div>
                 </div>
                 <Footer/>
+                </PrivateRoute>
+            }/>
+            <Route path='/admin/*' element={
+                <PrivateRoute check_user={true} check_admin={true} route="/login">
+
+                <Admin />
                 </PrivateRoute>
             }/>
         </Routes>

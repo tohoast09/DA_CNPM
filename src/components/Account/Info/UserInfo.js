@@ -15,8 +15,9 @@ import TextField from "@mui/material/TextField";
 // import storage from "../../../firebase";
 import { getStorage, ref, uploadBytes, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import { toast } from "react-toastify";
-
+import { useNavigate } from "react-router";
 function UserInfo(props) {
+    const {isAdmin}=useUserContext();
     const { userInfo, updateUserInfo } = useUserInfo();
     const [submitNoti, setSubmitNoti] = useState("");
     const [img, setImg] = useState("");
@@ -34,7 +35,7 @@ function UserInfo(props) {
     // const [loading, setLoading] = useState(true);
     console.log("render userInfo: ", Info);
     const { logoutUser } = useUserContext();
-
+    const navigate=useNavigate();
     const [pwdPopup, setpwdPopup] = useState(false);
 
     function onHandleChange(event) {
@@ -73,9 +74,14 @@ function UserInfo(props) {
                         getDownloadURL(upLoadTask.snapshot.ref)
                         .then(async (url)=>{
                             userInfo.img=url;
-                            await updateUserInfo(userInfo);
-                            setSubmitNoti("Bạn đã chỉnh sửa thông tin thành công");
+                            try{
+                                await updateUserInfo(userInfo);
+                                toast.info('Chỉnh sửa thông tin thành công');
             
+                            }
+                            catch (err){
+                                toast.error('Chỉnh sửa thông tin thất bại')
+                            }            
                         });
                     }
                 )
@@ -229,6 +235,14 @@ function UserInfo(props) {
                         >
                             Sửa mật khẩu
                         </Button> */}
+                    {isAdmin&&<Button
+                        variant="contained"
+                        size="large"
+                        className={`${account.changeInfo} ${account.update}`}
+                        onClick={()=>{navigate('/admin')}}
+                    >
+                        Đi tới trang quản lý
+                    </Button>}
                     <Button
                         variant="contained"
                         size="large"
@@ -237,6 +251,7 @@ function UserInfo(props) {
                     >
                         Đăng xuất tài khoản
                     </Button>
+
                 </form>
 
                 {/* {pwdPopup && <ChangePass onCancel={onCancelHandler} />} */}

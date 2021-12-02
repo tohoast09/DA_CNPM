@@ -102,13 +102,7 @@ const Home = () => {
             {/* end new arrival section */}
             
             {/* banner */}
-            <Section>
-                <SectionBody>
-                    <Link to="/catalog">
-                        <img src={banner} alt="" />
-                    </Link>
-                </SectionBody>
-            </Section>
+
             {/* end banner */}
 
             {/* popular product section */}

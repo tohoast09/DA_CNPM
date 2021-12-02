@@ -23,6 +23,7 @@ import {
 import { db, auth } from '../firebase';
 import Loading from '../components/Loading';
 import { useNavigate } from 'react-router';
+import { onSnapshot } from '@firebase/firestore';
 // import { set } from '../redux/product-modal/productModalSlice';
 const UserContext = createContext({});
 
@@ -32,15 +33,28 @@ export const UserContextProvider = ({ children }) => {
     const navigate=useNavigate();
     const [user, setUser] = useState(null);
     const [authloading, setLoading] = useState(false);
+    const [adminLoading, setLoadingAdmin]=useState(true);
     const [loading, setAuthStateLoading] = useState(true);
     const [emailError, setEmailError] = useState("");
     const [passwordError, setPasswordError] = useState("");
-
+    const [isAdmin, setAdmin]=useState(false);
     useEffect(() => {
         setAuthStateLoading(true);
         const unsubscribe = onAuthStateChanged(auth, (res) => {
             setUser(res);
+            if(res){
+                setLoadingAdmin(true);
 
+                onSnapshot(doc(db, "users/" + res.uid), (doc) => {
+                    console.log(doc.data().isAdmin);
+                    setAdmin(doc.data().isAdmin);
+                    setLoadingAdmin(false);
+
+                })
+            }
+            else{
+                setLoadingAdmin(false);
+            }
             setAuthStateLoading(false);
 
             setEmailError("");
@@ -87,7 +101,7 @@ export const UserContextProvider = ({ children }) => {
         setLoading(true);
         try{
             await signInWithEmailAndPassword(auth, email, password);
-            // setUser(auth.currentUser);// thay lam gi the em cũng ép biết nữa, meet ko, em nói cho
+
             navigate(-1);
         }
         catch (err){
@@ -129,6 +143,7 @@ export const UserContextProvider = ({ children }) => {
 
     };
 
+    
     const forgetPassword = (email) => {
         //
         return sendPasswordResetEmail(auth, email);
@@ -148,10 +163,12 @@ export const UserContextProvider = ({ children }) => {
 
     const contextValue = {
         user,
+        isAdmin,
         loading,
         emailError,
         passwordError,
         authloading,
+        adminLoading,
         setEmailError,
         setPasswordError,
         registerUser,
@@ -163,7 +180,7 @@ export const UserContextProvider = ({ children }) => {
     };
     return (
         <UserContext.Provider value={contextValue}>
-            {loading?
+            {(loading||adminLoading)?
             <Loading loading={loading}/>
             :
             children}
