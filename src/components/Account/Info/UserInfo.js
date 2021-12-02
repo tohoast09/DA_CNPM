@@ -13,7 +13,7 @@ import { useUserContext } from "../../../stores/AppState";
 import TextField from "@mui/material/TextField";
 // import ChangePass from "./ChangePass";
 // import storage from "../../../firebase";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { getStorage, ref, uploadBytes, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 
 function UserInfo(props) {
     const { userInfo, updateUserInfo } = useUserInfo();
@@ -59,27 +59,33 @@ function UserInfo(props) {
             img: Info.img,
         };
         console.log("assign: ", userInfo);
-        if (file) {
-            console.log(file);
-            console.log(file.name);
-            const strg = getStorage();
-            const imgRef = await ref(strg, `images/${userInfo.email}`);
-            await uploadBytes(imgRef, file)
-                .then(console.log("Uploaded!"))
-                .then(
-                    getDownloadURL(imgRef).then((url) => {
-                        setImg(url);
-                        userInfo.img = img;
-                        console.log("url: ", img, userInfo);
-                    })
-                );
-        }
-
         if (Info.name && Info.phone) {
-            console.log(userInfo);
-            updateUserInfo(userInfo);
-            setSubmitNoti("Bạn đã chỉnh sửa thông tin thành công");
-        } else {
+            if(file){
+                const strg = getStorage();
+                const imgRef = ref(strg, `images/${userInfo.email}`);
+                const upLoadTask=uploadBytesResumable(imgRef,file);
+                upLoadTask.on(
+                    "state_changed",
+                    (snapshot)=>{},
+                    (err)=>{console.log(err);},
+                    ()=>{
+                        getDownloadURL(upLoadTask.snapshot.ref)
+                        .then(async (url)=>{
+                            userInfo.img=url;
+                            await updateUserInfo(userInfo);
+                            setSubmitNoti("Bạn đã chỉnh sửa thông tin thành công");
+            
+                        });
+                    }
+                )
+            }
+            else{
+                console.log(userInfo);
+                await updateUserInfo(userInfo);
+                setSubmitNoti("Bạn đã chỉnh sửa thông tin thành công");
+            }
+        } 
+        else {
             setSubmitNoti("Tên và số điện thoại không được để trống");
         }
     };
