@@ -1,5 +1,6 @@
 * {
     font-family: Roboto;
+    /* font-size: 14px; */
 }
 
 span {
@@ -86,14 +87,14 @@ h1 {
 }
 
 .orderCard .orderDescription {
-    width: 50%;
+    width: 45%;
     text-align: left;
 }
 .orderPrice {
     width: 10%;
 }
 .orderStatus {
-    width: 15%;
+    width: 20%;
 }
 
 .OrderDetail {
