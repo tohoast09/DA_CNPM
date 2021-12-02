@@ -14,6 +14,7 @@ import TextField from "@mui/material/TextField";
 // import ChangePass from "./ChangePass";
 // import storage from "../../../firebase";
 import { getStorage, ref, uploadBytes, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import { toast } from "react-toastify";
 
 function UserInfo(props) {
     const { userInfo, updateUserInfo } = useUserInfo();
@@ -81,12 +82,18 @@ function UserInfo(props) {
             }
             else{
                 console.log(userInfo);
-                await updateUserInfo(userInfo);
-                setSubmitNoti("Bạn đã chỉnh sửa thông tin thành công");
+                try{
+                    await updateUserInfo(userInfo);
+                    toast.info('Chỉnh sửa thông tin thành công');
+
+                }
+                catch (err){
+                    toast.error('Chỉnh sửa thông tin thất bại')
+                }
             }
         } 
         else {
-            setSubmitNoti("Tên và số điện thoại không được để trống");
+            toast.warning('Tên và số điện thoại không được để trống');
         }
     };
     return (
