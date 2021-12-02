@@ -10,10 +10,6 @@ import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import sign from "./Sign.module.css";
 import { useUserContext } from "../../stores/AppState";
-// import CssBaseline from "@mui/material/CssBaseline";
-// import FormControlLabel from "@mui/material/FormControlLabel";
-// import Checkbox from "@mui/material/Checkbox";
-// import Container from "@mui/material/Container";
 
 function Copyright(props) {
     return (
@@ -49,7 +45,6 @@ export default function SignUp(props) {
         setEmailError("");
         setPasswordError("");
         const data = new FormData(event.currentTarget);
-        // eslint-disable-next-line no-console
 
         const email = data.get("email");
         const password = data.get("password");

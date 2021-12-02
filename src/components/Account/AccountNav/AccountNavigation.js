@@ -1,5 +1,4 @@
-// import { Button } from "reactstrap";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import classes from "../Account.module.css";
 import { useUserInfo } from "../../../assets/firebase-data/getUserAPI";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
@@ -7,7 +6,6 @@ import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalance
 import ReceiptLongOutlinedIcon from "@mui/icons-material/ReceiptLongOutlined";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
-
 function AccountNavigation() {
     const { userInfo } = useUserInfo();
     return (

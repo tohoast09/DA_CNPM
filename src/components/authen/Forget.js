@@ -10,10 +10,6 @@ import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import sign from "./Sign.module.css";
 import { useUserContext } from "../../stores/AppState";
-// import CssBaseline from "@mui/material/CssBaseline";
-// import FormControlLabel from "@mui/material/FormControlLabel";
-// import Checkbox from "@mui/material/Checkbox";
-// import Paper from "@mui/material/Paper";
 
 function Copyright(props) {
     return (
@@ -24,7 +20,7 @@ function Copyright(props) {
             {...props}
         >
             {"Copyright © "}
-            <Link color="inherit" href="https://mui.com/">
+            <Link color="inherit" href="/">
                 BK Bookstore
             </Link>{" "}
             {new Date().getFullYear()}

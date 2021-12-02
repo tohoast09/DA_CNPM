@@ -1,7 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Switch } from "react-router";
 import AccountNavigation from "./AccountNav/AccountNavigation";
-// import AccNavBar from "./AccountNav/AccNavBar";
 import Address from "./Address/Address";
 import Order from "./Order/Order";
 import UserInfo from "./Info/UserInfo";
