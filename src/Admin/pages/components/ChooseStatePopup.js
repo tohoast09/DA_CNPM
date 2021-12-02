@@ -1,7 +1,7 @@
 import React from "react";
 import chef from "./Chef.module.css";
 import { useState } from "react";
-import {doc, updateDoc, deleteDoc} from "firebase/firestore";
+import {doc, getDocs, collection, updateDoc, deleteDoc} from "firebase/firestore";
 import {db} from "../../connectFB";
 // import axios from "axios";
 // import Button from "@mui/material/Button";
@@ -29,15 +29,17 @@ function OrderStatePopup(props) {
     // }
 
     const onConfirmHandler = async (status) => { 
-        await setconfirmPopup(false);
+        await setconfirmPopup(false); 
         // await update();
         // await props.onChooseState(status);
         setState(status);
-        const orderRef = doc(doc(db, "users", props.cusID), "orders", props.id);
-        if (status === "Done") {
+        const orderRef = doc(db, "users/"+props.cusID+"/orders/"+props.id); 
+        if (statusButton === "Hoàn thành") { 
             updateDoc(orderRef, {status: "complete"});
         }
-        else if (status === "Canceled") {
+        else if (statusButton === "Nhận đơn") {
+            updateDoc(orderRef, {status: "preparing"});
+        } else if (statusButton === "Hủy đơn") {
             deleteDoc(orderRef);
         }
         
@@ -86,6 +88,14 @@ function OrderStatePopup(props) {
                     className={chef.finishOrder}
                 >
                     Giao hàng thành công
+                </button>
+            )}
+
+            {props.level===0 && (
+                <button
+                    className={chef.finishOrder}
+                >
+                    Đơn hoàn thành
                 </button>
             )}
             

@@ -124,7 +124,7 @@ class Warehouse extends Component {
       showForm: false
     });
   	}
-  handleFormClickSubmit = () => {
+  	handleFormClickSubmit = () => {
     let {	items, title, price, quantity, categorySlug, description,
 					image01, image02, promotion, slug, tag} = this.state;
     if(title.trim() === 0) return false;
