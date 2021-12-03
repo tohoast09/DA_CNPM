@@ -10,7 +10,7 @@ export default function PrivateRoute({ children , route, check_user, check_admin
         return <Loading loading={authloading}/>
     }
     if(check_user===true){
-        if(check_admin==false){
+        if(check_admin===false){
             return user ? children : <Navigate to={route} />;
         }
         else{

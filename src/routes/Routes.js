@@ -71,7 +71,7 @@ const ElementRoutes = () => {
                 </>
             }/>
             <Route path='/pay' element={
-                <PrivateRoute check_user={true} route="/login">
+                <PrivateRoute check_user={true} check_admin={false} route="/login">
                 <Header/>
                 <div className='container'>
                     <div className='main'>
@@ -82,7 +82,7 @@ const ElementRoutes = () => {
                 </PrivateRoute>
             }/>
             <Route path='/login' element={
-            <PrivateRoute check_user={false} route ="/account">
+            <PrivateRoute check_user={false} check_admin={false} route ="/account">
             <Authentication/>
             </PrivateRoute>
             }/>
