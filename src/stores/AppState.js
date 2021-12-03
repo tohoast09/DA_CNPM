@@ -148,8 +148,6 @@ export const UserContextProvider = ({ children }) => {
         signInUser,
         logoutUser,
         forgetPassword,
-        changeInfo,
-        changePassword,
     };
     return (
         <UserContext.Provider value={contextValue}>
