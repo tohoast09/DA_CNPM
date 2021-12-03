@@ -98,7 +98,7 @@ const Header = () => {
                                     <img
                                         src="https://static.vecteezy.com/system/resources/previews/002/637/558/non_2x/read-book-knowledge-icon-white-background-free-vector.jpg"
                                         // src="../assets/images/BKBOOK.png"
-                                        alt=""
+                                        alt="Logo"
                                     />
                                 </div>
                             </Link>
