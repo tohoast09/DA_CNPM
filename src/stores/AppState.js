@@ -59,6 +59,7 @@ export const UserContextProvider = ({ children }) => {
                         phone: "",
                         password: password,
                         wallet: 0,
+                        isAdmin: false,
                     });
                 }
             );
@@ -124,7 +125,11 @@ export const UserContextProvider = ({ children }) => {
 
     const forgetPassword = (email) => {
         //
-        return sendPasswordResetEmail(auth, email);
+        try {
+            sendPasswordResetEmail(auth, email);
+        } catch (err) {
+            setEmailError(err.code);
+        }
     };
 
     // const changeInfo = (value) => {

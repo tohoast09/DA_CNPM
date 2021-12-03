@@ -32,12 +32,13 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function ForgetPass(props) {
-    const { forgetPassword } = useUserContext();
+    const { forgetPassword, emailError, setEmailError } = useUserContext();
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         // eslint-disable-next-line no-console
         const email = data.get("email");
+        
         if (email) {
             forgetPassword(email);
             props.onChange(email);
@@ -94,7 +95,7 @@ export default function ForgetPass(props) {
                             variant="contained"
                             sx={{ mt: 2, mb: 2 }}
                         >
-                            Gửi mã xác nhận
+                            Gửi email thay đổi mật khẩu
                         </Button>
                         {/* <TextField
                             margin="normal"

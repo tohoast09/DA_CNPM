@@ -58,7 +58,6 @@ export default function Login(props) {
         if (email && password) signInUser(email, password);
         //get Addres---- need async
 
-
         // const addressData = getAddress();
         // console.log(addressData);
         // console.log(user.uid)
@@ -67,8 +66,6 @@ export default function Login(props) {
         //     email: { email },
         //     password: { password },
         // });
-
-
     };
 
     // const forgetPasswordHandler=(event)=>{
@@ -134,15 +131,16 @@ export default function Login(props) {
                             autoComplete="current-password"
                             // onChange={()=>setPasswordError("")}
                         />
-                        {passwordError && (
-                            <p className={sign.passwordErr}>{passwordError}</p>
-                        )}
+{/* 
                         <FormControlLabel
                             control={
                                 <Checkbox value="remember" color="primary" />
                             }
                             label="Nhớ tài khoản"
-                        />
+                        /> */}
+                        {passwordError && (
+                            <p className={sign.passwordErr}>{passwordError}</p>
+                        )}
                         <Button
                             type="submit"
                             fullWidth

@@ -11,13 +11,17 @@ import { useState } from "react";
 import { useUserInfo } from "../../../assets/firebase-data/getUserAPI";
 import { useUserContext } from "../../../stores/AppState";
 import TextField from "@mui/material/TextField";
-// import ChangePass from "./ChangePass";
-// import storage from "../../../firebase";
-import { getStorage, ref, uploadBytes, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import Helmet from "../../Helmet";
+import {
+    getStorage,
+    ref,
+    getDownloadURL,
+    uploadBytesResumable,
+} from "firebase/storage";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
 function UserInfo(props) {
-    const {isAdmin}=useUserContext();
+    const { isAdmin } = useUserContext();
     const { userInfo, updateUserInfo } = useUserInfo();
     const [submitNoti, setSubmitNoti] = useState("");
     const [img, setImg] = useState("");
@@ -35,8 +39,8 @@ function UserInfo(props) {
     // const [loading, setLoading] = useState(true);
     console.log("render userInfo: ", Info);
     const { logoutUser } = useUserContext();
-    const navigate=useNavigate();
-    const [pwdPopup, setpwdPopup] = useState(false);
+    const navigate = useNavigate();
+    // const [pwdPopup, setpwdPopup] = useState(false);
 
     function onHandleChange(event) {
         const { name, value } = event.target;
@@ -62,201 +66,190 @@ function UserInfo(props) {
         };
         console.log("assign: ", userInfo);
         if (Info.name && Info.phone) {
-            if(file){
+            if (file) {
                 const strg = getStorage();
                 const imgRef = ref(strg, `images/${userInfo.email}`);
-                const upLoadTask=uploadBytesResumable(imgRef,file);
+                const upLoadTask = uploadBytesResumable(imgRef, file);
                 upLoadTask.on(
                     "state_changed",
-                    (snapshot)=>{},
-                    (err)=>{console.log(err);},
-                    ()=>{
-                        getDownloadURL(upLoadTask.snapshot.ref)
-                        .then(async (url)=>{
-                            userInfo.img=url;
-                            try{
-                                await updateUserInfo(userInfo);
-                                toast.info('Chỉnh sửa thông tin thành công');
-            
+                    (snapshot) => {},
+                    (err) => {
+                        console.log(err);
+                    },
+                    () => {
+                        getDownloadURL(upLoadTask.snapshot.ref).then(
+                            async (url) => {
+                                userInfo.img = url;
+                                try {
+                                    await updateUserInfo(userInfo);
+                                    toast.info(
+                                        "Chỉnh sửa thông tin thành công"
+                                    );
+                                } catch (err) {
+                                    toast.error("Chỉnh sửa thông tin thất bại");
+                                }
                             }
-                            catch (err){
-                                toast.error('Chỉnh sửa thông tin thất bại')
-                            }            
-                        });
+                        );
                     }
-                )
-            }
-            else{
+                );
+            } else {
                 console.log(userInfo);
-                try{
+                try {
                     await updateUserInfo(userInfo);
-                    toast.info('Chỉnh sửa thông tin thành công');
-
-                }
-                catch (err){
-                    toast.error('Chỉnh sửa thông tin thất bại')
+                    toast.info("Chỉnh sửa thông tin thành công");
+                } catch (err) {
+                    toast.error("Chỉnh sửa thông tin thất bại");
                 }
             }
-        } 
-        else {
-            toast.warning('Tên và số điện thoại không được để trống');
+        } else {
+            toast.warning("Tên và số điện thoại không được để trống");
         }
     };
     return (
-        <div className={account.UserInfo}>
-            <h1>Thông tin tài khoản</h1>
-            <div className={`${account.MainContent} ${account.info}`}>
-                {/* <img src={userInfo.img} alt="Ảnh người dùng" /> */}
-                <form
-                    className={account.infoInsideContent}
-                    onSubmit={submitHandler}
-                >
-                    <div className={account.field}>
-                        <label htmlFor="name">Họ tên</label>
-                        <TextField
-                            className={account.input}
-                            name="name"
-                            type="text"
-                            id="name"
-                            value={Info.name}
-                            onChange={onHandleChange}
-                            // ref={nameInputRef}
-                        />
-                    </div>
-                    <div className={account.field}>
-                        <label htmlFor="phone">Số điện thoại</label>
-                        <TextField
-                            className={account.input}
-                            name="phone"
-                            type="number"
-                            id="phone"
-                            value={Info.phone}
-                            onChange={onHandleChange}
-                        />
-                    </div>
-                    <div className={account.field}>
-                        <label htmlFor="email">Email</label>
-                        <TextField
-                            className={account.input}
-                            name="email"
-                            type="email"
-                            id="email"
-                            defaultValue={userInfo.email}
-                            disabled
-                        />
-                    </div>
-                    <div className={account.field}>
-                        <label htmlFor="bdate">Ngày sinh</label>
-                        <TextField
-                            className={account.input}
-                            name="bdate"
-                            type="date"
-                            id="bdate"
-                            value={Info.bdate}
-                            onChange={onHandleChange}
-                        />
-                    </div>
-                    <div className={account.field}>
-                        <label htmlFor="gender">Giới tính</label>
-                        <div className={account.gender}>
-                            <FormControl
-                                className={account.selectGender}
-                                component="fieldset"
-                            >
-                                <RadioGroup
-                                    row
-                                    aria-label="gender"
-                                    name="row-radio-buttons-group"
-                                    name="gender"
-                                    value={Info.gender}
-                                    onChange={onHandleChange}
-                                >
-                                    <FormControlLabel
-                                        className={account.genderSelection}
-                                        value="male"
-                                        control={<Radio />}
-                                        label="Nam"
-                                    />
-                                    <FormControlLabel
-                                        className={account.genderSelection}
-                                        value="female"
-                                        control={<Radio />}
-                                        label="Nữ"
-                                    />
-                                    <FormControlLabel
-                                        className={account.genderSelection}
-                                        value="other"
-                                        control={<Radio />}
-                                        label="Khác"
-                                    />
-                                </RadioGroup>
-                            </FormControl>
-                        </div>
-                    </div>
-                    {submitNoti && (
-                        <div
-                            className={`${account.field} ${account.submitNoti}`}
-                        >
-                            <span>{submitNoti}</span>
-                        </div>
-                    )}
-
-                    {/* <label for="file-upload" class="custom-file-upload">
-                        Custom Upload
-                    </label> */}
-                    <div className={account.field}>
-                        <label htmlFor="bdate">Chọn ảnh đại diện</label>
-                        {/* <label for="files" class="btn">
-                            Select Image
-                        </label> */}
-                        <input
-                            className={account.input}
-                            id="files"
-                            name="files"
-                            type="file"
-                            onChange={(event) => {
-                                setFile(event.target.files[0]);
-                            }}
-                        ></input>
-                    </div>
-
-                    <Button
-                        variant="contained"
-                        type="submit"
-                        size="large"
-                        className={`${account.changeInfo} ${account.update}`}
+        <Helmet title="Thông tin tài khoản">
+            <div className={account.UserInfo}>
+                <h1>Thông tin tài khoản</h1>
+                <div className={`${account.MainContent} ${account.info}`}>
+                    {/* <img src={userInfo.img} alt="Ảnh người dùng" /> */}
+                    <form
+                        className={account.infoInsideContent}
+                        onSubmit={submitHandler}
                     >
-                        Cập nhật thông tin
-                    </Button>
-                    {/* <Button
+                        <div className={account.field}>
+                            <label htmlFor="name">Họ tên</label>
+                            <TextField
+                                className={account.input}
+                                name="name"
+                                type="text"
+                                id="name"
+                                value={Info.name}
+                                onChange={onHandleChange}
+                                // ref={nameInputRef}
+                            />
+                        </div>
+                        <div className={account.field}>
+                            <label htmlFor="phone">Số điện thoại</label>
+                            <TextField
+                                className={account.input}
+                                name="phone"
+                                type="number"
+                                id="phone"
+                                value={Info.phone}
+                                onChange={onHandleChange}
+                            />
+                        </div>
+                        <div className={account.field}>
+                            <label htmlFor="email">Email</label>
+                            <TextField
+                                className={account.input}
+                                name="email"
+                                type="email"
+                                id="email"
+                                defaultValue={userInfo.email}
+                                disabled
+                            />
+                        </div>
+                        <div className={account.field}>
+                            <label htmlFor="bdate">Ngày sinh</label>
+                            <TextField
+                                className={account.input}
+                                name="bdate"
+                                type="date"
+                                id="bdate"
+                                value={Info.bdate}
+                                onChange={onHandleChange}
+                            />
+                        </div>
+                        <div className={account.field}>
+                            <label htmlFor="gender">Giới tính</label>
+                            <div className={account.gender}>
+                                <FormControl
+                                    className={account.selectGender}
+                                    component="fieldset"
+                                >
+                                    <RadioGroup
+                                        row
+                                        aria-label="gender"
+                                        name="row-radio-buttons-group"
+                                        name="gender"
+                                        value={Info.gender}
+                                        onChange={onHandleChange}
+                                    >
+                                        <FormControlLabel
+                                            className={account.genderSelection}
+                                            value="male"
+                                            control={<Radio />}
+                                            label="Nam"
+                                        />
+                                        <FormControlLabel
+                                            className={account.genderSelection}
+                                            value="female"
+                                            control={<Radio />}
+                                            label="Nữ"
+                                        />
+                                        <FormControlLabel
+                                            className={account.genderSelection}
+                                            value="other"
+                                            control={<Radio />}
+                                            label="Khác"
+                                        />
+                                    </RadioGroup>
+                                </FormControl>
+                            </div>
+                        </div>
+                        {submitNoti && (
+                            <div
+                                className={`${account.field} ${account.submitNoti}`}
+                            >
+                                <span>{submitNoti}</span>
+                            </div>
+                        )}
+                        <div className={account.field}>
+                            <label htmlFor="bdate">Chọn ảnh đại diện</label>
+                            <input
+                                className={account.input}
+                                id="files"
+                                name="files"
+                                type="file"
+                                accept="image/png, image/gif, image/jpeg"
+                                onChange={(event) => {
+                                    setFile(event.target.files[0]);
+                                }}
+                            ></input>
+                        </div>
+
+                        <Button
+                            variant="contained"
+                            type="submit"
+                            size="large"
+                            className={`${account.changeInfo} ${account.update}`}
+                        >
+                            Cập nhật thông tin
+                        </Button>
+                        {isAdmin && (
+                            <Button
+                                variant="contained"
+                                size="large"
+                                className={`${account.changeInfo} ${account.update}`}
+                                onClick={() => {
+                                    navigate("/admin");
+                                }}
+                            >
+                                Đi tới trang quản lý
+                            </Button>
+                        )}
+                        <Button
                             variant="contained"
                             size="large"
                             className={`${account.changePassword} ${account.update}`}
+                            onClick={logoutUser}
                         >
-                            Sửa mật khẩu
-                        </Button> */}
-                    {isAdmin&&<Button
-                        variant="contained"
-                        size="large"
-                        className={`${account.changeInfo} ${account.update}`}
-                        onClick={()=>{navigate('/admin')}}
-                    >
-                        Đi tới trang quản lý
-                    </Button>}
-                    <Button
-                        variant="contained"
-                        size="large"
-                        className={`${account.changePassword} ${account.update}`}
-                        onClick={logoutUser}
-                    >
-                        Đăng xuất tài khoản
-                    </Button>
-
-                </form>
-
-                {/* {pwdPopup && <ChangePass onCancel={onCancelHandler} />} */}
+                            Đăng xuất tài khoản
+                        </Button>
+                    </form>
+                </div>
             </div>
-        </div>
+        </Helmet>
     );
     // }
 }
