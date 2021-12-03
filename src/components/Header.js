@@ -1,14 +1,14 @@
 import React, { useRef, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Badge from "@mui/material/Badge";
-import logo from "../assets/images/BKBOOK.png";
+// import logo from "../assets/images/BKBOOK.png";
 import classes from "./dropdown.module.css";
 import { useState, useContext } from "react";
 import { FilterState, useUserContext } from "../stores/AppState";
 import { SearchTitle } from "./SearchUtil";
 import category from "../assets/fake-data/category";
 import CartContext from "../stores/CartContext";
-import "../assets/images/BKBOOK.png"
+// import "../assets/images/BKBOOK.png"
 const mainNav = [
     {
         display: "Sản phẩm",
@@ -96,8 +96,8 @@ const Header = () => {
                             <Link to="/">
                                 <div className="header__logo">
                                     <img
-                                        src="https://static.vecteezy.com/system/resources/previews/002/637/558/non_2x/read-book-knowledge-icon-white-background-free-vector.jpg"
-                                        // src="../assets/images/BKBOOK.png"
+                                        // src="https://static.vecteezy.com/system/resources/previews/002/637/558/non_2x/read-book-knowledge-icon-white-background-free-vector.jpg"
+                                        src="../assets/images/BKBOOK.png"
                                         alt="Logo"
                                     />
                                 </div>
