@@ -21,7 +21,8 @@ const getCustomer = async () => {
     await queryCustomers.forEach(async (cus) => {
         var total = 0;
         var OrderList = [];
-        const queryOrders = await getDocs(collection(cus.ref, "orders"));
+        const queryOrders = await getDocs(collection(cus.ref, "orders")); 
+        console.log("QueryOrders: ", queryOrders);
         await queryOrders.forEach((order) => {
             total += order.data().totalPay;
             var timestamp = order.data().createAt;
