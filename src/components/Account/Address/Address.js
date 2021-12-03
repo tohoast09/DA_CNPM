@@ -4,6 +4,7 @@ import address from "./Address.module.css";
 import { useState } from "react";
 import AddAddress from "./AddAddress";
 import { useUserInfo } from "../../../assets/firebase-data/getUserAPI";
+import AddIcon from "@mui/icons-material/Add";
 function Address() {
     // const {getAddress} = useUserContext;
     const [addPopup, setaddPopup] = useState(false);
@@ -25,7 +26,8 @@ function Address() {
                             }}
                             className={address.addButton}
                         >
-                            Thêm địa chỉ mới
+                            <AddIcon />
+                            <span>Thêm địa chỉ mới</span>
                         </Button>
                     </div>
                     {addPopup && (

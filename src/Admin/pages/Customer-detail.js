@@ -20,7 +20,7 @@ class CustomerDetail extends Component {
 				  <td style={{width: '15%'}}>{order.date}</td>
 					<td style={{width: '15%'}}>{order.price} VND</td>
 					<td style={{width: '30%'}}>{order.address}</td>
-			  	<td style={{width: '15%'}}>{tt}</td>
+			  	<td style={{width: '15%'}} className="text-center"><b>{tt}</b></td>
 				</tr>
 			);
 		});
@@ -28,8 +28,8 @@ class CustomerDetail extends Component {
 	render() { 
 		let {cus} = this.props; 
 		let gender = '';
-		if (cus.gender === "male")	gender = "Nam";
-		else 												gender = "Nữ";
+		if (cus.gender === "male")			gender = "Nam";
+		else if (cus.gender === "female")	gender = "Nữ";
     return (
       <div className='container'>
         <div className='page-header'>
@@ -78,7 +78,7 @@ class CustomerDetail extends Component {
 					  	<th style={{width: '15%'}}>Ngày mua</th>
 				  		<th style={{width: '15%'}}>Giá trị đơn</th>
 					  	<th style={{width: '30%'}} className="text-center">Địa chỉ</th>
-							<th style={{width: '15%'}}>Tình trạng</th>
+							<th style={{width: '15%'}} className="text-center">Tình trạng</th>
 						</thead> 
 				  	<tbody>
 				  	  {this.renderDetail(cus.orders)}

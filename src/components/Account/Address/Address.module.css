@@ -167,6 +167,9 @@ select {
 }
 .buttonBar .addButton {
     background-color: #4267b2;
+    display: flex;
+    justify-content:center;
+    align-items: center;
 }
 
 .buttonBar .addButton:hover {

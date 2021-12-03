@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import Grid from './Grid'
 
-import logo from '../assets/images/Logo-2.png'
+import logo from "../assets/images/BKBOOK1.png";
 
 const footerAboutLinks = [
     {
@@ -71,7 +71,7 @@ const Footer = () => {
                     </div>
                     <div>
                         <div className="footer__title">
-                            Về Yolo
+                            Về BKBook
                         </div>
                         <div className="footer__content">
                             {

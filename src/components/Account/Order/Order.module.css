@@ -21,8 +21,6 @@ h1 {
 .orderCard {
     height: 60px;
     font-size: 16px;
-    /* background-color: red; */
-    /* background-color: white; */
     align-items: center;
     display: flex;
 }
@@ -72,7 +70,7 @@ h1 {
 
 .orderDescription a {
     margin-left: 10px;
-    color:hsl(213, 100%, 34%);
+    color: hsl(213, 100%, 34%);
     text-decoration: none;
     /* display: flex; align-items: flex-end; */
 }
@@ -86,14 +84,14 @@ h1 {
 }
 
 .orderCard .orderDescription {
-    width: 50%;
+    width: 45%;
     text-align: left;
 }
 .orderPrice {
     width: 10%;
 }
 .orderStatus {
-    width: 15%;
+    width: 20%;
 }
 
 .OrderDetail {
@@ -208,7 +206,7 @@ li div span {
     vertical-align: top;
     margin-right: 10px;
 }
-.productImg{
+.productImg {
     max-width: 200%;
 }
 
@@ -222,7 +220,7 @@ li div span {
 
 .productName {
     height: 50px;
-    font-size: 24px;;
+    font-size: 24px;
 }
 
 .productProp button {
@@ -309,9 +307,17 @@ button.productAdd:hover {
     display: inline-block;
     padding-left: 10px;
 }
-.link{
-    color: #4267b2
+.link {
+    color: #4267b2;
 }
-.link:hover{
-    color: rgb(3, 26, 71)
+.link:hover {
+    color: rgb(3, 26, 71);
+}
+
+.empty {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 40px;
+    font-size: 40px;
 }

@@ -83,7 +83,6 @@ export default function GetUserProvider(props) {
         return onSnapshot(
             collection(db, "users/" + user.uid + "/orders"),
             (snapshot) => {
-                console.log('DAMN WHYY');
                 const ords = [];
                 snapshot.docs.map((doc) => { 
                     ords.push({ id: doc.id, data: doc.data() });
@@ -91,7 +90,6 @@ export default function GetUserProvider(props) {
                 setOrders(ords);
                 console.log(ords);
                 setLoadingOrder(false);
-                console.log("NOOOOOOOO");
             }
         );
     };
