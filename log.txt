@@ -1,0 +1,223 @@
+commit bc91cb99ab5192f592eebd6c00c7424a8b95a451
+Merge: bd65ac87 efc4cc0e
+Author: danhkaito <danh.kaitokid@gmail.com>
+Date:   Fri Dec 3 17:44:11 2021 +0700
+
+    Update
+
+commit efc4cc0e7626a00e470da93df6956f510e86dbfe
+Author: dang-416 <dang.nguyen.0416@hcmut.edu.vn>
+Date:   Fri Dec 3 15:57:03 2021 +0700
+
+    logo
+
+commit cb2e1d0bf6b24ddab1cfa39ea90faa0e2715a398
+Author: dang-416 <dang.nguyen.0416@hcmut.edu.vn>
+Date:   Fri Dec 3 13:51:02 2021 +0700
+
+    check_admin for pay and login
+
+commit bd65ac8747ec6cfc0458b43509182ad0c71e0269
+Author: danhkaito <danh.kaitokid@gmail.com>
+Date:   Fri Dec 3 13:39:45 2021 +0700
+
+    Update Route
+
+commit 1dd2b81a3ae80bf9e4ac9aff0c56f96e79a01be4
+Author: dang-416 <dang.nguyen.0416@hcmut.edu.vn>
+Date:   Fri Dec 3 12:32:01 2021 +0700
+
+    ...
+
+commit 6405fb7dc70b1118343aa67f9f07894c708b058e
+Author: dang-416 <dang.nguyen.0416@hcmut.edu.vn>
+Date:   Fri Dec 3 10:39:22 2021 +0700
+
+    Admin Nhan
+
+commit 4f3c120685cbf80db06212426d0aea5b44c678ee
+Author: dang-416 <dang.nguyen.0416@hcmut.edu.vn>
+Date:   Fri Dec 3 02:00:39 2021 +0700
+
+    empty orderList
+
+commit 2c347361e96314ddf1073538a4217f67046c8d96
+Author: dang-416 <dang.nguyen.0416@hcmut.edu.vn>
+Date:   Fri Dec 3 01:33:05 2021 +0700
+
+    ...
+
+commit b9e789a8216b4d72a830cd18a40d380626c2a339
+Author: dang-416 <dang.nguyen.0416@hcmut.edu.vn>
+Date:   Fri Dec 3 01:31:44 2021 +0700
+
+    css Account
+
+commit 14dd6ac42d65a16525f41570628908fd19216ab7
+Author: danhkaito <danh.kaitokid@gmail.com>
+Date:   Thu Dec 2 21:28:21 2021 +0700
+
+    Preview
+
+commit 2f01caa96c2bed1432604fad5865d109c49df280
+Author: danhkaito <danh.kaitokid@gmail.com>
+Date:   Thu Dec 2 16:45:22 2021 +0700
+
+    Update toast
+
+commit 34b98c4d77604ebe859f1c099c436eed1a22f930
+Author: danhkaito <danh.kaitokid@gmail.com>
+Date:   Thu Dec 2 16:02:08 2021 +0700
+
+    Fix Ava
+
+commit 32a1d0c40a0fd2699bee099d1ba034416fdd76ef
+Author: dang-416 <dang.nguyen.0416@hcmut.edu.vn>
+Date:   Sun Nov 28 23:11:35 2021 +0700
+
+    Update UserInfo.js
+
+commit 8eb1d660f935705dfbe996646ba4cf1ea1014c61
+Author: dang-416 <dang.nguyen.0416@hcmut.edu.vn>
+Date:   Sun Nov 28 23:03:52 2021 +0700
+
+    backup avatar
+
+commit 7027c2a974b7e90b55b2fc637a783394effbf701
+Author: dang-416 <dang.nguyen.0416@hcmut.edu.vn>
+Date:   Sun Nov 28 23:00:16 2021 +0700
+
+    Add feature Update Avatar
+
+commit d4ae735c4453240111d753688cce7274ea4b46f7
+Author: danhkaito <danh.kaitokid@gmail.com>
+Date:   Sat Nov 27 23:08:05 2021 +0700
+
+    New final for UI Client
+
+commit d1eca9d82e805938c2067bcb93e532223ce22599
+Author: dang-416 <dang.nguyen.0416@hcmut.edu.vn>
+Date:   Sat Nov 27 00:48:10 2021 +0700
+
+    fix orderDetail height
+
+commit 3ca2506d686f70aeb6774939ccc3e8602eb19b5b
+Author: dang-416 <dang.nguyen.0416@hcmut.edu.vn>
+Date:   Sat Nov 27 00:34:21 2021 +0700
+
+    Some UI
+
+commit 000cba8f12da773d4b88424498dea43d6141e996
+Author: dang-416 <dang.nguyen.0416@hcmut.edu.vn>
+Date:   Fri Nov 26 22:01:11 2021 +0700
+
+    fix UI
+
+commit 5961009f9083a670a24e392dca1334eb4d8405e4
+Author: danhkaito <danh.kaitokid@gmail.com>
+Date:   Fri Nov 26 18:35:06 2021 +0700
+
+    New update
+
+commit 7aed01dbc4e3ee9801b445fec26cc44839c3136b
+Author: danhkaito <danh.kaitokid@gmail.com>
+Date:   Thu Nov 25 23:50:55 2021 +0700
+
+    New Ui Client
+
+commit 458484d2e1189fc83970463faf4b56f3c02698d7
+Author: danhkaito <danh.kaitokid@gmail.com>
+Date:   Sun Nov 7 20:31:54 2021 +0700
+
+    Add payment UI
+
+commit 788b405705dafde9c740a040efd47f1444d50508
+Author: danhkaito <danh.kaitokid@gmail.com>
+Date:   Sun Nov 7 18:36:29 2021 +0700
+
+    Ready for demo
+
+commit 5e72229f35da5fdc4198adbb69b4c4b7c192558d
+Author: danhkaito <danh.kaitokid@gmail.com>
+Date:   Sun Nov 7 18:32:05 2021 +0700
+
+    Update account
+
+commit 2c8afdb770b4cf76d7a2e51831c7254004f99e64
+Author: danhkaito <danh.kaitokid@gmail.com>
+Date:   Sun Nov 7 18:30:35 2021 +0700
+
+    Ignore Modules
+
+commit 12f7206d2fbe3fe704ddcd174749d6f7a54282d5
+Merge: 460abec2 dd882e6e
+Author: danhkaito <danh.kaitokid@gmail.com>
+Date:   Sun Nov 7 18:29:27 2021 +0700
+
+    Merge branch 'newupdate' of https://github.com/tohoast09/DA_CNPM into newupdate
+
+commit dd882e6eca0f5c016d2900a9aae11058555a1c72
+Author: nhanle2107 <75714814+nhanle2107@users.noreply.github.com>
+Date:   Sun Nov 7 18:27:53 2021 +0700
+
+    Add files via upload
+
+commit 31646fff3be7823463a3d1b51441a6dbff847da9
+Author: nhanle2107 <75714814+nhanle2107@users.noreply.github.com>
+Date:   Sun Nov 7 18:27:01 2021 +0700
+
+    Add files via upload
+
+commit 9ca50d0aca8c68bb88f02f9390ede3d47590d1e2
+Author: nhanle2107 <75714814+nhanle2107@users.noreply.github.com>
+Date:   Sun Nov 7 18:25:24 2021 +0700
+
+    Upload Admin
+
+commit 460abec2a502c7474679b3ab531c371654b6ebcd
+Author: danhkaito <danh.kaitokid@gmail.com>
+Date:   Sun Nov 7 16:09:39 2021 +0700
+
+    Isolate Bootstrap
+
+commit 0b3ff468c1d54452bacbecd3fff1429ef9d832f0
+Author: danhkaito <danh.kaitokid@gmail.com>
+Date:   Sun Nov 7 15:43:53 2021 +0700
+
+    Isolate Bootstrap 4
+
+commit 78a2c681736b98ba9bdeac2b16653265338810e8
+Author: danhkaito <danh.kaitokid@gmail.com>
+Date:   Sun Nov 7 15:24:49 2021 +0700
+
+    Isolate bootstrap to exist css
+
+commit f84b2cee78ede90be8e841237dc1a776c6a3be0d
+Author: danhkaito <danh.kaitokid@gmail.com>
+Date:   Sat Nov 6 22:34:41 2021 +0700
+
+    New update
+
+commit 589e4757c984660fe8d0c9f843fe3d8d07a78b92
+Author: danhkaito <danh.kaitokid@gmail.com>
+Date:   Sat Nov 6 22:26:13 2021 +0700
+
+    Merge Admin and client side
+
+commit 309a9de4105317be73ba7716247dfb5653e109ad
+Author: To Hoa <tohoast09@gmail.com>
+Date:   Wed Nov 3 21:26:35 2021 +0700
+
+    test
+
+commit 9902e251e7b1bd534bc2cf577c910aed5e7111ca
+Author: To Hoa <tohoast09@gmail.com>
+Date:   Wed Nov 3 20:48:58 2021 +0700
+
+    upload viewpage mm
+
+commit 2b79f8b375dc9ebae97bb0a6bfa6fbd9b59c0b78
+Author: To Hoa <tohoast09@gmail.com>
+Date:   Wed Nov 3 20:42:32 2021 +0700
+
+    upload README.md

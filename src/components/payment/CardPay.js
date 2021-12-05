@@ -122,10 +122,18 @@ export default function CardPay() {
 
   }
 
-  const onSuccessPay = ()=>{
+  const onSuccessPay = async ()=>{
     toast.info('Thanh toán thành công');
     setComplete(true);
+    try{
+      await addOrder(Info);
+      CrtCtx.clearCart();
 
+      toast.info('Đặt hàng thành công');
+    }
+    catch(err){
+      toast.error('Đặt hàng thất bại');
+    }
   }
 
   const onErrorPay= ()=>{
