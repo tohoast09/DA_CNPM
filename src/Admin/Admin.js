@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import './bootstrap/css/bootstrapcustom.css';
 import NavbarAdmin from './components/NavbarAdmin';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Customers from './pages/Customer';
 import Order from './pages/order';
 import Support from './pages/support';
@@ -13,31 +13,44 @@ import CustomerDetail from './pages/Customer-detail';
 function Admin() {
   return ( 
     <div className='bootstrapiso'>
-        <Switch>
-          <Route path='/admin' exact>
+        <Routes>
+          <Route path='/' element={
+            <>
             <NavbarAdmin/>
             <HomeAdmin/>
-          </Route>
-          <Route path='/admin/customer' exact>
+            </>
+          }/>
+          <Route path='/customer' element={
+            <>
             <NavbarAdmin/>
             <Customers/>
-          </Route>
-          <Route path='/admin/customer/detail'>
+            </>
+          }/>
+          <Route path='/customer/detail' element={
+            <>
             <CustomerDetail/>
-          </Route>
-          <Route path='/admin/order' >
-            <NavbarAdmin/>
+            </>
+          }/>
+          <Route path='/order' element={
+            <>
+                        <NavbarAdmin/>
             <Order/>
-          </Route>
-          <Route path='/admin/warehouse' >
-            <NavbarAdmin/>
+            </>
+          }/>
+
+          <Route path='/warehouse' element={
+            <>
+                        <NavbarAdmin/>
             <Warehouse/>
-          </Route>
-          <Route path='/admin/support' exact>
-            <NavbarAdmin/>
+            </>
+          }/>
+          <Route path='/admin/support' element={
+            <>
+                        <NavbarAdmin/>
             <Support/>
-          </Route>
-        </Switch>
+            </>
+          }/>
+        </Routes>
     </div>
   );
 }

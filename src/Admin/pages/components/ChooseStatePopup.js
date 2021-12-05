@@ -2,7 +2,7 @@ import React from "react";
 import chef from "./Chef.module.css";
 import { useState } from "react";
 import {doc, getDocs, collection, updateDoc, deleteDoc} from "firebase/firestore";
-import {db} from "../../connectFB";
+import { db } from "../../../firebase";
 // import axios from "axios";
 // import Button from "@mui/material/Button";
 function OrderStatePopup(props) {

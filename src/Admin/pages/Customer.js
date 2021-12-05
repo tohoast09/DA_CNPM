@@ -4,9 +4,8 @@ import Search from "./cus-components/cus-search";
 import CusDatabase from "./mockdata/CusData";
 import Customer from "./cus-components/customer";
 import CustomerDetail from "./Customer-detail";
-import {db} from '../connectFB';
 import {doc, deleteDoc} from 'firebase/firestore';
-
+import { db } from "../../firebase";
 class Customers extends Component {
     constructor(props) {
         super(props);

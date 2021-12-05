@@ -1,6 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-import connectFB from "../../connectFB";
-import { db } from "../../connectFB";
+import { db } from "../../../firebase";
 import {
   collection,
   deleteDoc,

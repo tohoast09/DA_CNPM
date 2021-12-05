@@ -5,7 +5,7 @@ import Item from './warehouse-components/items';
 import Form from './warehouse-components/form';
 import WHEdit from './warehouse-components/edit';
 import Search from './warehouse-components/search';
-import {db} from '../connectFB';
+import { db } from '../../firebase';
 import {doc, 
 				updateDoc,
 				collection,

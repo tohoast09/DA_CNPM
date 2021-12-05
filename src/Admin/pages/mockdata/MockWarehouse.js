@@ -1,4 +1,4 @@
-import {db} from '../../connectFB';
+import { db } from '../../../firebase';
 import {
     collection,
     getDocs

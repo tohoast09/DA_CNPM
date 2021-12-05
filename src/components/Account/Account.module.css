@@ -1,0 +1,303 @@
+* {
+    font-family: Roboto;
+    /* font-size: 14px; */
+}
+h1 {
+    display: block;
+    padding-bottom: 20px;
+}
+.Content {
+    font-size: 14px;
+}
+.Info {
+    position: relative;
+    z-index: 0;
+    margin-top: 40px;
+}
+
+.gridItem {
+    padding-top: 0px !important;
+}
+
+.Content {
+    /* width: 75%; */
+    width: 100%;
+    top: 0%;
+    right: 0%;
+    /* position: absolute; */
+}
+
+.InfoNav {
+    /* width: 20%; */
+    width: 100%;
+    display: inline-block;
+    /* position: absolute; */
+    /* left: 5%; */
+    top: 10px;
+}
+
+.linkBtn {
+    display: block;
+    width: 100%;
+    height: 60px;
+    text-decoration: none;
+    background-color: #4267b2;
+    color: white;
+    text-align: center;
+    border: none;
+    margin: 10px auto;
+    border-radius: 5px;
+    text-transform: uppercase;
+    padding: 0px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.linkBtn:hover {
+    background-color: #4f8aff;
+    color: rgb(255, 255, 255);
+}
+
+.linkBtn.linkBtnActive {
+    height: 60px;
+    width: 100%;
+    background-color: #00000000;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+.icon {
+    margin-right: 20px;
+    font-size: 24px
+}
+.InfoNav .Avatar {
+    width: 100%;
+    /* height: 90px; */
+    /* background: red; */
+    position: relative;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.InfoNav .Avatar .img {
+    width: 25vh;
+    height: 25vh;
+    border-radius: 40px;
+    border-color: rgba(0, 0, 0, 0);
+    background-image: url("https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0=");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: auto;
+    box-shadow: 0px 10px 20px 5px #00000020;
+    margin-bottom: 20px;
+}
+
+.avaBtn {
+    text-decoration: none;
+    width: 60%;
+    height: 40px;
+    margin: 20px;
+    border: solid black 2px;
+    margin: 10px auto;
+    text-align: center;
+    text-transform: uppercase;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+}
+
+.avaBtn:hover {
+    background-color: white;
+}
+
+.InfoNav img {
+    width: 240px;
+    height: 240px;
+}
+
+.UserInfo {
+    display: inline-block;
+    width: 100%;
+}
+
+.UserInfo .MainContent {
+    box-align: center;
+    /* position: absolute; */
+    width: 100%;
+    /* font-size: 20px; */
+    display: inline-block;
+    padding: 10px 80px;
+    /* background-color: white; */
+}
+
+.MainContent.info {
+    background-color: white;
+    box-shadow: 0px 20px 20px 0px #00000030;
+    /* background-color: red; */
+    border-radius: 20px;
+}
+
+.background {
+    background-color: rgb(211, 0, 0);
+    width: 100%;
+}
+
+.UserInfo .MainContent .infoInsideContent {
+    margin: auto;
+    padding: 20px 0px;
+    width: 100%;
+    /* background-color: #006600; */
+}
+
+.field {
+    margin: 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.field label {
+    display: inline-block;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.field .input {
+    width: 80%;
+    right: 0px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.field .input div {
+    height: 100%;
+    width: 100%;
+}
+
+.UserInfo .update {
+    display: block;
+    width: 30%;
+    min-width: 240px;
+    height: 50px;
+    color: white;
+    margin: 20px auto;
+    border-radius: 5px;
+}
+
+.UserInfo .update.changeInfo {
+    background-color: #4267b2;
+}
+
+.UserInfo .update.changeInfo:hover {
+    background-color: #154094;
+}
+
+.UserInfo .update.changePassword {
+    background-color: #e0432e;
+}
+
+.UserInfo .update.changePassword:hover {
+    background-color: #ce2c16;
+}
+
+.field > label {
+    display: inline-block;
+    padding: 10px 0px;
+    width: 20%;
+    box-sizing: content-box;
+}
+
+.field .gender {
+    position: absolute;
+    display: inline-block;
+    width: 80%;
+    height: 40px;
+    right: 0px;
+}
+
+.genderSelection {
+    padding: 0px !important;
+}
+
+.genderSelection .Mui-checked {
+    color: red;
+}
+
+.changePass {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.changePassForm {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.changePassForm button {
+    margin: 10px 0px;
+}
+
+.changePassConfirm,
+.changePassCancel {
+    width: 180px;
+    height: 50px;
+}
+
+.changePassCancel {
+    background-color: #ff313f;
+}
+.changePassCancel:hover {
+    background-color: #cc101c;
+}
+
+.changePassCancel:active {
+    background-color: #94000a;
+}
+
+.passField {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+.passField label {
+    width: 30%;
+    display: inline-block;
+}
+.passField input {
+    /* position: absolute; */
+    display: inline-block;
+    width: 70%;
+    height: 40px;
+    right: 0px;
+    /* font-size: 14px; */
+    background: #efefef;
+    border: 1px solid #dddddd;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.field.noti {
+    color: red;
+    display: flex;
+    justify-content: center;
+}
+.field.submitNoti {
+    color: red;
+    display: flex;
+    justify-content: center;
+}
+.submitNoti span {
+    display: block;
+}

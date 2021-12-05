@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import ReportData from "./mockdata/MockReport";
-import connectFB from "../connectFB";
-import { db } from "../connectFB";
+import { db } from "../../firebase";
 import StatisticsRevenue from "./mockdata/StatisticsRevenue"
 import {
     collection,
@@ -76,7 +75,6 @@ class HomeAdmin extends Component {
     };
 
     render() {
-        console.log(connectFB);
         //this.getOrder();
         return (
             <div className="container">

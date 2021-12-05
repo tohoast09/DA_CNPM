@@ -6,8 +6,6 @@ import Sort from "./components/Sort";
 import Mockdata from "./mockdata/Mockdata";
 import GetOrder from "./mockdata/Mockdata";
 import Item from "./components/Item";
-import connectFB from "../connectFB";
-import { db } from "../connectFB";
 import {
     collection,
     deleteDoc,
