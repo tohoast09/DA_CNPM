@@ -20,7 +20,7 @@ function AccountNavigation() {
                     {" "}
                     <span>Thông tin cá nhân</span>{" "}
                 </NavLink>
-                <NavLink
+                {/* <NavLink
                     className={(navData) =>
                         navData.isActive
                             ? `${classes.linkBtnActive} ${classes.linkBtn}`
@@ -30,7 +30,7 @@ function AccountNavigation() {
                 >
                     {" "}
                     <span>Thông báo</span>{" "}
-                </NavLink>
+                </NavLink> */}
                 <NavLink
                     className={(navData) =>
                         navData.isActive

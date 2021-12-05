@@ -135,12 +135,12 @@ export default function Login(props) {
                         {passwordError && (
                             <p className={sign.passwordErr}>{passwordError}</p>
                         )}
-                        <FormControlLabel
+                        {/* <FormControlLabel
                             control={
                                 <Checkbox value="remember" color="primary" />
                             }
                             label="Nhớ tài khoản"
-                        />
+                        /> */}
                         <Button
                             type="submit"
                             fullWidth

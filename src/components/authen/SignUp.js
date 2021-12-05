@@ -40,6 +40,8 @@ export default function SignUp(props) {
         setPasswordError,
     } = useUserContext();
 
+    const [nameErr, setNameErr] = React.useState("");
+
     const handleSubmit = (event) => {
         event.preventDefault();
         setEmailError("");
@@ -49,6 +51,8 @@ export default function SignUp(props) {
         const email = data.get("email");
         const password = data.get("password");
         const name = data.get("name");
+        if (name === "") setNameErr("Vui lòng nhập đầy đủ thông tin");
+        console.log("nameErr: ", nameErr);
         if (email && password && name) registerUser(name, email, password);
         console.log({
             email: email,
@@ -126,6 +130,11 @@ export default function SignUp(props) {
                                 {passwordError && (
                                     <p className={sign.passwordErr}>
                                         {passwordError}
+                                    </p>
+                                )}
+                                {nameErr && (
+                                    <p className={sign.passwordErr}>
+                                        {nameErr}
                                     </p>
                                 )}
                             </Grid>
