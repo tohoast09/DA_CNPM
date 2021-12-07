@@ -1,6 +1,6 @@
 # BK Bookstore
 ## Description
-In this project, our team will build a webapp for a B2C bookstore. Customers can view the books for sale at the store, and can order, pay online and support COD shipping. 
+In this project, our team will build a webapp for a B2C bookstore. Customers can view the books for sale at the store, order, pay online and support COD shipping and also manage their account information. 
 ## Installation
 First, clone the repo from the branch 'master':<br/>
 Using the Command Prompt: 
