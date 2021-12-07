@@ -2,7 +2,7 @@
 ## Description
 In this project, our team will build a webapp for a B2C bookstore. Customers can view the books for sale at the store, and can order, pay online and support COD shipping. 
 ## Installation
-First, clone the repo from the branch 'master':
+First, clone the repo from the branch 'master':<br/>
 Using the Command Prompt: 
 ### `git clone https://github.com/tohoast09/DA_CNPM`
 
