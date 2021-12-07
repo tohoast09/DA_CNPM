@@ -4,13 +4,13 @@ In this project, our team will build a webapp for a B2C bookstore. Customers can
 ## Installation
 First, clone the repo from the branch 'master':<br/>
 Using the Command Prompt: 
-### `git clone https://github.com/tohoast09/DA_CNPM`
+## `git clone https://github.com/tohoast09/DA_CNPM`
 
 In the project directory, you must run the below command to get the require package for this project:
 
-### `npm install`
+## `npm install`
 ## Usage
 After that you can run below command to run our project in "https://localhost:3000"
-### `npm start`
+## `npm start`
 
 
