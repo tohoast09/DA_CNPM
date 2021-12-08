@@ -12,5 +12,5 @@ In the project directory, you must run the below command to get the require pack
 ## Usage
 After that you can run below command to run our project in "https://localhost:3000"
 ### `npm start`
-To use the web with admin rights, login with email `admin@gmail.com` and password `admin123`, then access the link [https://localhost:3000] to go to admin page.
+To use the web with admin rights, login with email `admin@gmail.com` and password `admin123`, then access the link "https://localhost:3000/admin" to go to admin page.
 
